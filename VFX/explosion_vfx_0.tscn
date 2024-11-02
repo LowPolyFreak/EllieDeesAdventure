@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfuyixxgp2han"]
+
+[ext_resource type="Script" path="res://Ressources/VFX/explosion_vfx_0.gd" id="1_7qk8e"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_twmnr"]
+lifetime_randomness = 0.2
+direction = Vector3(0, 0, 1)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eb5ew"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="ExplosionVFX_0" type="GPUParticles3D"]
+emitting = false
+amount = 20
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_twmnr")
+draw_pass_1 = SubResource("BoxMesh_eb5ew")
+script = ExtResource("1_7qk8e")

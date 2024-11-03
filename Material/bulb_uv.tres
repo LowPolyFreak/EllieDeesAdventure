@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cg6chtjeruuse"]
+
+[ext_resource type="Shader" path="res://Shaders/player.gdshader" id="1_tm0m2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tm0m2")
+shader_parameter/albedo = Color(0, 0, 0.44, 1)
+shader_parameter/fresnel_color = Color(0.6745, 0.37, 1, 1)
+shader_parameter/intensity = 1.0
+shader_parameter/amount = 0.8

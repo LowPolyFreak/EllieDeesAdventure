@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cyk38prcwxmsl"]
+
+[ext_resource type="Texture2D" uid="uid://bhcwh20w83tar" path="res://Textures/ColorPalette.jpg" id="1_tn872"]
+
+[resource]
+albedo_texture = ExtResource("1_tn872")
+emission_enabled = true
+emission_energy_multiplier = 0.3
+emission_texture = ExtResource("1_tn872")

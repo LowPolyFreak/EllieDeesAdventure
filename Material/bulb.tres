@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_bkqvd")
-shader_parameter/albedo = Color(0.308066, 0.144167, 4.81308e-08, 1)
-shader_parameter/fresnel_color = Color(0.999997, 0.709351, 0.439312, 1)
+shader_parameter/albedo = Color(0.244646, 0.169268, 0, 1)
+shader_parameter/fresnel_color = Color(1, 0.721009, 0.2273, 1)
 shader_parameter/intensity = 0.7
 shader_parameter/amount = 1.0

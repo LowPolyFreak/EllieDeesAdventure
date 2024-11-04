@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=17 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_c3lkb"]
 [ext_resource type="PackedScene" uid="uid://xrfct3wx5v6j" path="res://Models/Bulb.glb" id="2_4tag8"]
 [ext_resource type="Material" uid="uid://cg6chtjeruuse" path="res://Material/bulb_uv.tres" id="4_mti75"]
 [ext_resource type="Texture2D" uid="uid://db135dfjansp2" path="res://Textures/EyeExpressions.png" id="5_s0w58"]
-[ext_resource type="Material" uid="uid://2h3b33af6q2v" path="res://Material/eyes.tres" id="5_xkrbv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,17 +46,17 @@ data = PackedVector3Array(-2.5, 1, 2.5, 2.5, 1, 2.5, -2.5, -1, 2.5, 2.5, 1, 2.5,
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w0xbe"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcksd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06biu"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 1)
 albedo_texture = ExtResource("5_s0w58")
 metallic_specular = 0.0
 roughness = 0.0
 emission_enabled = true
-emission = Color(1, 0.908333, 0.45, 1)
+emission = Color(0.737255, 0.54902, 1, 1)
 emission_energy_multiplier = 1.25
 uv1_scale = Vector3(0.25, 0.25, 0.25)
-uv1_offset = Vector3(0.25, 0, 0)
+uv1_offset = Vector3(0, 0.5, 0)
 texture_filter = 0
 
 [node name="Main" type="Node3D"]
@@ -103,7 +102,7 @@ metadata/_edit_group_ = true
 shape = SubResource("ConcavePolygonShape3D_qy6h0")
 
 [node name="Block" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(0.996456, 0, 0.0841126, 0, 1, 0, -0.0841126, 0, 0.996456, -5.79617, 1, -2.16297)
+transform = Transform3D(0.860466, 0, 0.509507, 0, 1, 0, -0.509507, 0, 0.860466, -7.1856, 1, -0.901525)
 mesh = SubResource("BoxMesh_ocupg")
 metadata/_edit_group_ = true
 
@@ -113,7 +112,7 @@ metadata/_edit_group_ = true
 shape = SubResource("ConcavePolygonShape3D_ts4oa")
 
 [node name="Block2" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(0.797163, 0, 0.603765, 0, 1, 0, -0.603765, 0, 0.797163, 2.7161, -0.0191439, -4.74941)
+transform = Transform3D(0.864617, 0, 0.502432, 0, 1, 0, -0.502432, 0, 0.864617, 2.01801, -0.0191437, -3.71771)
 mesh = SubResource("BoxMesh_ocupg")
 metadata/_edit_group_ = true
 
@@ -138,12 +137,21 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 transform = Transform3D(1, 2.18557e-08, 5.85622e-09, -2.18557e-08, 0.866025, 0.5, 5.85622e-09, -0.5, 0.866025, 0, 9, 11)
 
 [node name="Bulb2" parent="." instance=ExtResource("2_4tag8")]
-transform = Transform3D(-0.184209, 0, 0.982887, 0, 1, 0, -0.982887, 0, -0.184209, -1.43096, -1.19209e-07, 0.418789)
-metadata/_edit_group_ = true
+transform = Transform3D(-0.982887, 0, -0.184209, 0, 1, 0, 0.184209, 0, -0.982887, -1.43096, -1.19209e-07, 0.418789)
 
-[node name="Bulb" parent="Bulb2" index="0"]
-transform = Transform3D(0.797667, 0, 0.110515, 0, 0.805286, 0, -0.110515, 0, 0.797667, 0, 0, 0)
-surface_material_override/2 = SubResource("StandardMaterial3D_vcksd")
+[node name="Skeleton3D" parent="Bulb2/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.00868977, -0.0920219, 0.991305, 0.0936498)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.279318, -0.00421691, 0.130551, 0.951273)
+bones/3/rotation = Quaternion(-0.785381, -0.114085, -0.0713671, 0.604208)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.00868977, -0.0920219, 0.991305, -0.0936498)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.279318, 0.00421691, -0.130551, 0.951273)
+bones/6/rotation = Quaternion(-0.785381, 0.114085, 0.0713671, 0.604208)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/scale = Vector3(1, 1, 1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Bulb2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26835, 0)
@@ -154,12 +162,25 @@ shadow_opacity = 0.9
 omni_range = 15.0
 
 [node name="Bulb3" parent="." instance=ExtResource("2_4tag8")]
-transform = Transform3D(-0.131201, 0, 0.991356, 0, 1, 0, -0.991356, 0, -0.131201, 2.70662, 0.959848, -2.63861)
-metadata/_edit_group_ = true
+transform = Transform3D(-0.985583, 0, -0.169195, 0, 1, 0, 0.169195, 0, -0.985583, 1.75213, 0.959848, -1.6237)
 
-[node name="Bulb" parent="Bulb3" index="0"]
+[node name="Skeleton3D" parent="Bulb3/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.00868977, -0.0920219, 0.991305, 0.0936498)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.279318, -0.00421691, 0.130551, 0.951273)
+bones/3/rotation = Quaternion(-0.785381, -0.114085, -0.0713671, 0.604208)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.00868977, -0.0920219, 0.991305, -0.0936498)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.279318, 0.00421691, -0.130551, 0.951273)
+bones/6/rotation = Quaternion(-0.785381, 0.114085, 0.0713671, 0.604208)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/scale = Vector3(1, 1, 1)
+
+[node name="Bulb" parent="Bulb3/Armature/Skeleton3D" index="0"]
 surface_material_override/1 = ExtResource("4_mti75")
-surface_material_override/2 = ExtResource("5_xkrbv")
+surface_material_override/2 = SubResource("StandardMaterial3D_06biu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Bulb3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26835, 0)
@@ -170,7 +191,7 @@ shadow_opacity = 0.9
 omni_range = 15.0
 
 [node name="Screenshots" type="Camera3D" parent="."]
-transform = Transform3D(0.975729, -0.0384113, 0.215588, -2.18076e-09, 0.984496, 0.175408, -0.218983, -0.17115, 0.960601, 0.103384, 1.42876, 2.06389)
+transform = Transform3D(0.975729, -0.0384112, 0.215588, -2.18076e-09, 0.984496, 0.175407, -0.218983, -0.17115, 0.960601, 0.218047, 1.68617, 2.06389)
 current = true
 
 [editable path="Bulb2"]

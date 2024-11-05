@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db135dfjansp2"
-path.s3tc="res://.godot/imported/EyeExpressions.png-b569c5f0e5b36957b7bd6c37a8b61cbe.s3tc.ctex"
+path="res://.godot/imported/EyeExpressions.png-b569c5f0e5b36957b7bd6c37a8b61cbe.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Textures/EyeExpressions.png"
-dest_files=["res://.godot/imported/EyeExpressions.png-b569c5f0e5b36957b7bd6c37a8b61cbe.s3tc.ctex"]
+dest_files=["res://.godot/imported/EyeExpressions.png-b569c5f0e5b36957b7bd6c37a8b61cbe.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

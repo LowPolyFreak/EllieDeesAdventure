@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciubfap47dwnm"]
+
+[ext_resource type="PackedScene" uid="uid://xrfct3wx5v6j" path="res://Models/Bulb.glb" id="1_d8ema"]
+
+[node name="EllieModel" instance=ExtResource("1_d8ema")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-0.00434367, 0.471597, -0.0139366)
+bones/0/rotation = Quaternion(0.0276769, 0.000326911, 0.000376604, 0.999617)
+bones/1/rotation = Quaternion(-0.144176, 0.183483, 0.967771, 0.0946898)
+bones/2/rotation = Quaternion(0.608594, -0.0032836, 0.284451, 0.740736)
+bones/3/rotation = Quaternion(-0.572284, 0.0446039, -0.0612842, 0.816545)
+bones/4/rotation = Quaternion(0.146978, -0.38444, 0.901444, -0.134169)
+bones/5/rotation = Quaternion(0.467629, 0.00379668, -0.218566, 0.856468)
+bones/6/rotation = Quaternion(-0.840506, 0.112456, 0.082652, 0.523519)
+bones/7/position = Vector3(-0.0864715, 0.226002, -0.282433)
+bones/8/position = Vector3(-0.170888, 0.234642, 0.255844)
+bones/8/rotation = Quaternion(0.0122677, 0.985415, -0.168377, -0.0213388)
+bones/9/position = Vector3(0.0919124, 0.23343, -0.310519)
+bones/9/rotation = Quaternion(0.0665028, -0.703973, 0.703973, -0.0665028)
+bones/10/position = Vector3(0.171303, 0.0671752, -0.164139)
+bones/10/rotation = Quaternion(0.0123692, 0.561005, 0.827424, 0.0221168)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, -0.000734823, 0.000674419, 0.000771015, 0.998468, -0.0553324, -0.000632726, 0.0553329, 0.998468, -0.00434367, 0.471597, -0.0139366)
+bone_name = "Body"
+bone_idx = 0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775, 0)
+light_color = Color(1, 0.8075, 0.45, 1)
+light_energy = 0.5
+shadow_enabled = true
+shadow_opacity = 0.9
+omni_range = 15.0

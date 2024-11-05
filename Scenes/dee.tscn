@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b004s5usrh0un"]
+
+[ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_4vtbg"]
+[ext_resource type="Material" uid="uid://cg6chtjeruuse" path="res://Material/bulb_uv.tres" id="2_27i61"]
+[ext_resource type="Material" uid="uid://2h3b33af6q2v" path="res://Material/eyes.tres" id="3_16jx1"]
+
+[node name="Dee" instance=ExtResource("1_4vtbg")]
+player_1 = false
+
+[node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
+bones/0/position = Vector3(0.0113913, 0.47733, -0.0281849)
+bones/0/rotation = Quaternion(-0.0378198, -0.00367684, -0.00166724, 0.999277)
+bones/1/rotation = Quaternion(0.0638565, -0.18143, 0.965632, 0.174816)
+bones/2/rotation = Quaternion(0.473362, -0.00377961, 0.221245, 0.852622)
+bones/3/rotation = Quaternion(-0.869461, -0.0175315, -0.0284263, 0.492872)
+bones/4/rotation = Quaternion(-0.0403234, -0.189983, 0.970076, -0.145719)
+bones/5/rotation = Quaternion(0.482482, 0.00375189, -0.225508, 0.846371)
+bones/6/rotation = Quaternion(-0.875538, 0.0217299, 0.0654349, 0.478204)
+
+[node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.999967, 0.00361019, -0.00722225, -0.00305396, 0.997134, 0.0755971, 0.00747447, -0.0755725, 0.997112, 0.0113913, 0.47733, -0.0281849)
+
+[node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+light_color = Color(0.737255, 0.54902, 1, 1)
+
+[node name="Bulb" parent="EllieModel/Armature/Skeleton3D" index="1"]
+surface_material_override/1 = ExtResource("2_27i61")
+surface_material_override/2 = ExtResource("3_16jx1")
+
+[editable path="EllieModel"]

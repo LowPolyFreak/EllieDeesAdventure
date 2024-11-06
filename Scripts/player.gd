@@ -9,9 +9,10 @@ class_name Player
 @onready var camera_follow = $SpringArmPivot/SpringArm3D/CameraFollow
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 12
 
 var last_direction = Vector3.FORWARD
+var in_air = false
 
 func _ready():
 	if !player_1:
@@ -20,7 +21,13 @@ func _ready():
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 3
+		if !in_air:
+			in_air = true
+			animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	else:
+		in_air = false
+		animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 
 	# Handle jump.
 	
@@ -39,17 +46,17 @@ func _physics_process(delta):
 		
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		animation_tree.set("parameters/Movement/transition_request", "Run")
 		last_direction = direction
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		animation_tree.set("parameters/Movement/transition_request", "Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	ellie_model.rotation.y = lerp_angle(ellie_model.rotation.y, atan2(-last_direction.x, -last_direction.z), delta * rotation_speed)
 
 	move_and_slide()
-
-	animation_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_cancel"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://csgj0877gbjpp"]
+[gd_scene load_steps=15 format=4 uid="uid://csgj0877gbjpp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_frd3r"]
 [ext_resource type="PackedScene" uid="uid://ciubfap47dwnm" path="res://Scenes/ellie_model.tscn" id="2_mu1gt"]
@@ -70,24 +70,44 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k4x05"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_krkkc"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dwk04"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a7u0u"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1pgk4"]
 animation = &"run"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_5a2e4"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_k4x05")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_dwk04")
-blend_point_1/pos = 1.0
-min_space = 0.0
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_hvcqr"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_n2fxb"]
+xfade_time = 0.2
+input_0/name = "Idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "Run"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gil87"]
-graph_offset = Vector2(-545, 91)
-nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_5a2e4")
-nodes/BlendSpace1D/position = Vector2(-164, 195)
-node_connections = [&"output", 0, &"BlendSpace1D"]
+graph_offset = Vector2(-1086.1, -30.9175)
+"nodes/Anim Idle/node" = SubResource("AnimationNodeAnimation_krkkc")
+"nodes/Anim Idle/position" = Vector2(-700, 60)
+"nodes/Anim Jump/node" = SubResource("AnimationNodeAnimation_a7u0u")
+"nodes/Anim Jump/position" = Vector2(-220, 260)
+"nodes/Anim Run/node" = SubResource("AnimationNodeAnimation_1pgk4")
+"nodes/Anim Run/position" = Vector2(-660, 220)
+nodes/Jump/node = SubResource("AnimationNodeOneShot_hvcqr")
+nodes/Jump/position = Vector2(20, 80)
+nodes/Movement/node = SubResource("AnimationNodeTransition_n2fxb")
+nodes/Movement/position = Vector2(-280, 40)
+nodes/output/position = Vector2(280, 60)
+node_connections = [&"Jump", 0, &"Movement", &"Jump", 1, &"Anim Jump", &"Movement", 0, &"Anim Idle", &"Movement", 1, &"Anim Run", &"output", 0, &"Jump"]
 
 [node name="Ellie" type="CharacterBody3D"]
 script = ExtResource("1_frd3r")
@@ -100,29 +120,30 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.00681691, 0.494012, -0.0116547)
-bones/0/rotation = Quaternion(0.00485792, -0.000555326, -0.000615642, 0.999988)
-bones/1/rotation = Quaternion(0.0515055, -0.13608, 0.977251, 0.154303)
+bones/0/position = Vector3(0.0115135, 0.476884, -0.0286268)
+bones/0/rotation = Quaternion(-0.00746549, -0.00198191, -0.00146914, 0.999969)
+bones/1/rotation = Quaternion(0.0570156, -0.149089, 0.971128, 0.177291)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.424294, -0.00391664, 0.198311, 0.883534)
-bones/3/rotation = Quaternion(-0.844678, -0.0329335, -0.0381138, 0.532899)
+bones/2/rotation = Quaternion(0.473837, -0.00377819, 0.221467, 0.852301)
+bones/3/rotation = Quaternion(-0.871201, -0.0167913, -0.0268572, 0.489904)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0419858, -0.138863, 0.979842, -0.137343)
+bones/4/rotation = Quaternion(-0.0375488, -0.155598, 0.976119, -0.14687)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.429242, 0.00390372, -0.200624, 0.880617)
-bones/6/rotation = Quaternion(-0.848683, 0.0342845, 0.0587082, 0.524514)
+bones/5/rotation = Quaternion(0.482438, 0.00375203, -0.225487, 0.846401)
+bones/6/rotation = Quaternion(-0.877804, 0.0212022, 0.06404, 0.474247)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
 bones/8/rotation = Quaternion(0.09592, 0.695135, 0.700571, -0.129567)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(0.187498, 0.245262, -0.282433)
+bones/9/rotation = Quaternion(0.0665028, -0.703973, 0.703973, -0.0665028)
 bones/10/position = Vector3(0.170884, 0.0506439, 0.0332276)
 bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999999, 0.00122587, -0.00111662, -0.00123667, 0.999952, -0.00971504, 0.00110466, 0.00971641, 0.999952, 0.00681691, 0.494012, -0.0116547)
+transform = Transform3D(0.999988, 0.00296778, -0.00394176, -0.0029086, 0.999884, 0.0149363, 0.00398563, -0.0149247, 0.999881, 0.0115135, 0.476884, -0.0286268)
 
 [node name="Bulb" parent="EllieModel/Armature/Skeleton3D" index="1"]
 mesh = SubResource("ArrayMesh_so272")
@@ -139,6 +160,11 @@ current = true
 root_node = NodePath("../EllieModel")
 tree_root = SubResource("AnimationNodeBlendTree_gil87")
 anim_player = NodePath("../EllieModel/AnimationPlayer")
-parameters/BlendSpace1D/blend_position = 0
+parameters/Jump/active = false
+parameters/Jump/internal_active = false
+parameters/Jump/request = 0
+parameters/Movement/current_state = "Idle"
+parameters/Movement/transition_request = ""
+parameters/Movement/current_index = 0
 
 [editable path="EllieModel"]

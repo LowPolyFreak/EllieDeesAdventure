@@ -22,7 +22,7 @@ bones/10/position = Vector3(0.171303, 0.0671752, -0.164139)
 bones/10/rotation = Quaternion(0.0123692, 0.561005, 0.827424, 0.0221168)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -0.000734823, 0.000674419, 0.000771015, 0.998468, -0.0553324, -0.000632726, 0.0553329, 0.998468, -0.00434367, 0.471597, -0.0139366)
+transform = Transform3D(1, -0.000734823, 0.000674418, 0.000771015, 0.998468, -0.0553323, -0.000632725, 0.0553328, 0.998468, -0.00434367, 0.471597, -0.0139366)
 bone_name = "Body"
 bone_idx = 0
 

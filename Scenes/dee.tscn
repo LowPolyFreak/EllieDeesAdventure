@@ -8,17 +8,24 @@
 player_1 = false
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0113913, 0.47733, -0.0281849)
-bones/0/rotation = Quaternion(-0.0378198, -0.00367684, -0.00166724, 0.999277)
-bones/1/rotation = Quaternion(0.0638565, -0.18143, 0.965632, 0.174816)
-bones/2/rotation = Quaternion(0.473362, -0.00377961, 0.221245, 0.852622)
-bones/3/rotation = Quaternion(-0.869461, -0.0175315, -0.0284263, 0.492872)
-bones/4/rotation = Quaternion(-0.0403234, -0.189983, 0.970076, -0.145719)
-bones/5/rotation = Quaternion(0.482482, 0.00375189, -0.225508, 0.846371)
-bones/6/rotation = Quaternion(-0.875538, 0.0217299, 0.0654349, 0.478204)
+bones/0/position = Vector3(0.00752653, 0.491424, -0.014219)
+bones/0/rotation = Quaternion(0.00375176, -0.00070825, -0.00072873, 0.999993)
+bones/1/rotation = Quaternion(0.0521337, -0.137827, 0.976402, 0.157876)
+bones/2/rotation = Quaternion(0.432884, -0.00389406, 0.202326, 0.878442)
+bones/3/rotation = Quaternion(-0.84926, -0.0303987, -0.0365367, 0.525831)
+bones/4/rotation = Quaternion(-0.0412627, -0.141088, 0.979312, -0.139066)
+bones/5/rotation = Quaternion(0.438447, 0.00387913, -0.204927, 0.875074)
+bones/6/rotation = Quaternion(-0.853692, 0.0321039, 0.0596393, 0.516354)
+bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
+bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
+bones/8/rotation = Quaternion(0.09592, 0.695135, 0.700571, -0.129567)
+bones/9/position = Vector3(0.187498, 0.245262, -0.282433)
+bones/9/rotation = Quaternion(0.0665028, -0.703973, 0.703973, -0.0665028)
+bones/10/position = Vector3(0.170884, 0.0506439, 0.0332276)
+bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999967, 0.00361019, -0.00722225, -0.00305396, 0.997134, 0.0755971, 0.00747447, -0.0755725, 0.997112, 0.0113913, 0.47733, -0.0281849)
+transform = Transform3D(0.999998, 0.00145213, -0.00142196, -0.00146276, 0.999971, -0.00750242, 0.00141102, 0.00750449, 0.999971, 0.00752653, 0.491424, -0.014219)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_color = Color(0.737255, 0.54902, 1, 1)
@@ -26,5 +33,10 @@ light_color = Color(0.737255, 0.54902, 1, 1)
 [node name="Bulb" parent="EllieModel/Armature/Skeleton3D" index="1"]
 surface_material_override/1 = ExtResource("2_27i61")
 surface_material_override/2 = ExtResource("3_16jx1")
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/Movement/current_state = ""
+parameters/Movement/transition_request = ""
+parameters/Movement/current_index = -1
 
 [editable path="EllieModel"]

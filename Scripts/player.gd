@@ -117,7 +117,7 @@ func _unhandled_input(event: InputEvent):
 		battery_drain_timer.stop()
 
 func _on_battery_drain_timer_timeout() -> void:
-	battery -= 0.1
+	battery -= 0.075
 	if battery <= 0:
 		battery = 0
 		battery_drain_timer.stop()
@@ -131,5 +131,5 @@ func _on_battery_charge_timer_timeout() -> void:
 
 
 func _on_burnout_timer_timeout() -> void:
-	battery = 0.3
+	battery = 1
 	battery_charge_timer.start()

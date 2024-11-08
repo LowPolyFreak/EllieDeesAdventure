@@ -1,11 +1,15 @@
 extends ProgressBar
 
-var style = get_theme_stylebox("fill")
+var style
+
+func _ready():
+	style = StyleBoxFlat.new()
+	add_theme_stylebox_override("fill", style)
 
 func _process(_delta: float) -> void:
-	if value > 0.3:
-		style.bg_color = Color.GREEN
-		print("green")
+	style.bg_color = lerp(Color.RED, Color.GREEN, value)
+	
+	if value == 0:
+		$ColorRect.show()
 	else:
-		style.bg_color = Color.WHITE
-		print("red")
+		$ColorRect.hide()

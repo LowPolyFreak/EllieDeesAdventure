@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcqfo2i68pyr"]
+[gd_scene load_steps=7 format=3 uid="uid://dcqfo2i68pyr"]
 
 [ext_resource type="Script" path="res://Scripts/battery_bar_3d.gd" id="1_tm520"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0osk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rqye"]
 bg_color = Color(0.189328, 0.189328, 0.189328, 1)
 border_width_left = 2
 border_width_top = 2
@@ -10,7 +10,44 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.28485, 0.28485, 0.28485, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qop2l"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibmmm"]
+
+[sub_resource type="Animation" id="Animation_neq43"]
+resource_name = "flashing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.266667), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n0ria"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5kcn"]
+_data = {
+"RESET": SubResource("Animation_n0ria"),
+"flashing": SubResource("Animation_neq43")
+}
 
 [node name="BatteryBar3D" type="ProgressBar"]
 anchors_preset = 8
@@ -24,8 +61,28 @@ offset_right = 73.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_k0osk")
-theme_override_styles/fill = SubResource("StyleBoxFlat_qop2l")
+theme_override_styles/background = SubResource("StyleBoxFlat_8rqye")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ibmmm")
 max_value = 1.0
 show_percentage = false
 script = ExtResource("1_tm520")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_w5kcn")
+}
+autoplay = "flashing"

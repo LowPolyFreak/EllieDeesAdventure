@@ -92,10 +92,13 @@ func _physics_process(delta):
 				starting_glow = true
 				battery_charge_timer.stop()
 				battery_drain_timer.start()
+				battery_bar_3d.modulate.a = 1.0
 		else:
 			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy, delta * 15)
 			omni_light_3d.omni_range = lerpf(omni_light_3d.omni_range, glow_light_range, delta * 15)
 			bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 3.5, delta * 15))
+			if battery <= 0:
+				_on_battery_drain_timer_timeout()
 	else:
 		starting_glow = false
 		omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, default_energy, delta * 5)
@@ -110,26 +113,31 @@ func _physics_process(delta):
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed(glow) and burnout_timer.is_stopped():
-		battery -= 0.075
+		battery -= 0.1
 		
 	elif event.is_action_released(glow) and burnout_timer.is_stopped():
 		battery_charge_timer.start()
 		battery_drain_timer.stop()
 
 func _on_battery_drain_timer_timeout() -> void:
-	battery -= 0.075
+	battery -= 0.035
 	if battery <= 0:
 		battery = 0
 		battery_drain_timer.stop()
 		burnout_timer.start()
 
 func _on_battery_charge_timer_timeout() -> void:
-	battery += 0.05
+	battery += 0.075
 	if battery >= 1:
+		$SubViewport/FadeOutTimer.start()
 		battery = 1
 		battery_charge_timer.stop()
 
 
 func _on_burnout_timer_timeout() -> void:
-	battery = 1
+	battery = 0.5
 	battery_charge_timer.start()
+
+func _on_fade_out_timer_timeout() -> void:
+	var tween = create_tween()
+	tween.tween_property(battery_bar_3d, "modulate:a", 0.0, 1)

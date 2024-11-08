@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://csgj0877gbjpp"]
+[gd_scene load_steps=19 format=4 uid="uid://csgj0877gbjpp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_frd3r"]
 [ext_resource type="PackedScene" uid="uid://ciubfap47dwnm" path="res://Scenes/ellie_model.tscn" id="2_mu1gt"]
@@ -110,6 +110,16 @@ nodes/Movement/position = Vector2(-280, 40)
 nodes/output/position = Vector2(280, 60)
 node_connections = [&"Jump", 0, &"Movement", &"Jump", 1, &"Anim Jump", &"Movement", 0, &"Anim Idle", &"Movement", 1, &"Anim Run", &"output", 0, &"Jump"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0osk"]
+bg_color = Color(0.189328, 0.189328, 0.189328, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qop2l"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5hld"]
 viewport_path = NodePath("SubViewport")
 
@@ -124,17 +134,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0122324, 0.474263, -0.0312246)
-bones/0/rotation = Quaternion(-0.0120468, -0.00238977, -0.00160682, 0.999923)
-bones/1/rotation = Quaternion(0.0585921, -0.153436, 0.969781, 0.180413)
+bones/0/position = Vector3(0.0092596, 0.485104, -0.0204818)
+bones/0/rotation = Quaternion(-0.0360025, -0.00338019, -0.00153663, 0.999345)
+bones/1/rotation = Quaternion(0.0619512, -0.180162, 0.967884, 0.164028)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.48058, -0.00375774, 0.224619, 0.847688)
-bones/3/rotation = Quaternion(-0.874728, -0.0143042, -0.0249609, 0.48376)
+bones/2/rotation = Quaternion(0.452046, -0.0038416, 0.211282, 0.866602)
+bones/3/rotation = Quaternion(-0.857839, -0.0248991, -0.0339313, 0.512193)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.036858, -0.160488, 0.975135, -0.148315)
+bones/4/rotation = Quaternion(-0.0424685, -0.187681, 0.97103, -0.141681)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.489731, 0.00372935, -0.228896, 0.841282)
-bones/6/rotation = Quaternion(-0.881675, 0.0193514, 0.0648559, 0.466978)
+bones/5/rotation = Quaternion(0.460173, 0.00381842, -0.215081, 0.861375)
+bones/6/rotation = Quaternion(-0.862811, 0.0274085, 0.0633406, 0.500793)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -147,7 +157,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999983, 0.00327097, -0.00474047, -0.00315581, 0.999705, 0.0240994, 0.00481789, -0.0240841, 0.999698, 0.0122324, 0.474263, -0.0312246)
+transform = Transform3D(0.999972, 0.00331463, -0.0066453, -0.00282785, 0.997403, 0.0719682, 0.00686659, -0.0719474, 0.997385, 0.0092596, 0.485104, -0.0204818)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25
@@ -192,6 +202,13 @@ disable_3d = true
 transparent_bg = true
 
 [node name="BatteryBar3D" parent="SubViewport" instance=ExtResource("6_hhy37")]
+modulate = Color(1, 1, 1, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_k0osk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qop2l")
+
+[node name="FadeOutTimer" type="Timer" parent="SubViewport"]
+wait_time = 0.5
+one_shot = true
 
 [node name="BatteryBarSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22497, 0)
@@ -201,5 +218,6 @@ texture = SubResource("ViewportTexture_s5hld")
 [connection signal="timeout" from="Timers/BatteryDrainTimer" to="." method="_on_battery_drain_timer_timeout"]
 [connection signal="timeout" from="Timers/BatteryChargeTimer" to="." method="_on_battery_charge_timer_timeout"]
 [connection signal="timeout" from="Timers/BurnoutTimer" to="." method="_on_burnout_timer_timeout"]
+[connection signal="timeout" from="SubViewport/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]
 
 [editable path="EllieModel"]

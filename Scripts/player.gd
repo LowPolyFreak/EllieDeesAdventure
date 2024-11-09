@@ -10,7 +10,6 @@ class_name Player
 @export var glow_light_range = 15
 
 @onready var animation_tree = $AnimationTree
-@onready var camera_follow = $SpringArmPivot/SpringArm3D/CameraFollow
 @onready var omni_light_3d = $EllieModel/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D
 @onready var ellie_model = $EllieModel
 @onready var bulb: MeshInstance3D = $EllieModel/Armature/Skeleton3D/Bulb
@@ -40,7 +39,6 @@ var starting_glow = false
 
 func _ready():
 	if !player_1:
-		camera_follow.current = false
 		up = "up_p2"
 		down = "down_p2"
 		left = "left_p2"

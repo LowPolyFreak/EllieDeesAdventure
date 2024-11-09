@@ -123,7 +123,7 @@ border_color = Color(0.28485, 0.28485, 0.28485, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5hld"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Ellie" type="CharacterBody3D"]
+[node name="Ellie" type="CharacterBody3D" groups=["Bulbs"]]
 script = ExtResource("1_frd3r")
 rotation_speed = 10
 
@@ -134,17 +134,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0092596, 0.485104, -0.0204818)
-bones/0/rotation = Quaternion(-0.0360025, -0.00338019, -0.00153663, 0.999345)
-bones/1/rotation = Quaternion(0.0619512, -0.180162, 0.967884, 0.164028)
+bones/0/position = Vector3(0.00974861, 0.48332, -0.0222489)
+bones/0/rotation = Quaternion(-0.0399708, -0.00365651, -0.00162838, 0.999193)
+bones/1/rotation = Quaternion(0.0631664, -0.184291, 0.96665, 0.166235)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.452046, -0.0038416, 0.211282, 0.866602)
-bones/3/rotation = Quaternion(-0.857839, -0.0248991, -0.0339313, 0.512193)
+bones/2/rotation = Quaternion(0.457123, -0.00382718, 0.213655, 0.863351)
+bones/3/rotation = Quaternion(-0.860434, -0.0232736, -0.0328623, 0.507968)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0424685, -0.187681, 0.97103, -0.141681)
+bones/4/rotation = Quaternion(-0.0422897, -0.192338, 0.970001, -0.142536)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.460173, 0.00381842, -0.215081, 0.861375)
-bones/6/rotation = Quaternion(-0.862811, 0.0274085, 0.0633406, 0.500793)
+bones/5/rotation = Quaternion(0.465606, 0.00380262, -0.21762, 0.85781)
+bones/6/rotation = Quaternion(-0.865618, 0.0261078, 0.0640148, 0.49591)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -157,7 +157,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999972, 0.00331463, -0.0066453, -0.00282785, 0.997403, 0.0719682, 0.00686659, -0.0719474, 0.997385, 0.0092596, 0.485104, -0.0204818)
+transform = Transform3D(0.999968, 0.00354644, -0.00717694, -0.00296183, 0.996799, 0.0798889, 0.00743729, -0.0798651, 0.996778, 0.00974861, 0.48332, -0.0222489)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25
@@ -165,14 +165,6 @@ omni_range = 2.0
 
 [node name="Bulb" parent="EllieModel/Armature/Skeleton3D" index="1"]
 mesh = SubResource("ArrayMesh_so272")
-
-[node name="SpringArmPivot" type="Node3D" parent="."]
-
-[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 4.26795)
-
-[node name="CameraFollow" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]
-current = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../EllieModel")

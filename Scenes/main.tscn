@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=16 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
 [ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="2_2yub6"]
+[ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="3_8lji5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -141,7 +142,7 @@ metadata/_edit_group_ = true
 shape = SubResource("ConcavePolygonShape3D_ts4oa")
 
 [node name="Ellie" parent="." instance=ExtResource("1_tsqy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74934, 0, 6.32624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26215, 0, 3.08242)
 
 [node name="Dee" parent="." instance=ExtResource("2_2yub6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60304, 1, -1.70159)
@@ -163,3 +164,24 @@ libraries = {
 "": SubResource("AnimationLibrary_uhvqq")
 }
 autoplay = "new_animation"
+
+[node name="CameraFollow" type="Node3D" parent="."]
+script = ExtResource("3_8lji5")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707107, 0, -0.707107, 0.707106, 0, 6.97469, 7.24263)
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollow/SpringArm3D"]
+current = true
+
+[node name="UpdateTimer" type="Timer" parent="CameraFollow"]
+wait_time = 0.25
+autostart = true
+
+[node name="ZoomIn" type="Marker3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.13456, 4.40251)
+
+[node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.17945, 8.4474)
+
+[connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

@@ -17,8 +17,6 @@ func _process(_delta: float) -> void:
 	var distance = bulbs[0].global_position.distance_to(bulbs[-1].global_position)
 	var distance_percentage = ((distance * 100) / max_distance) / 100
 	
-	print(distance)
-	print(distance_percentage)
 	spring_arm_3d.global_position = lerp($ZoomIn.global_position, $ZoomOut.global_position, distance_percentage)
 
 func _on_update_timer_timeout() -> void:

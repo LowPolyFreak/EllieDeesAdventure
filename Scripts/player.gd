@@ -36,6 +36,7 @@ var jump = "jump_p1"
 var glow = "glow_p1"
 
 var starting_glow = false
+var trigger_pressed
 
 func _ready():
 	if !player_1:
@@ -109,13 +110,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
+
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed(glow) and burnout_timer.is_stopped():
-		battery -= 0.1
+		if !trigger_pressed:
+			trigger_pressed = true
+			battery -= 0.1
+			print("Glowing!")
 		
 	elif event.is_action_released(glow) and burnout_timer.is_stopped():
-		battery_charge_timer.start()
-		battery_drain_timer.stop()
+		if trigger_pressed:
+			trigger_pressed = false
+			battery_charge_timer.start()
+			battery_drain_timer.stop()
+			print("NOT Glowing")
 
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.035

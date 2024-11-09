@@ -116,14 +116,12 @@ func _unhandled_input(event: InputEvent):
 		if !trigger_pressed:
 			trigger_pressed = true
 			battery -= 0.1
-			print("Glowing!")
 		
 	elif event.is_action_released(glow) and burnout_timer.is_stopped():
 		if trigger_pressed:
 			trigger_pressed = false
 			battery_charge_timer.start()
 			battery_drain_timer.stop()
-			print("NOT Glowing")
 
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.035

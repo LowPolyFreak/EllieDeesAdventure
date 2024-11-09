@@ -8,6 +8,7 @@ class_name Player
 @export var glow_energy = 2.0
 @export var default_light_range = 2
 @export var glow_light_range = 15
+@export var leash_lenght = 15.0
 
 @onready var animation_tree = $AnimationTree
 @onready var omni_light_3d = $EllieModel/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D
@@ -15,10 +16,13 @@ class_name Player
 @onready var bulb: MeshInstance3D = $EllieModel/Armature/Skeleton3D/Bulb
 @onready var bulb_mat = bulb.get_active_material(1) as ShaderMaterial
 @onready var original_size = bulb.scale
+
 @onready var battery_charge_timer: Timer = $Timers/BatteryChargeTimer
 @onready var battery_drain_timer: Timer = $Timers/BatteryDrainTimer
 @onready var burnout_timer: Timer = $Timers/BurnoutTimer
 @onready var battery_bar_3d: ProgressBar = $SubViewport/BatteryBar3D
+
+@onready var camera_follow = get_tree().get_first_node_in_group("CameraFollow")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 12
@@ -48,6 +52,7 @@ func _ready():
 		glow = "glow_p2"
 
 func _physics_process(delta):
+	
 	
 	battery_bar_3d.value = battery
 	# Add the gravity.
@@ -79,6 +84,16 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	ellie_model.rotation.y = lerp_angle(ellie_model.rotation.y, atan2(-last_direction.x, -last_direction.z), delta * rotation_speed)
 
+	var player_leash = Vector3(
+		clampf(global_position.x, float(camera_follow.global_position.x - leash_lenght), (camera_follow.global_position.x + leash_lenght)),
+		global_position.y,
+		clampf(global_position.z, float(camera_follow.global_position.z - (leash_lenght / 2)), (camera_follow.global_position.z + (leash_lenght / 2)))
+	)
+	
+	if direction:
+		global_position = player_leash
+	
+	
 	move_and_slide()
 	
 	if Input.is_action_pressed(glow) and burnout_timer.is_stopped():

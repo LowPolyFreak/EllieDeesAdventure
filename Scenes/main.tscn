@@ -92,6 +92,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Floor" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1.99413, 0, 0, 0, 1, 0, 0, 0, 2.29232, 0, 0, 0)
 mesh = SubResource("PlaneMesh_3xmyv")
 skeleton = NodePath("../..")
 metadata/_edit_group_ = true
@@ -165,11 +166,12 @@ libraries = {
 }
 autoplay = "new_animation"
 
-[node name="CameraFollow" type="Node3D" parent="."]
+[node name="CameraFollow" type="Node3D" parent="." groups=["CameraFollow"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 script = ExtResource("3_8lji5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707107, 0, -0.707107, 0.707106, 0, 6.97469, 7.24263)
+transform = Transform3D(1, 0, 0, 0, 0.499999, 0.866026, 0, -0.866026, 0.499999, 0, 6.97469, 7.24263)
 current = true
 
 [node name="UpdateTimer" type="Timer" parent="CameraFollow"]
@@ -177,9 +179,9 @@ wait_time = 0.25
 autostart = true
 
 [node name="ZoomIn" type="Marker3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.13456, 4.40251)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2.72035, 2.9883)
 
 [node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.17945, 8.4474)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6.76524, 7.03319)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

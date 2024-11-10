@@ -113,14 +113,13 @@ func _physics_process(delta):
 		is_following = false
 	
 	if is_following:
-		if !player_1 and global_position.distance_to(follow_position) > 0.5 :
+		if !player_1 and global_position.distance_to(follow_position) > 0.35:
 			bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
-			var move_vec = -bulb.basis.z * SPEED
+			var move_vec = -bulb.global_basis.z * SPEED
 			global_position += move_vec * delta
 			animation_tree.set("parameters/Movement/transition_request", "Run")
 		elif !player_1:
 			animation_tree.set("parameters/Movement/transition_request", "Idle")
-			
 	
 	move_and_slide()
 	
@@ -166,11 +165,11 @@ func _unhandled_input(event: InputEvent):
 			trigger_pressed = false
 			battery_charge_timer.start()
 			battery_drain_timer.stop()
-	
-	if event.is_action_pressed("ui_home") and !player_1:
-		is_following = true
-		global_position = follow_position
-		bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
+	if !player_1:
+		var first_player = get_tree().get_first_node_in_group("Player_1")
+		if global_position.distance_to(first_player.global_position) < 1:
+			if event.is_action_pressed("ui_home"):
+				is_following = true
 		
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.025
@@ -198,4 +197,3 @@ func _on_fade_out_timer_timeout() -> void:
 
 func update_follow_pos(marker):
 	follow_position = marker.global_position
-	printt("updating follow", follow_position)

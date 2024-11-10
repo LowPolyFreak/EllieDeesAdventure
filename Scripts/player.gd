@@ -57,7 +57,7 @@ func _ready():
 		$FollowBehind.connect("update_follow_position", update_follow_pos)
 		$FollowBehind.target_character = get_tree().get_first_node_in_group("Player_1")
 		$FollowBehind.update_active(true)
-		#is_following = true
+		is_following = true
 	else:
 		add_to_group("Player_1")
 
@@ -106,13 +106,17 @@ func _physics_process(delta):
 	
 	if direction:
 		global_position = player_leash
+		is_following = false
 	
 	if is_following:
-		if !direction:
-			if !player_1 and global_position.distance_to(follow_position) > 0.5 :
-				bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
-				var move_vec = -bulb.basis.z * SPEED
-				global_position += move_vec * delta
+		if !player_1 and global_position.distance_to(follow_position) > 0.5 :
+			bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
+			var move_vec = -bulb.basis.z * SPEED
+			global_position += move_vec * delta
+			animation_tree.set("parameters/Movement/transition_request", "Run")
+		elif !player_1:
+			animation_tree.set("parameters/Movement/transition_request", "Idle")
+			
 	
 	move_and_slide()
 	

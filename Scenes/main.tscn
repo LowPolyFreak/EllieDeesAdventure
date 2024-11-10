@@ -167,11 +167,11 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="CameraFollow" type="Node3D" parent="." groups=["CameraFollow"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("3_8lji5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.499999, 0.866026, 0, -0.866026, 0.499999, 0, 6.97469, 7.24263)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97469, 9.24263)
 current = true
 
 [node name="UpdateTimer" type="Timer" parent="CameraFollow"]
@@ -179,9 +179,9 @@ wait_time = 0.25
 autostart = true
 
 [node name="ZoomIn" type="Marker3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2.72035, 2.9883)
+transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, -0.032, 4.281)
 
 [node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6.76524, 7.03319)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

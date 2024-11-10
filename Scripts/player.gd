@@ -8,7 +8,7 @@ class_name Player
 @export var glow_energy = 2.0
 @export var default_light_range = 2
 @export var glow_light_range = 15
-@export var leash_lenght = 15.0
+@export var leash_lenght = 20.0
 
 @onready var animation_tree = $AnimationTree
 @onready var omni_light_3d = $EllieModel/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D
@@ -87,7 +87,7 @@ func _physics_process(delta):
 	var player_leash = Vector3(
 		clampf(global_position.x, float(camera_follow.global_position.x - leash_lenght), (camera_follow.global_position.x + leash_lenght)),
 		global_position.y,
-		clampf(global_position.z, float(camera_follow.global_position.z - (leash_lenght / 2)), (camera_follow.global_position.z + (leash_lenght / 2)))
+		clampf(global_position.z, float(camera_follow.global_position.z - ((leash_lenght / 2) + 0)), (camera_follow.global_position.z + ((leash_lenght / 2) + 0)))
 	)
 	
 	if direction:
@@ -106,6 +106,7 @@ func _physics_process(delta):
 				starting_glow = true
 				battery_charge_timer.stop()
 				battery_drain_timer.start()
+				$SubViewport/FadeOutTimer.stop()
 				battery_bar_3d.modulate.a = 1.0
 		else:
 			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy, delta * 15)
@@ -130,7 +131,7 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed(glow) and burnout_timer.is_stopped():
 		if !trigger_pressed:
 			trigger_pressed = true
-			battery -= 0.1
+			battery -= 0.2
 		
 	elif event.is_action_released(glow) and burnout_timer.is_stopped():
 		if trigger_pressed:
@@ -139,7 +140,7 @@ func _unhandled_input(event: InputEvent):
 			battery_drain_timer.stop()
 
 func _on_battery_drain_timer_timeout() -> void:
-	battery -= 0.035
+	battery -= 0.025
 	if battery <= 0:
 		battery = 0
 		battery_drain_timer.stop()
@@ -158,5 +159,6 @@ func _on_burnout_timer_timeout() -> void:
 	battery_charge_timer.start()
 
 func _on_fade_out_timer_timeout() -> void:
-	var tween = create_tween()
-	tween.tween_property(battery_bar_3d, "modulate:a", 0.0, 1)
+	battery_bar_3d.modulate.a = 0.0
+	#var tween = create_tween()
+	#tween.tween_property(battery_bar_3d, "modulate:a", 0.0, 1)

@@ -16,6 +16,7 @@ func _process(_delta: float) -> void:
 	var distance_percentage = ((distance * 100) / max_distance) / 100
 	
 	$Camera3D.global_position = lerp($ZoomIn.global_position, $ZoomOut.global_position, clamp(distance_percentage, 0.2, 1.0))
+	$Camera3D.global_rotation.x = lerp($ZoomIn.global_rotation.x, $ZoomOut.global_rotation.x, clamp(distance_percentage, 0.2, 1.0))
 
 func _on_update_timer_timeout() -> void:
 	bulbs = get_tree().get_nodes_in_group("Bulbs")

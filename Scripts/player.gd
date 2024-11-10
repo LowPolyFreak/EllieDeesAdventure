@@ -94,8 +94,12 @@ func _physics_process(delta):
 	else:
 		if !is_following:
 			animation_tree.set("parameters/Movement/transition_request", "Idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+		else:
+			velocity.x = 0
+			velocity.z = 0
+			
 	ellie_model.rotation.y = lerp_angle(ellie_model.rotation.y, atan2(-last_direction.x, -last_direction.z), delta * rotation_speed)
 
 	var player_leash = Vector3(
@@ -163,8 +167,10 @@ func _unhandled_input(event: InputEvent):
 			battery_charge_timer.start()
 			battery_drain_timer.stop()
 	
-	if event.is_action_pressed("ui_home"):
+	if event.is_action_pressed("ui_home") and !player_1:
 		is_following = true
+		global_position = follow_position
+		bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
 		
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.025

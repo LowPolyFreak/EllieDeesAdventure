@@ -30,6 +30,7 @@ const JUMP_VELOCITY = 12
 var last_direction = Vector3.FORWARD
 var in_air = false
 var battery: float = 1.0
+var is_following
 
 #Inputs
 var up = "up_p1"
@@ -41,8 +42,11 @@ var glow = "glow_p1"
 
 var starting_glow = false
 var trigger_pressed
+var follow_position: Vector3
 
 func _ready():
+	for i in get_tree().get_nodes_in_group("Bulbs"):
+		add_collision_exception_with(i)
 	if !player_1:
 		up = "up_p2"
 		down = "down_p2"
@@ -50,6 +54,12 @@ func _ready():
 		right = "right_p2"
 		jump = "jump_p2"
 		glow = "glow_p2"
+		$FollowBehind.connect("update_follow_position", update_follow_pos)
+		$FollowBehind.target_character = get_tree().get_first_node_in_group("Player_1")
+		$FollowBehind.update_active(true)
+		is_following = true
+	else:
+		add_to_group("Player_1")
 
 func _physics_process(delta):
 	
@@ -75,11 +85,15 @@ func _physics_process(delta):
 	
 	if direction:
 		animation_tree.set("parameters/Movement/transition_request", "Run")
+		if is_following:
+			is_following = false
+			bulb.rotation = Vector3(0,0,0)
 		last_direction = direction
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
-		animation_tree.set("parameters/Movement/transition_request", "Idle")
+		if !is_following:
+			animation_tree.set("parameters/Movement/transition_request", "Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	ellie_model.rotation.y = lerp_angle(ellie_model.rotation.y, atan2(-last_direction.x, -last_direction.z), delta * rotation_speed)
@@ -90,9 +104,14 @@ func _physics_process(delta):
 		clampf(global_position.z, float(camera_follow.global_position.z - ((leash_lenght / 2) + 0)), (camera_follow.global_position.z + ((leash_lenght / 2) + 0)))
 	)
 	
-	if direction:
-		global_position = player_leash
-	
+	if is_following:
+		if direction:
+			global_position = player_leash
+		else:
+			if !player_1 and global_position.distance_to(follow_position) > 0.5 :
+				bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
+				var move_vec = -bulb.basis.z * SPEED
+				global_position += move_vec * delta
 	
 	move_and_slide()
 	
@@ -162,3 +181,7 @@ func _on_fade_out_timer_timeout() -> void:
 	battery_bar_3d.modulate.a = 0.0
 	#var tween = create_tween()
 	#tween.tween_property(battery_bar_3d, "modulate:a", 0.0, 1)
+
+func update_follow_pos(marker):
+	follow_position = marker.global_position
+	printt("updating follow", follow_position)

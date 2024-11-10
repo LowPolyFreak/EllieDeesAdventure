@@ -147,6 +147,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26215, 0, 3.08242)
 
 [node name="Dee" parent="." instance=ExtResource("2_2yub6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60304, 1, -1.70159)
+collision_layer = 1
 
 [node name="MovingPlatformTest" type="AnimatableBody3D" parent="."]
 transform = Transform3D(0.860466, 0, 0.509507, 0, 1, 0, -0.509507, 0, 0.860466, 8.22636, 1, -3.33793)

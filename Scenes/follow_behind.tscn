@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://fjqxbkd2m8wf"]
+
+[ext_resource type="Script" path="res://Scripts/follow_behind.gd" id="1_ottbw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvvbx"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_00864"]
+material = SubResource("StandardMaterial3D_uvvbx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mcuk"]
+emission_enabled = true
+emission = Color(0, 1, 0.0595484, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tgmik"]
+material = SubResource("StandardMaterial3D_1mcuk")
+
+[node name="FollowBehind" type="Node"]
+script = ExtResource("1_ottbw")
+
+[node name="CurrentPos" type="Marker3D" parent="."]
+top_level = true
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CurrentPos"]
+mesh = SubResource("SphereMesh_00864")
+
+[node name="FollowPos" type="Marker3D" parent="."]
+top_level = true
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FollowPos"]
+mesh = SubResource("SphereMesh_tgmik")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FollowPos/MeshInstance3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0, 0.463711)
+mesh = SubResource("SphereMesh_00864")
+skeleton = NodePath("../..")
+
+[node name="UpdateTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

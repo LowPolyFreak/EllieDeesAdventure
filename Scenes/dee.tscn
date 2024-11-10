@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b004s5usrh0un"]
+[gd_scene load_steps=6 format=3 uid="uid://b004s5usrh0un"]
 
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_4vtbg"]
 [ext_resource type="Material" uid="uid://cg6chtjeruuse" path="res://Material/bulb_uv.tres" id="2_27i61"]
 [ext_resource type="Material" uid="uid://2h3b33af6q2v" path="res://Material/eyes.tres" id="3_16jx1"]
+[ext_resource type="PackedScene" uid="uid://fjqxbkd2m8wf" path="res://Scenes/follow_behind.tscn" id="4_n0p10"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_51ndg"]
 viewport_path = NodePath("SubViewport")
@@ -46,5 +47,8 @@ parameters/Movement/current_index = -1
 
 [node name="BatteryBarSprite" parent="." index="5"]
 texture = SubResource("ViewportTexture_51ndg")
+
+[node name="FollowBehind" parent="." index="6" instance=ExtResource("4_n0p10")]
+start_active = false
 
 [editable path="EllieModel"]

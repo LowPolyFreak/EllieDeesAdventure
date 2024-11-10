@@ -57,7 +57,7 @@ func _ready():
 		$FollowBehind.connect("update_follow_position", update_follow_pos)
 		$FollowBehind.target_character = get_tree().get_first_node_in_group("Player_1")
 		$FollowBehind.update_active(true)
-		is_following = true
+		#is_following = true
 	else:
 		add_to_group("Player_1")
 
@@ -101,13 +101,14 @@ func _physics_process(delta):
 	var player_leash = Vector3(
 		clampf(global_position.x, float(camera_follow.global_position.x - leash_lenght), (camera_follow.global_position.x + leash_lenght)),
 		global_position.y,
-		clampf(global_position.z, float(camera_follow.global_position.z - ((leash_lenght / 2) + 0)), (camera_follow.global_position.z + ((leash_lenght / 2) + 0)))
+		clampf(global_position.z, float(camera_follow.global_position.z - (leash_lenght / 2)), (camera_follow.global_position.z + (leash_lenght / 2)))
 	)
 	
+	if direction:
+		global_position = player_leash
+	
 	if is_following:
-		if direction:
-			global_position = player_leash
-		else:
+		if !direction:
 			if !player_1 and global_position.distance_to(follow_position) > 0.5 :
 				bulb.look_at(Vector3(follow_position.x, global_position.y, follow_position.z))
 				var move_vec = -bulb.basis.z * SPEED
@@ -157,7 +158,10 @@ func _unhandled_input(event: InputEvent):
 			trigger_pressed = false
 			battery_charge_timer.start()
 			battery_drain_timer.stop()
-
+	
+	if event.is_action_pressed("ui_home"):
+		is_following = true
+		
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.025
 	if battery <= 0:

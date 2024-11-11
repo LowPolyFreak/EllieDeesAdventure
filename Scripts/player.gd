@@ -31,6 +31,7 @@ var last_direction = Vector3.FORWARD
 var in_air = false
 var battery: float = 1.0
 var is_following
+var first_player
 
 #Inputs
 var up = "up_p1"
@@ -58,6 +59,7 @@ func _ready():
 		$FollowBehind.target_character = get_tree().get_first_node_in_group("Player_1")
 		$FollowBehind.update_active(true)
 		is_following = true
+		first_player = get_tree().get_first_node_in_group("Player_1")
 	else:
 		add_to_group("Player_1")
 
@@ -118,6 +120,8 @@ func _physics_process(delta):
 			var move_vec = -bulb.global_basis.z * SPEED
 			global_position += move_vec * delta
 			animation_tree.set("parameters/Movement/transition_request", "Run")
+			if global_position.distance_to(first_player.global_position) > 4:
+				is_following = false
 		elif !player_1:
 			animation_tree.set("parameters/Movement/transition_request", "Idle")
 	
@@ -166,9 +170,9 @@ func _unhandled_input(event: InputEvent):
 			battery_charge_timer.start()
 			battery_drain_timer.stop()
 	if !player_1:
-		var first_player = get_tree().get_first_node_in_group("Player_1")
-		if global_position.distance_to(first_player.global_position) < 1:
-			if event.is_action_pressed("ui_home"):
+		
+		if event.is_action_pressed("interact"):
+			if global_position.distance_to(first_player.global_position) < 2.5:
 				is_following = true
 		
 func _on_battery_drain_timer_timeout() -> void:

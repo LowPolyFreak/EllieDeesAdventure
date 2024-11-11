@@ -5,7 +5,7 @@ signal update_follow_position(follow_position: Marker3D)
 @export var target_character: CharacterBody3D 
 @export var start_active := true
 @export var distance := 0.35
-@export var update_time := 0.1
+@export var update_time := 0.01
 
 @onready var current_pos = $CurrentPos
 @onready var update_timer = $UpdateTimer

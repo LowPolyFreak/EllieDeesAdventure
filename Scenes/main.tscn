@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=19 format=3 uid="uid://d77j3ls5t155"]
 
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
 [ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="2_2yub6"]
 [ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="3_8lji5"]
+[ext_resource type="Script" path="res://Scripts/solar_pannel.gd" id="5_ipsxn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,7 +18,7 @@ background_energy_multiplier = 0.0
 sky = SubResource("Sky_yxyoy")
 ambient_light_source = 2
 ambient_light_color = Color(0.58, 0.685, 1, 1)
-ambient_light_energy = 0.0
+ambient_light_energy = 0.02
 glow_enabled = true
 glow_intensity = 0.56
 glow_bloom = 0.9
@@ -79,7 +81,11 @@ _data = {
 "new_animation": SubResource("Animation_8w1xf")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0ykg"]
+size = Vector3(3, 2, 3)
+
 [node name="Main" type="Node3D"]
+script = ExtResource("1_oa6h7")
 
 [node name="BG" type="Node3D" parent="."]
 
@@ -147,7 +153,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142994, 0, -1.2378)
 
 [node name="Dee" parent="." instance=ExtResource("2_2yub6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195843, 9.53674e-07, 0.0116072)
-collision_layer = 1
 
 [node name="MovingPlatformTest" type="AnimatableBody3D" parent="."]
 transform = Transform3D(0.860466, 0, 0.509507, 0, 1, 0, -0.509507, 0, 0.860466, 8.22636, 1, -3.33793)
@@ -185,4 +190,16 @@ transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 
 [node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
+[node name="SolarPannel" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140918, 4.76837e-07, -4.13441)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_ipsxn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SolarPannel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_x0ykg")
+
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
+[connection signal="body_entered" from="SolarPannel" to="SolarPannel" method="_on_body_entered"]
+[connection signal="body_exited" from="SolarPannel" to="SolarPannel" method="_on_body_exited"]

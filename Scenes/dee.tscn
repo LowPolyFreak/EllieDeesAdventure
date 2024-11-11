@@ -9,23 +9,24 @@
 viewport_path = NodePath("SubViewport")
 
 [node name="Dee" instance=ExtResource("1_4vtbg")]
+collision_layer = 10
 player_1 = false
 glow_energy = 1.0
 default_light_range = 3
 glow_light_range = 10
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.00731072, 0.492211, -0.0134391)
-bones/0/rotation = Quaternion(-0.00654638, -0.00132864, -0.000855193, 0.999977)
-bones/1/rotation = Quaternion(0.0542665, -0.148662, 0.97498, 0.156103)
-bones/2/rotation = Quaternion(0.430619, -0.00390008, 0.201268, 0.879797)
-bones/3/rotation = Quaternion(-0.847534, -0.0312147, -0.0373816, 0.528502)
-bones/4/rotation = Quaternion(-0.0422832, -0.152725, 0.977638, -0.138247)
-bones/5/rotation = Quaternion(0.436477, 0.00388444, -0.204005, 0.876273)
-bones/6/rotation = Quaternion(-0.851749, 0.0327364, 0.059894, 0.519484)
+bones/0/position = Vector3(0.0097481, 0.483322, -0.022247)
+bones/0/rotation = Quaternion(-0.0399676, -0.00365629, -0.00162831, 0.999193)
+bones/1/rotation = Quaternion(0.0631653, -0.184288, 0.966651, 0.166233)
+bones/2/rotation = Quaternion(0.457118, -0.0038272, 0.213653, 0.863355)
+bones/3/rotation = Quaternion(-0.860431, -0.0232754, -0.0328634, 0.507973)
+bones/4/rotation = Quaternion(-0.0422899, -0.192335, 0.970001, -0.142535)
+bones/5/rotation = Quaternion(0.4656, 0.00380264, -0.217617, 0.857814)
+bones/6/rotation = Quaternion(-0.865615, 0.0261091, 0.0640141, 0.495915)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999995, 0.00172774, -0.00264603, -0.00169295, 0.999913, 0.0130947, 0.00266842, -0.0130902, 0.999911, 0.00731072, 0.492211, -0.0134391)
+transform = Transform3D(0.999968, 0.00354625, -0.00717652, -0.00296172, 0.9968, 0.0798826, 0.00743683, -0.0798588, 0.996778, 0.0097481, 0.483322, -0.022247)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_color = Color(0.737255, 0.54902, 1, 1)

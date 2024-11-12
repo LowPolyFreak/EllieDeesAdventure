@@ -50,8 +50,6 @@ signal glowing_started()
 signal glowing_ended()
 
 func _ready():
-	#for i in get_tree().get_nodes_in_group("Bulbs"):
-		#add_collision_exception_with(i)
 	if !player_1:
 		up = "up_p2"
 		down = "down_p2"

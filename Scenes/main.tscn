@@ -200,6 +200,16 @@ script = ExtResource("5_ipsxn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_x0ykg")
 
+[node name="ChargeTimer" type="Timer" parent="SolarPannel"]
+wait_time = 0.05
+one_shot = true
+
+[node name="DrainTimer" type="Timer" parent="SolarPannel"]
+wait_time = 0.05
+one_shot = true
+
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
 [connection signal="body_entered" from="SolarPannel" to="SolarPannel" method="_on_body_entered"]
 [connection signal="body_exited" from="SolarPannel" to="SolarPannel" method="_on_body_exited"]
+[connection signal="timeout" from="SolarPannel/ChargeTimer" to="SolarPannel" method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="SolarPannel/DrainTimer" to="SolarPannel" method="_on_drain_timer_timeout"]

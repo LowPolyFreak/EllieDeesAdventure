@@ -9,9 +9,9 @@ func _ready():
 		i.glowing_started.connect(player_glowing)
 		i.glowing_ended.connect(player_stopped_glowing)
 
-func player_glowing(ellie):
-	printt("Player ", ellie, " is glowing!")
+func player_glowing(_ellie):
+	pass
 
 
-func player_stopped_glowing(ellie):
-	printt("Player ", ellie, " has stopped glowing!")
+func player_stopped_glowing(_ellie):
+	pass

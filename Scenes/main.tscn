@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
 [ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="2_2yub6"]
 [ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="3_8lji5"]
-[ext_resource type="Script" path="res://Scripts/solar_pannel.gd" id="5_ipsxn"]
+[ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="5_deuj4"]
+[ext_resource type="PackedScene" uid="uid://bpq6npjirkduk" path="res://Scenes/solar_pannel_dee.tscn" id="6_wtyoi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -80,9 +81,6 @@ _data = {
 "RESET": SubResource("Animation_mrj8u"),
 "new_animation": SubResource("Animation_8w1xf")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x0ykg"]
-size = Vector3(3, 2, 3)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_oa6h7")
@@ -190,26 +188,9 @@ transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 
 [node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
-[node name="SolarPannel" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140918, 4.76837e-07, -4.13441)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("5_ipsxn")
+[node name="SolarPannelEllie" parent="." instance=ExtResource("5_deuj4")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SolarPannel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_x0ykg")
-
-[node name="ChargeTimer" type="Timer" parent="SolarPannel"]
-wait_time = 0.05
-one_shot = true
-
-[node name="DrainTimer" type="Timer" parent="SolarPannel"]
-wait_time = 0.05
-one_shot = true
+[node name="SolarPannelDee" parent="." instance=ExtResource("6_wtyoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5982, -4.76837e-07, -3.07687)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
-[connection signal="body_entered" from="SolarPannel" to="SolarPannel" method="_on_body_entered"]
-[connection signal="body_exited" from="SolarPannel" to="SolarPannel" method="_on_body_exited"]
-[connection signal="timeout" from="SolarPannel/ChargeTimer" to="SolarPannel" method="_on_charge_timer_timeout"]
-[connection signal="timeout" from="SolarPannel/DrainTimer" to="SolarPannel" method="_on_drain_timer_timeout"]

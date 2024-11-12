@@ -43,6 +43,7 @@ var jump = "jump_p1"
 var glow = "glow_p1"
 
 var starting_glow = false
+var glowing: bool
 var trigger_pressed
 var follow_position: Vector3
 
@@ -163,6 +164,7 @@ func _physics_process(delta):
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed(glow) and burnout_timer.is_stopped():
 		if !trigger_pressed:
+			glowing = true
 			glowing_started.emit(player_1)
 			trigger_pressed = true
 			battery -= 0.2
@@ -172,6 +174,7 @@ func _unhandled_input(event: InputEvent):
 			trigger_pressed = false
 			battery_charge_timer.start()
 			battery_drain_timer.stop()
+			glowing = false
 			glowing_ended.emit(player_1)
 	if !player_1:
 		
@@ -185,6 +188,7 @@ func _on_battery_drain_timer_timeout() -> void:
 		battery = 0
 		battery_drain_timer.stop()
 		burnout_timer.start()
+		glowing = false
 		glowing_ended.emit(player_1)
 
 func _on_battery_charge_timer_timeout() -> void:

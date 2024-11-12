@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpq6npjirkduk"]
+
+[ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="1_nw1ay"]
+
+[node name="SolarPannelDee" instance=ExtResource("1_nw1ay")]
+collision_mask = 8

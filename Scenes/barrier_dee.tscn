@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm6g8i7fyfbro"]
+
+[ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="1_b8ha4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svt3d"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.341176)
+emission_enabled = true
+emission = Color(0.484524, 0.438742, 0.90732, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eir6y"]
+material = SubResource("StandardMaterial3D_svt3d")
+
+[node name="BarrierDee" instance=ExtResource("1_b8ha4")]
+collision_layer = 32
+
+[node name="MeshInstance3D" parent="CollisionShape3D" index="0"]
+mesh = SubResource("BoxMesh_eir6y")

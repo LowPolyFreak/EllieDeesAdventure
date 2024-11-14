@@ -1,9 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://cttyrmjn3obow"]
+[gd_scene load_steps=10 format=3 uid="uid://cttyrmjn3obow"]
 
 [ext_resource type="Script" path="res://Scripts/solar_pannel.gd" id="1_i1cjx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0ykg"]
 size = Vector3(3, 2, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlj4t"]
+bg_color = Color(0.189328, 0.189328, 0.189328, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qinbs"]
+bg_color = Color(0.900531, 0.862762, 0.447304, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4a44y"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lbgw"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.920897, 0.844155, 0, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_7gfcr"]
+material = SubResource("StandardMaterial3D_8lbgw")
+size = Vector3(2.5, 0.1, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inetr"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.38
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ekn2"]
+material = SubResource("StandardMaterial3D_inetr")
+size = Vector3(0.75, 0.1, 1)
 
 [node name="SolarPannelEllie" type="Area3D"]
 collision_layer = 0
@@ -27,6 +59,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51504, 0)
 visible = false
 light_energy = 3.0
 omni_range = 20.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="BatteryBar3D" type="ProgressBar" parent="SubViewport"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.4
+offset_top = -142.0
+offset_right = 54.925
+offset_bottom = -116.985
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qlj4t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qinbs")
+show_percentage = false
+
+[node name="BatteryBarSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46452, 1.22497, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_4a44y")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7gfcr")
+
+[node name="Panel" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809681, 0.0201168, 0.679616)
+mesh = SubResource("BoxMesh_3ekn2")
+skeleton = NodePath("../..")
+
+[node name="Panel2" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0113447, 0.0201168, 0.679616)
+mesh = SubResource("BoxMesh_3ekn2")
+skeleton = NodePath("../..")
+
+[node name="Panel3" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83635, 0.0201168, 0.679616)
+mesh = SubResource("BoxMesh_3ekn2")
+skeleton = NodePath("../..")
+
+[node name="Panel4" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809681, 0.0201168, -0.673563)
+mesh = SubResource("BoxMesh_3ekn2")
+skeleton = NodePath("../..")
+
+[node name="Panel5" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0113447, 0.0201168, -0.673563)
+mesh = SubResource("BoxMesh_3ekn2")
+skeleton = NodePath("../..")
+
+[node name="Panel6" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83635, 0.0201168, -0.673563)
+mesh = SubResource("BoxMesh_3ekn2")
+skeleton = NodePath("../..")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpq6npjirkduk"]
+[gd_scene load_steps=6 format=3 uid="uid://bpq6npjirkduk"]
 
 [ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="1_nw1ay"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_563yp"]
+bg_color = Color(0.354099, 0, 0.920897, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5kocb"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_foho0"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.354099, 0, 0.920897, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_lprj4"]
+material = SubResource("StandardMaterial3D_foho0")
+size = Vector3(2.5, 0.1, 2.5)
+
 [node name="SolarPannelDee" instance=ExtResource("1_nw1ay")]
 collision_mask = 8
+
+[node name="BatteryBar3D" parent="SubViewport" index="0"]
+theme_override_styles/fill = SubResource("StyleBoxFlat_563yp")
+
+[node name="BatteryBarSprite" parent="." index="5"]
+texture = SubResource("ViewportTexture_5kocb")
+
+[node name="Base" parent="." index="6"]
+mesh = SubResource("BoxMesh_lprj4")

@@ -24,6 +24,7 @@ class_name Player
 @onready var battery_bar_3d: ProgressBar = $SubViewport/BatteryBar3D
 
 @onready var camera_follow = get_tree().get_first_node_in_group("CameraFollow")
+@onready var original_rotation = ellie_model.rotation.y
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 12
@@ -114,7 +115,6 @@ func _physics_process(delta):
 	)
 	
 	if direction:
-		global_position = player_leash
 		is_following = false
 	
 	if is_following:
@@ -124,6 +124,8 @@ func _physics_process(delta):
 			global_position += move_vec * delta
 			animation_tree.set("parameters/Movement/transition_request", "Run")
 			if global_position.distance_to(first_player.global_position) > 4:
+				ellie_model.rotation.y = original_rotation
+				bulb.rotation = Vector3(0,0,0)
 				is_following = false
 		elif !player_1:
 			animation_tree.set("parameters/Movement/transition_request", "Idle")

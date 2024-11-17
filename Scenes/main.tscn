@@ -202,4 +202,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
 [node name="BarrierDee" parent="." instance=ExtResource("8_ku7kt")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
 
+[node name="Enemy" type="Node3D" parent="."]
+
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

@@ -115,6 +115,7 @@ func _physics_process(delta):
 	)
 	
 	if direction:
+		global_position = player_leash
 		is_following = false
 	
 	if is_following:

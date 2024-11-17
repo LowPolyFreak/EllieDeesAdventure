@@ -138,17 +138,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.00825711, 0.48876, -0.0168591)
-bones/0/rotation = Quaternion(0.00223779, -0.000904618, -0.000864542, 0.999997)
-bones/1/rotation = Quaternion(0.0528425, -0.139629, 0.975513, 0.161512)
+bones/0/position = Vector3(0.00982394, 0.483046, -0.0225211)
+bones/0/rotation = Quaternion(-0.0404309, -0.00368855, -0.00163902, 0.999174)
+bones/1/rotation = Quaternion(0.0633193, -0.184765, 0.96649, 0.166582)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.440916, -0.00387244, 0.20608, 0.873561)
-bones/3/rotation = Quaternion(-0.853561, -0.0279306, -0.0349186, 0.519071)
+bones/2/rotation = Quaternion(0.457887, -0.00382499, 0.214013, 0.862858)
+bones/3/rotation = Quaternion(-0.860832, -0.023023, -0.0326956, 0.507316)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0405231, -0.143398, 0.978768, -0.140742)
+bones/4/rotation = Quaternion(-0.0422521, -0.192878, 0.969876, -0.142668)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.447059, 0.00385554, -0.208952, 0.869748)
-bones/6/rotation = Quaternion(-0.858403, 0.0300305, 0.0605026, 0.50851)
+bones/5/rotation = Quaternion(0.466416, 0.00380024, -0.217999, 0.857273)
+bones/6/rotation = Quaternion(-0.866047, 0.0259073, 0.0641185, 0.495156)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -161,7 +161,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999997, 0.00172503, -0.0018131, -0.00173313, 0.999988, -0.00447401, 0.00180536, 0.00447714, 0.999988, 0.00825711, 0.48876, -0.0168591)
+transform = Transform3D(0.999967, 0.0035736, -0.00723847, -0.00297707, 0.996725, 0.0808072, 0.00750354, -0.080783, 0.996703, 0.00982394, 0.483046, -0.0225211)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25

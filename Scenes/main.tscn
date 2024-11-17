@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=22 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpq6npjirkduk" path="res://Scenes/solar_pannel_dee.tscn" id="6_wtyoi"]
 [ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="7_aqcey"]
 [ext_resource type="PackedScene" uid="uid://cm6g8i7fyfbro" path="res://Scenes/barrier_dee.tscn" id="8_ku7kt"]
+[ext_resource type="PackedScene" uid="uid://bdpxo5mey5nkd" path="res://Scenes/ghost.tscn" id="9_4mx7m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -191,10 +192,10 @@ transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
 [node name="SolarPannelEllie" parent="." instance=ExtResource("5_deuj4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8638, 0, -15.4134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.90073, 0, -10.9964)
 
 [node name="SolarPannelDee" parent="." instance=ExtResource("6_wtyoi")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.52812, 2.00256, -6.71932)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.83611, 0, -10.8202)
 
 [node name="BarrierEllie" parent="." instance=ExtResource("7_aqcey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
@@ -202,6 +203,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
 [node name="BarrierDee" parent="." instance=ExtResource("8_ku7kt")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
 
-[node name="Enemy" type="Node3D" parent="."]
+[node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4888, 0, -0.848789)
+
+[node name="Ghost2" parent="." instance=ExtResource("9_4mx7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2183, 0, 5.42308)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

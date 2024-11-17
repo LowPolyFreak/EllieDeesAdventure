@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ohppoh2dwi"]
+
+[ext_resource type="Script" path="res://Scripts/uv_glow_cmpt.gd" id="1_dpp4x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_732g7"]
+radius = 5.0
+
+[node name="UVGlowCMPT" type="Area3D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_dpp4x")
+
+[node name="DetectionRadius" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_732g7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

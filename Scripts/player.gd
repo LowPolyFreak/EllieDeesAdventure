@@ -134,6 +134,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_pressed(glow) and burnout_timer.is_stopped():
+		glowing = true
 		if !starting_glow:
 			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy + 10, delta * 30)
 			omni_light_3d.omni_range = lerpf(omni_light_3d.omni_range, glow_light_range + 1, delta * 30)
@@ -162,14 +163,16 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+		
+	#if !player_1:
+		#print(glowing)
 
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed(glow) and burnout_timer.is_stopped():
 		if !trigger_pressed:
-			glowing = true
-			glowing_started.emit(player_1)
 			trigger_pressed = true
+			glowing_started.emit(player_1)
 			battery -= 0.2
 		
 	elif event.is_action_released(glow) and burnout_timer.is_stopped():
@@ -193,6 +196,7 @@ func _on_battery_drain_timer_timeout() -> void:
 		burnout_timer.start()
 		glowing = false
 		glowing_ended.emit(player_1)
+	
 
 func _on_battery_charge_timer_timeout() -> void:
 	battery += 0.075

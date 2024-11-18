@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdpxo5mey5nkd"]
+[gd_scene load_steps=7 format=3 uid="uid://bdpxo5mey5nkd"]
 
 [ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="1_abus7"]
+[ext_resource type="Script" path="res://Scripts/patrol_cmpt.gd" id="2_pf5kq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nddc2"]
 transparency = 1
@@ -10,6 +11,16 @@ emission = Color(0, 1, 0.686275, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_04c2o"]
 material = SubResource("StandardMaterial3D_nddc2")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_q5mrn"]
+material = SubResource("StandardMaterial3D_nddc2")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a8c50"]
+radius = 1.0
 
 [node name="Ghost" type="Area3D"]
 
@@ -17,4 +28,25 @@ material = SubResource("StandardMaterial3D_nddc2")
 mesh_target = NodePath("../Placeholder")
 
 [node name="Placeholder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("SphereMesh_04c2o")
+
+[node name="UVGlowCMPT2" parent="." node_paths=PackedStringArray("mesh_target") instance=ExtResource("1_abus7")]
+mesh_target = NodePath("../Placeholder2")
+
+[node name="Placeholder2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.56856e-08, 0, -0.643422, 0, 0.37487, 0, 1.04517, 0, -2.81249e-08, 0.0545346, 0.984691, 0.671408)
+mesh = SubResource("SphereMesh_q5mrn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_a8c50")
+
+[node name="PatrolComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
+script = ExtResource("2_pf5kq")
+user = NodePath("..")
+
+[node name="RestTimer" type="Timer" parent="PatrolComponent"]
+one_shot = true
+
+[connection signal="timeout" from="PatrolComponent/RestTimer" to="PatrolComponent" method="_on_rest_timer_timeout"]

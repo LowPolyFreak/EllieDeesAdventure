@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=22 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -84,15 +84,6 @@ _data = {
 "RESET": SubResource("Animation_mrj8u"),
 "new_animation": SubResource("Animation_8w1xf")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_liw0f"]
-transparency = 1
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.898833, 0.527643, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_tsk4b"]
-material = SubResource("StandardMaterial3D_liw0f")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_oa6h7")
@@ -213,14 +204,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
 
 [node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4888, 0, -0.848789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, -0.848789)
 
-[node name="Ghost2" parent="." instance=ExtResource("9_4mx7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2183, 0, 5.42308)
+[node name="PatrolComponent" parent="Ghost" index="5" node_paths=PackedStringArray("patrol_points")]
+enable_on_load = true
+patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
+patrol_speed = 5.0
+loop = true
 
-[node name="Placeholder" parent="Ghost2" index="1"]
-mesh = SubResource("SphereMesh_tsk4b")
+[node name="Patrol_Points" type="Node" parent="."]
+
+[node name="level_1_1" type="Node" parent="Patrol_Points"]
+
+[node name="Marker3D" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
 
-[editable path="Ghost2"]
+[editable path="Ghost"]

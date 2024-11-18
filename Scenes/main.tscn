@@ -207,10 +207,11 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, -0.848789)
 
 [node name="PatrolComponent" parent="Ghost" index="5" node_paths=PackedStringArray("patrol_points")]
-enable_on_load = true
 patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
-patrol_speed = 5.0
-loop = true
+patrol_speed = 3.0
+
+[node name="RestTimer" parent="Ghost/PatrolComponent" index="0"]
+wait_time = 2.0
 
 [node name="Patrol_Points" type="Node" parent="."]
 

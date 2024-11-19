@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="1_abus7"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_xoyfn"]
 [ext_resource type="PackedScene" uid="uid://doqqud74nr01a" path="res://Scenes/patrol_component.tscn" id="3_xbbn4"]
-[ext_resource type="Script" path="res://Scripts/chase_component.gd" id="4_je8t6"]
+[ext_resource type="PackedScene" uid="uid://bixqbcx87c3cl" path="res://Scenes/chase_component.tscn" id="4_qcwxf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nddc2"]
 transparency = 1
@@ -49,13 +49,5 @@ shape = SubResource("SphereShape3D_a8c50")
 user = NodePath("..")
 patrol_speed = 3.0
 
-[node name="ChaseComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
-script = ExtResource("4_je8t6")
-enable_on_load = true
+[node name="ChaseComponent" parent="." node_paths=PackedStringArray("user") instance=ExtResource("4_qcwxf")]
 user = NodePath("..")
-chase_speed = 3.5
-fallback_target_group = "Bulbs"
-
-[node name="WaitTimer" type="Timer" parent="ChaseComponent"]
-wait_time = 6.0
-one_shot = true

@@ -51,3 +51,4 @@ patrol_speed = 3.0
 
 [node name="ChaseComponent" parent="." node_paths=PackedStringArray("user") instance=ExtResource("4_qcwxf")]
 user = NodePath("..")
+chase_speed = 4.0

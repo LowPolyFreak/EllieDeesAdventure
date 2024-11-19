@@ -1,20 +1,22 @@
 extends Node
+class_name ChaseComponent
 
 @export var enable_on_load: bool = false
 @export var user: CollisionObject3D
-@export var patrol_component: PatrolComponent
 @export var chase_speed: float = 1.5
-@export var chase_range: float = 10
+@export var stop_range: float = 0.5
 @export var target: CollisionObject3D
-@export var default_target_group: String = "Player"
+@export var fallback_target_group: String = "Player"
 
 @onready var wait_timer = $WaitTimer
 
-var lkp: Vector3
 
 func _ready():
+	printt(target, user)
 	if !target:
-		target = get_tree().get_first_node_in_group(default_target_group)
+		print("no target, looking for group")
+		target = get_tree().get_first_node_in_group(fallback_target_group)
+		print(target)
 	if !enable_on_load:
 		leave_state()
 
@@ -26,11 +28,12 @@ func leave_state():
 	set_process(false)
 
 func _process(delta):
-	#if user.global_position.distance_to(target) >= 
-	lkp = target.global_position
+	
+	if user.global_position.distance_to(target.global_position) <= stop_range:
+		return
 	
 	#Look at
-	user.look_at(Vector3(lkp.x, user.global_position.y, lkp.z))
+	user.look_at(Vector3(target.global_position.x, user.global_position.y, target.global_position.z))
 	
 	#Movement
 	var move_vec = -user.global_basis.z * chase_speed

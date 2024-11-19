@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="1_abus7"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_xoyfn"]
-[ext_resource type="Script" path="res://Scripts/patrol_cmpt.gd" id="2_pf5kq"]
+[ext_resource type="PackedScene" uid="uid://doqqud74nr01a" path="res://Scenes/patrol_component.tscn" id="3_xbbn4"]
 [ext_resource type="Script" path="res://Scripts/chase_component.gd" id="4_je8t6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nddc2"]
@@ -45,15 +45,16 @@ mesh = SubResource("SphereMesh_q5mrn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_a8c50")
 
-[node name="PatrolComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
-script = ExtResource("2_pf5kq")
+[node name="PatrolComponent" parent="." node_paths=PackedStringArray("user") instance=ExtResource("3_xbbn4")]
 user = NodePath("..")
+patrol_speed = 3.0
 
-[node name="RestTimer" type="Timer" parent="PatrolComponent"]
-one_shot = true
-
-[node name="ChaseComponent" type="Node" parent="."]
+[node name="ChaseComponent" type="Node" parent="." node_paths=PackedStringArray("user")]
 script = ExtResource("4_je8t6")
+enable_on_load = true
+user = NodePath("..")
+chase_speed = 3.5
+fallback_target_group = "Bulbs"
 
 [node name="WaitTimer" type="Timer" parent="ChaseComponent"]
 wait_time = 6.0

@@ -11,7 +11,7 @@ var occupied: bool
 var tween: Tween
 
 func _ready() -> void:
-	$DetectionRadius.shape.radius = dee.glow_light_range - 2
+	$DetectionRadius.shape.radius = dee.glow_light_range
 	material = mesh_target.get_active_material(0).duplicate()
 	mesh_target.set_surface_override_material(0, material)
 	material.albedo_color.a = 0

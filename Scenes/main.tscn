@@ -214,13 +214,13 @@ patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath(".
 [node name="level_1_1" type="Node" parent="Patrol_Points"]
 
 [node name="Marker3D" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4153, 0, 0)
 
 [node name="Marker3D2" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 0)
 
 [node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 6)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
 

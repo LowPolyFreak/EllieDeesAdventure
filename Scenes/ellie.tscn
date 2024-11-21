@@ -138,17 +138,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.00684479, 0.49391, -0.0117554)
-bones/0/rotation = Quaternion(0.00474399, -0.000571107, -0.000627335, 0.999988)
-bones/1/rotation = Quaternion(0.0515293, -0.136148, 0.977218, 0.154444)
+bones/0/position = Vector3(0.0075159, 0.491463, -0.0141806)
+bones/0/rotation = Quaternion(0.00377486, -0.000705253, -0.000726657, 0.999992)
+bones/1/rotation = Quaternion(0.0521236, -0.1378, 0.976415, 0.157823)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.424431, -0.00391628, 0.198376, 0.883453)
-bones/3/rotation = Quaternion(-0.844752, -0.0328936, -0.0380895, 0.532787)
+bones/2/rotation = Quaternion(0.432766, -0.00389438, 0.202271, 0.878513)
+bones/3/rotation = Quaternion(-0.849197, -0.0304346, -0.0365599, 0.52593)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0419573, -0.13895, 0.979822, -0.137412)
+bones/4/rotation = Quaternion(-0.0412735, -0.141055, 0.97932, -0.139041)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.42939, 0.00390331, -0.200693, 0.880529)
-bones/6/rotation = Quaternion(-0.848764, 0.0342498, 0.0587231, 0.524384)
+bones/5/rotation = Quaternion(0.438321, 0.00387947, -0.204867, 0.875151)
+bones/6/rotation = Quaternion(-0.853623, 0.0321342, 0.0596266, 0.516469)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -161,7 +161,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999999, 0.00124924, -0.00114815, -0.00126007, 0.999954, -0.00948716, 0.00113625, 0.00948859, 0.999954, 0.00684479, 0.49391, -0.0117554)
+transform = Transform3D(0.999998, 0.00144798, -0.00141598, -0.00145863, 0.99997, -0.00754864, 0.00140501, 0.00755069, 0.99997, 0.0075159, 0.491463, -0.0141806)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25
@@ -193,6 +193,11 @@ wait_time = 0.5
 wait_time = 5.0
 one_shot = true
 
+[node name="FlickerTimer" type="Timer" parent="Timers"]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
@@ -214,6 +219,7 @@ texture = SubResource("ViewportTexture_s5hld")
 [connection signal="timeout" from="Timers/BatteryDrainTimer" to="." method="_on_battery_drain_timer_timeout"]
 [connection signal="timeout" from="Timers/BatteryChargeTimer" to="." method="_on_battery_charge_timer_timeout"]
 [connection signal="timeout" from="Timers/BurnoutTimer" to="." method="_on_burnout_timer_timeout"]
+[connection signal="timeout" from="Timers/FlickerTimer" to="." method="_on_flicker_timer_timeout"]
 [connection signal="timeout" from="SubViewport/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]
 
 [editable path="EllieModel"]

@@ -34,6 +34,9 @@ var in_air = false
 var battery: float = 1.0
 var is_following
 var first_player
+var enemies_in_prox: int
+var flicker_modifyer: float
+var flicker_target: float
 
 #Inputs
 var up = "up_p1"
@@ -136,9 +139,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed(glow) and burnout_timer.is_stopped():
 		glowing = true
 		if !starting_glow:
-			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy + 10, delta * 30)
+			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy + 10 * flicker_modifyer, delta * 30)
 			omni_light_3d.omni_range = lerpf(omni_light_3d.omni_range, glow_light_range + 1, delta * 30)
-			bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 7.0, delta * 30))
+			bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 7.0 * flicker_modifyer, delta * 30))
 			bulb.scale = original_size + Vector3(0.25, 0.25, 0.25)
 			if omni_light_3d.light_energy >= glow_energy + 9:
 				starting_glow = true
@@ -147,16 +150,16 @@ func _physics_process(delta):
 				$SubViewport/FadeOutTimer.stop()
 				battery_bar_3d.modulate.a = 1.0
 		else:
-			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy, delta * 15)
+			omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, glow_energy * flicker_modifyer, delta * 15)
 			omni_light_3d.omni_range = lerpf(omni_light_3d.omni_range, glow_light_range, delta * 15)
-			bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 3.5, delta * 15))
+			bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 3.5 * flicker_modifyer, delta * 15))
 			if battery <= 0:
 				_on_battery_drain_timer_timeout()
 	else:
 		starting_glow = false
-		omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, default_energy, delta * 5)
+		omni_light_3d.light_energy = lerpf(omni_light_3d.light_energy, default_energy * flicker_modifyer, delta * 5)
 		omni_light_3d.omni_range = lerpf(omni_light_3d.omni_range, default_light_range, delta * 5)
-		bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 0.5, delta * 5))
+		bulb_mat.set_shader_parameter("intensity", lerpf(bulb_mat.get_shader_parameter("intensity"), 0.5 * flicker_modifyer, delta * 5))
 	
 	bulb.scale = lerp(bulb.scale, original_size, delta * 15)
 	
@@ -164,8 +167,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 		
-	#if !player_1:
-		#print(glowing)
+	
+	flicker_modifyer = lerpf(flicker_modifyer, 1.0, delta * 0.5)
+	print(flicker_modifyer)
 
 
 func _unhandled_input(event: InputEvent):
@@ -217,3 +221,13 @@ func _on_fade_out_timer_timeout() -> void:
 
 func update_follow_pos(marker):
 	follow_position = marker.global_position
+
+
+func _on_flicker_timer_timeout():
+	if enemies_in_prox > 0:
+		flicker_modifyer = 0.1
+	else:
+		flicker_modifyer = 1.0
+	#$Timers/FlickerTimer.start(randf_range(0.05, 0.1))
+	$Timers/FlickerTimer.start(randf_range(0.1, 0.3))
+	

@@ -35,3 +35,13 @@ func _on_attack_range_body_entered(body: Node3D) -> void:
 		chasing = false
 		eyes.hide()
 		
+
+
+func _on_warning_range_body_entered(body):
+	if body is Player:
+		body.enemies_in_prox += 1
+
+
+func _on_warning_range_body_exited(body):
+	if body is Player:
+		body.enemies_in_prox -= 1

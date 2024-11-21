@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdpxo5mey5nkd"]
+[gd_scene load_steps=15 format=3 uid="uid://bdpxo5mey5nkd"]
 
 [ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="1_abus7"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_xoyfn"]
@@ -24,6 +24,9 @@ height = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a8c50"]
 radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_plc5a"]
+radius = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h7m47"]
 radius = 4.0
@@ -78,6 +81,13 @@ patrol_speed = 3.0
 user = NodePath("..")
 chase_speed = 4.0
 
+[node name="WarningRange" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WarningRange"]
+shape = SubResource("SphereShape3D_plc5a")
+
 [node name="ChaseRange" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -102,5 +112,7 @@ transform = Transform3D(0.707107, 0, -0.707107, -3.55271e-15, 1, 0, 0.707107, 0,
 mesh = SubResource("PlaneMesh_gair3")
 skeleton = NodePath("../..")
 
+[connection signal="body_entered" from="WarningRange" to="." method="_on_warning_range_body_entered"]
+[connection signal="body_exited" from="WarningRange" to="." method="_on_warning_range_body_exited"]
 [connection signal="body_entered" from="ChaseRange" to="." method="_on_chase_range_body_entered"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]

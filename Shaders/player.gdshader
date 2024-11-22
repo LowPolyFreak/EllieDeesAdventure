@@ -4,6 +4,7 @@ uniform vec3 albedo : source_color;
 uniform vec3 fresnel_color : source_color;
 uniform float intensity: hint_range(0.0, 20.0, 0.01) = 1.0;
 uniform float amount: hint_range(0.0, 10.0, 0.1) = 1.0;
+uniform float emmission_multiplier = 1.0; 
 
 vec3 fresnel_glow(vec3 color, vec3 normal, vec3 view)
 {

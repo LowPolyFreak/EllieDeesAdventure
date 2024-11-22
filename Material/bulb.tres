@@ -9,3 +9,4 @@ shader_parameter/albedo = Color(0.209404, 0.186939, 1.20327e-07, 1)
 shader_parameter/fresnel_color = Color(0.854609, 0.797432, 0, 1)
 shader_parameter/intensity = 0.5
 shader_parameter/amount = 1.0
+shader_parameter/emmission_multiplier = 1.0

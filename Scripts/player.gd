@@ -167,7 +167,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 		
-	
 	flicker_modifier = lerpf(flicker_modifier, 1.0, delta * 2)
 
 
@@ -228,5 +227,3 @@ func _on_flicker_timer_timeout():
 	else:
 		flicker_modifier = 1.0
 	$Timers/FlickerTimer.start(randf_range(0.2, 0.4))
-	print(flicker_modifier)
-	

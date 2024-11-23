@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cttyrmjn3obow"]
+[gd_scene load_steps=11 format=3 uid="uid://cttyrmjn3obow"]
 
 [ext_resource type="Script" path="res://Scripts/solar_pannel.gd" id="1_i1cjx"]
 
@@ -36,6 +36,8 @@ metallic = 0.38
 [sub_resource type="BoxMesh" id="BoxMesh_3ekn2"]
 material = SubResource("StandardMaterial3D_inetr")
 size = Vector3(0.75, 0.1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7nc07"]
 
 [node name="SolarPannelEllie" type="Area3D"]
 collision_layer = 0
@@ -119,7 +121,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83635, 0.0201168, -0.673563
 mesh = SubResource("BoxMesh_3ekn2")
 skeleton = NodePath("../..")
 
+[node name="GhostDetection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GhostDetection"]
+shape = SubResource("SphereShape3D_7nc07")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="timeout" from="DrainTimer" to="." method="_on_drain_timer_timeout"]
+[connection signal="area_entered" from="GhostDetection" to="." method="_on_ghost_detection_area_entered"]

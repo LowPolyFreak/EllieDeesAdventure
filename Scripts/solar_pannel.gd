@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var charge_speed := 0.05
+@export var charge_speed := 0.03
 @export var drain_speed := 0.2
 @export var power_amount := 3
 
@@ -13,6 +13,11 @@ var occupied: bool
 var full: bool
 
 var style
+
+func _ready():
+	var sphere: SphereShape3D = SphereShape3D.new()
+	sphere.radius = $LampLight.omni_range
+	$GhostDetection/CollisionShape3D.shape = sphere
 
 func _on_body_entered(body):
 	body.glowing_started.connect(player_glowing)
@@ -49,6 +54,9 @@ func _on_charge_timer_timeout():
 		full = true
 		$LampLight.visible = true
 		monitoring = false
+		for i in $GhostDetection.get_overlapping_areas():
+			if i is Enemy:
+				i.entered_safe_zone()
 	else:
 		battery_bar_3d.value = power
 		charge_timer.start(charge_speed)
@@ -65,3 +73,8 @@ func _on_drain_timer_timeout():
 	else:
 		battery_bar_3d.value = power
 		drain_timer.start(drain_speed)
+
+
+func _on_ghost_detection_area_entered(area):
+	if area is Enemy and full:
+		area.entered_safe_zone()

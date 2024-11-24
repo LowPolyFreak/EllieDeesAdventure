@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://csgj0877gbjpp"]
+[gd_scene load_steps=21 format=4 uid="uid://csgj0877gbjpp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_frd3r"]
+[ext_resource type="AudioStream" uid="uid://bs1jsf7tmp4ci" path="res://Audio/SFX/VOICE_Boy_6yo_Scream_05_mono.wav" id="2_8yxa2"]
 [ext_resource type="PackedScene" uid="uid://ciubfap47dwnm" path="res://Scenes/ellie_model.tscn" id="2_mu1gt"]
 [ext_resource type="Material" uid="uid://cyk38prcwxmsl" path="res://Material/color_palette_emmisive.tres" id="3_pbjm5"]
+[ext_resource type="AudioStream" uid="uid://b2dxntlaa81nl" path="res://Audio/SFX/VOICE_Boy_6yo_Scream_07_mono.wav" id="3_rh3ol"]
 [ext_resource type="Material" uid="uid://byc3xoua2il2x" path="res://Material/bulb.tres" id="4_2p4uu"]
 [ext_resource type="Texture2D" uid="uid://db135dfjansp2" path="res://Textures/EyeExpressions.png" id="5_oxu16"]
 [ext_resource type="PackedScene" uid="uid://dcqfo2i68pyr" path="res://Scenes/battery_bar_3d.tscn" id="6_hhy37"]
@@ -132,6 +134,14 @@ glow_energy = 3.0
 default_light_range = 4
 glow_light_range = 20
 
+[node name="Dead_Scream_Ellie" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_8yxa2")
+pitch_scale = 0.8
+
+[node name="Dead_Scream_Dee" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_rh3ol")
+pitch_scale = 0.8
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_w0xbe")
@@ -139,17 +149,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0121967, 0.474393, -0.0310954)
-bones/0/rotation = Quaternion(-0.0194506, -0.00289059, -0.00164827, 0.999805)
-bones/1/rotation = Quaternion(0.0605107, -0.161028, 0.968314, 0.181044)
+bones/0/position = Vector3(0.00780859, 0.490395, -0.0152382)
+bones/0/rotation = Quaternion(-0.0156616, -0.00196357, -0.00106613, 0.999875)
+bones/1/rotation = Quaternion(0.0565431, -0.158494, 0.972981, 0.158086)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.48169, -0.00375433, 0.225138, 0.84692)
-bones/3/rotation = Quaternion(-0.875106, -0.013935, -0.0248939, 0.48309)
+bones/2/rotation = Quaternion(0.436291, -0.00388495, 0.203918, 0.876386)
+bones/3/rotation = Quaternion(-0.85018, -0.0296165, -0.0366065, 0.524382)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0373008, -0.168887, 0.973706, -0.148264)
+bones/4/rotation = Quaternion(-0.0424203, -0.163617, 0.975738, -0.139162)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.491023, 0.00372528, -0.2295, 0.840364)
-bones/6/rotation = Quaternion(-0.88199, 0.0190852, 0.0653347, 0.466327)
+bones/5/rotation = Quaternion(0.442852, 0.00386713, -0.206985, 0.872367)
+bones/6/rotation = Quaternion(-0.854586, 0.0313397, 0.0608855, 0.514775)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -162,7 +172,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999978, 0.00340835, -0.00571593, -0.00318346, 0.999238, 0.0389032, 0.00584417, -0.0388841, 0.999227, 0.0121967, 0.474393, -0.0310954)
+transform = Transform3D(0.99999, 0.00219349, -0.00389326, -0.00207048, 0.999507, 0.0313234, 0.00396005, -0.031315, 0.999502, 0.00780859, 0.490395, -0.0152382)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25

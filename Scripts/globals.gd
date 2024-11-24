@@ -1,12 +1,22 @@
 extends Node
 
 signal fuse_just_collected
+signal player_died
+@warning_ignore("unused_signal")
+signal players_reset
 
 var players = []
+
 var fuse_collected: int:
 	set(value):
 		fuse_collected = value
 		fuse_just_collected.emit()
+
+var player_dead: bool:
+	set(value):
+		player_dead = value
+		if player_dead:
+			player_died.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

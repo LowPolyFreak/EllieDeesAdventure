@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+const DEATH_VFX_0 = preload("res://VFX/death_vfx_0.tscn")
 
 @export var rotation_speed := 2
 @export var player_1 := true
@@ -50,11 +51,14 @@ var starting_glow = false
 var glowing: bool
 var trigger_pressed
 var follow_position: Vector3
+var starting_position: Vector3
 
 signal glowing_started()
 signal glowing_ended()
 
 func _ready():
+	starting_position = global_position
+	Globals.player_died.connect(death)
 	if !player_1:
 		up = "up_p2"
 		down = "down_p2"
@@ -92,7 +96,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector(left, right, up, down)
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if direction:
+	if direction and !Globals.player_dead:
 		animation_tree.set("parameters/Movement/transition_request", "Run")
 		if is_following:
 			is_following = false
@@ -171,24 +175,25 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed(glow) and burnout_timer.is_stopped():
-		if !trigger_pressed:
-			trigger_pressed = true
-			glowing_started.emit(player_1)
-			battery -= 0.2
-		
-	elif event.is_action_released(glow) and burnout_timer.is_stopped():
-		if trigger_pressed:
-			trigger_pressed = false
-			battery_charge_timer.start()
-			battery_drain_timer.stop()
-			glowing = false
-			glowing_ended.emit(player_1)
-	if !player_1:
-		
-		if event.is_action_pressed("interact"):
-			if global_position.distance_to(first_player.global_position) < 2.5:
-				is_following = true
+	#if !Globals.player_dead:
+		if event.is_action_pressed(glow) and burnout_timer.is_stopped():
+			if !trigger_pressed:
+				trigger_pressed = true
+				glowing_started.emit(player_1)
+				battery -= 0.2
+			
+		elif event.is_action_released(glow) and burnout_timer.is_stopped():
+			if trigger_pressed:
+				trigger_pressed = false
+				battery_charge_timer.start()
+				battery_drain_timer.stop()
+				glowing = false
+				glowing_ended.emit(player_1)
+		if !player_1:
+			
+			if event.is_action_pressed("interact"):
+				if global_position.distance_to(first_player.global_position) < 2.5:
+					is_following = true
 		
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.025
@@ -227,3 +232,35 @@ func _on_flicker_timer_timeout():
 	else:
 		flicker_modifier = 1.0
 	$Timers/FlickerTimer.start(randf_range(0.2, 0.4))
+
+func death():
+	
+	if !Globals.player_dead:
+		ellie_model.hide()
+		var dead_vfx = DEATH_VFX_0.instantiate()
+		get_parent_node_3d().add_child(dead_vfx)
+		dead_vfx.global_position = global_position
+		dead_vfx.emitting = true
+		Globals.player_dead = true
+		if player_1:
+			$Dead_Scream_Ellie.play()
+		else:
+			$Dead_Scream_Dee.play()
+	await get_tree().create_timer(1).timeout
+	
+	if !player_1:
+		await get_tree().create_timer(0.05).timeout
+		follow_position = starting_position
+		is_following = true
+		Globals.players_reset.emit()
+	
+	#Fucking cleanup
+	glowing = false
+	starting_glow = false
+	battery_drain_timer.stop()
+	burnout_timer.stop()
+	battery_charge_timer.stop()
+	global_position = starting_position
+	battery = 1.0
+	Globals.player_dead = false
+	ellie_model.show()

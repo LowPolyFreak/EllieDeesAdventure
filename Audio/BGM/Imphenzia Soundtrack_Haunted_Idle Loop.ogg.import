@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://byxh2dkga07a2"
+path="res://.godot/imported/Imphenzia Soundtrack_Haunted_Idle Loop.ogg-986dad0e495d3ce14455e5ea2f9ce35a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Idle Loop.ogg"
+dest_files=["res://.godot/imported/Imphenzia Soundtrack_Haunted_Idle Loop.ogg-986dad0e495d3ce14455e5ea2f9ce35a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

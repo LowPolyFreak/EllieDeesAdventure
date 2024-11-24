@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr88po8io1yhd"]
+
+[ext_resource type="PackedScene" uid="uid://cfuyixxgp2han" path="res://VFX/explosion_vfx_0.tscn" id="1_8g3fj"]
+[ext_resource type="AudioStream" uid="uid://chekb82xk22di" path="res://Audio/SFX/SHATTER_Glass_Medium_Short_01_mono.wav" id="2_xaj3e"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j55ch"]
+lifetime_randomness = 0.2
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -5, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cecka"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="DeathVFX_0" instance=ExtResource("1_8g3fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0695837, 0.703386, -0.0744841)
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_j55ch")
+draw_pass_1 = SubResource("BoxMesh_cecka")
+
+[node name="Shatter" type="AudioStreamPlayer3D" parent="." index="0"]
+stream = ExtResource("2_xaj3e")
+pitch_scale = 0.8
+autoplay = true

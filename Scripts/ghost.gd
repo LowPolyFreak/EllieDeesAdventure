@@ -30,6 +30,7 @@ func _on_chase_range_body_entered(body: Node3D) -> void:
 func _on_attack_range_body_entered(body: Node3D) -> void:
 	if body is Player:
 		chase_component.leave_state()
+		body.death()
 		await get_tree().create_timer(0.5).timeout
 		patrol_component.enter_state()
 		chasing = false
@@ -52,8 +53,3 @@ func entered_safe_zone():
 	patrol_component.enter_state()
 	chasing = false
 	eyes.hide()
-	return
-	#var patrol_speed = patrol_component.patrol_speed
-	#patrol_component.patrol_speed = patrol_component.patrol_speed * 2
-	#await get_tree().create_timer(2).timeout
-	#patrol_component.patrol_speed = patrol_speed

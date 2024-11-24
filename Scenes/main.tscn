@@ -1,10 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=30 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
 [ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="2_2yub6"]
 [ext_resource type="PackedScene" uid="uid://bmvm5axb2vbpd" path="res://Scenes/fuse.tscn" id="2_dthhh"]
+[ext_resource type="Script" path="res://Scripts/bgm.gd" id="2_jslss"]
+[ext_resource type="AudioStream" uid="uid://byxh2dkga07a2" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Idle Loop.ogg" id="2_tefwx"]
 [ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="3_8lji5"]
+[ext_resource type="AudioStream" uid="uid://btcd7trsvq8ld" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Intense Loop.ogg" id="3_pqcxk"]
 [ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="5_deuj4"]
 [ext_resource type="PackedScene" uid="uid://bpq6npjirkduk" path="res://Scenes/solar_pannel_dee.tscn" id="6_wtyoi"]
 [ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="7_aqcey"]
@@ -13,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="10_p4jaq"]
 [ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="11_3lmyk"]
 [ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="12_y6hrj"]
+[ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="14_buplp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -92,6 +96,19 @@ _data = {
 [node name="Main" type="Node3D"]
 script = ExtResource("1_oa6h7")
 
+[node name="BGM" type="Node" parent="." groups=["AUdio_Manager"]]
+script = ExtResource("2_jslss")
+
+[node name="BGM_Idle" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("2_tefwx")
+volume_db = -10.0
+autoplay = true
+
+[node name="BGM_Intense" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("3_pqcxk")
+volume_db = -80.0
+autoplay = true
+
 [node name="BG" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="BG"]
@@ -103,7 +120,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Floor" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(1.99413, 0, 0, 0, 1, 0, 0, 0, 2.29232, 0, 0, 0)
+transform = Transform3D(1.13848, 0, 0, 0, 1, 0, 0, 0, 2.29232, 0, 0, 0)
 mesh = SubResource("PlaneMesh_3xmyv")
 skeleton = NodePath("../..")
 metadata/_edit_group_ = true
@@ -216,7 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
 
 [node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, -0.848789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, 9.14868)
 
 [node name="PatrolComponent" parent="Ghost" index="5" node_paths=PackedStringArray("patrol_points")]
 patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
@@ -226,13 +243,13 @@ patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath(".
 [node name="level_1_1" type="Node" parent="Patrol_Points"]
 
 [node name="Marker3D" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4153, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4153, 0, 9.99747)
 
 [node name="Marker3D2" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 9.99747)
 
 [node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 15.9975)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -295,6 +312,9 @@ layout_mode = 2
 
 [node name="FuseNotCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("12_y6hrj")]
 layout_mode = 2
+
+[node name="DeathZone" parent="." instance=ExtResource("14_buplp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
 

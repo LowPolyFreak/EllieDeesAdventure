@@ -12,6 +12,7 @@ var total_fuses: int
 func _ready():
 	collectible_ctn = get_tree().get_first_node_in_group("CollectibleCtn")
 	Globals.fuse_just_collected.connect(update_fuse_bar)
+	Globals.players_reset.connect(update_fuse_bar)
 	update_fuse_bar()
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfuyixxgp2han"]
 
-[ext_resource type="Script" path="res://Ressources/VFX/explosion_vfx_0.gd" id="1_7qk8e"]
+[ext_resource type="Script" path="res://VFX/explosion_vfx_0.gd" id="1_7qk8e"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_twmnr"]
 lifetime_randomness = 0.2

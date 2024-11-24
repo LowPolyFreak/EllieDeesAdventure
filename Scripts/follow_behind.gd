@@ -43,5 +43,4 @@ func _on_update_timer_timeout():
 		else:
 			update_timer.start(update_time)
 	else:
-		print("No target to follow, stopping!")
 		active = false

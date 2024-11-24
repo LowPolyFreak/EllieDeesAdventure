@@ -60,7 +60,6 @@ func _on_charge_timer_timeout():
 	else:
 		battery_bar_3d.value = power
 		charge_timer.start(charge_speed)
-	print(power)
 
 
 func _on_drain_timer_timeout():

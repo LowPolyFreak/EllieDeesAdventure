@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhilcw3j6k575"]
+
+[ext_resource type="Texture2D" uid="uid://c1pdjo058c2q8" path="res://Textures/Fuse_Render.png" id="1_lgx0r"]
+
+[node name="FuseCollected" type="TextureRect"]
+texture = ExtResource("1_lgx0r")
+expand_mode = 3

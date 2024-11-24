@@ -48,8 +48,12 @@ func _on_warning_range_body_exited(body):
 
 func entered_safe_zone():
 	chase_component.leave_state()
+	await get_tree().create_timer(0.5).timeout
 	patrol_component.enter_state()
-	var patrol_speed = patrol_component.patrol_speed
-	patrol_component.patrol_speed = patrol_component.patrol_speed * 2
-	await get_tree().create_timer(2).timeout
-	patrol_component.patrol_speed = patrol_speed
+	chasing = false
+	eyes.hide()
+	return
+	#var patrol_speed = patrol_component.patrol_speed
+	#patrol_component.patrol_speed = patrol_component.patrol_speed * 2
+	#await get_tree().create_timer(2).timeout
+	#patrol_component.patrol_speed = patrol_speed

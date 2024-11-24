@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtbv247qb2gsh"]
+
+[ext_resource type="Texture2D" uid="uid://c1pdjo058c2q8" path="res://Textures/Fuse_Render.png" id="1_ncvin"]
+
+[node name="FuseNotCollected" type="TextureRect"]
+modulate = Color(0.12, 0.12, 0.12, 0.52549)
+texture = ExtResource("1_ncvin")
+expand_mode = 3

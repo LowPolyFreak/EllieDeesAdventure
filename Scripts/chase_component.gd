@@ -12,11 +12,8 @@ class_name ChaseComponent
 
 
 func _ready():
-	printt(target, user)
 	if !target:
-		print("no target, looking for group")
 		target = get_tree().get_first_node_in_group(fallback_target_group)
-		print(target)
 	if !enable_on_load:
 		leave_state()
 

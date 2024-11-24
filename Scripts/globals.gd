@@ -1,6 +1,12 @@
 extends Node
 
+signal fuse_just_collected
+
 var players = []
+var fuse_collected: int:
+	set(value):
+		fuse_collected = value
+		fuse_just_collected.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

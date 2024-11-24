@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv2n1140vgyl3"]
+
+[ext_resource type="PackedScene" uid="uid://cfuyixxgp2han" path="res://VFX/explosion_vfx_0.tscn" id="1_cbyx1"]
+
+[sub_resource type="Curve" id="Curve_yt02j"]
+max_value = 4.0
+_data = [Vector2(0, 4), 0.0, -0.0631872, 0, 0, Vector2(1, 0), -2.02198, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l5ns5"]
+curve = SubResource("Curve_yt02j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2qxrs"]
+lifetime_randomness = 0.2
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_l5ns5")
+
+[node name="CollectibleVFX" instance=ExtResource("1_cbyx1")]
+emitting = true
+amount = 10
+lifetime = 1.0
+one_shot = false
+explosiveness = 0.0
+process_material = SubResource("ParticleProcessMaterial_2qxrs")
+script = null

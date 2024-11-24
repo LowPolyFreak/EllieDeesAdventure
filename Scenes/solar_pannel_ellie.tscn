@@ -60,7 +60,8 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51504, 0)
 visible = false
 light_energy = 3.0
-omni_range = 20.0
+shadow_enabled = true
+omni_range = 12.0
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true

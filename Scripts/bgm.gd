@@ -10,7 +10,6 @@ func _ready():
 	Globals.player_in_combat.connect(update_bgm)
 
 func update_bgm(state: bool):
-	print(state)
 	if !state and !in_combat:
 		in_combat = true
 		var tween = create_tween()

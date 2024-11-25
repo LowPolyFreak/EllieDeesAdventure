@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cttyrmjn3obow"]
+[gd_scene load_steps=13 format=3 uid="uid://cttyrmjn3obow"]
 
 [ext_resource type="Script" path="res://Scripts/solar_pannel.gd" id="1_i1cjx"]
+[ext_resource type="AudioStream" uid="uid://bcx1uypc0le66" path="res://Audio/SFX/APPLIANCE_Fridge_Hum_03_Exterior_Top_loop_mono.wav" id="2_j28kw"]
+[ext_resource type="AudioStream" uid="uid://7plydookut8i" path="res://Audio/SFX/MUSIC_EFFECT_Solo_Harp_Positive_04_stereo.wav" id="3_1ql6f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0ykg"]
 size = Vector3(3, 2, 3)
@@ -126,6 +128,13 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GhostDetection"]
 shape = SubResource("SphereShape3D_7nc07")
+
+[node name="Hum" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_j28kw")
+max_distance = 50.0
+
+[node name="Success" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_1ql6f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

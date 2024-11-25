@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://gg1ds4x76ssv"]
+
+[ext_resource type="PackedScene" uid="uid://cr88po8io1yhd" path="res://VFX/death_vfx_0.tscn" id="1_no61j"]
+[ext_resource type="AudioStream" uid="uid://dvnetn38vvjrm" path="res://Audio/SFX/MONSTER_Breath_03_Slow_mono.wav" id="2_ddmok"]
+
+[node name="GhostVanishVFX_0" instance=ExtResource("1_no61j")]
+
+[node name="Shatter" parent="." index="0"]
+stream = ExtResource("2_ddmok")
+pitch_scale = 2.0

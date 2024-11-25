@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=31 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="10_p4jaq"]
 [ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="11_3lmyk"]
 [ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="12_y6hrj"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="14_534f6"]
 [ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="14_buplp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
@@ -258,6 +259,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("14_534f6")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 layout_mode = 1
@@ -312,6 +314,16 @@ layout_mode = 2
 
 [node name="FuseNotCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("12_y6hrj")]
 layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="DeathZone" parent="." instance=ExtResource("14_buplp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)

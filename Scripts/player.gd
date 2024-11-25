@@ -254,13 +254,13 @@ func death():
 		is_following = true
 		Globals.players_reset.emit()
 	
-	#Fucking cleanup
-	glowing = false
-	starting_glow = false
-	battery_drain_timer.stop()
-	burnout_timer.stop()
-	battery_charge_timer.stop()
-	global_position = starting_position
-	battery = 1.0
-	Globals.player_dead = false
-	ellie_model.show()
+	##Fucking cleanup
+	#glowing = false
+	#starting_glow = false
+	#battery_drain_timer.stop()
+	#burnout_timer.stop()
+	#battery_charge_timer.stop()
+	#global_position = starting_position
+	#battery = 1.0
+	#Globals.player_dead = false
+	#ellie_model.show()

@@ -27,6 +27,6 @@ func update_fuse_bar():
 	for i in total_fuses - Globals.fuse_collected:
 		var not_collected_ui = FUSE_NOT_COLLECTED.instantiate()
 		add_child(not_collected_ui)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3).timeout
 	var tween = create_tween()
 	tween.tween_property(get_parent(), "modulate:a", 0.0, 1.0)

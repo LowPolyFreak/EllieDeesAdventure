@@ -53,6 +53,8 @@ func _on_charge_timer_timeout():
 		charge_timer.stop()
 		full = true
 		$LampLight.visible = true
+		$Hum.play()
+		$Success.play()
 		monitoring = false
 		for i in $GhostDetection.get_overlapping_areas():
 			if i is Enemy:

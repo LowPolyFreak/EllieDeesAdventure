@@ -2,25 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="1_abus7"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_xoyfn"]
+[ext_resource type="Material" uid="uid://bsk75yk8vkmgo" path="res://Material/uv_glow.tres" id="3_3j0od"]
 [ext_resource type="PackedScene" uid="uid://doqqud74nr01a" path="res://Scenes/patrol_component.tscn" id="3_xbbn4"]
 [ext_resource type="PackedScene" uid="uid://bixqbcx87c3cl" path="res://Scenes/chase_component.tscn" id="4_qcwxf"]
 [ext_resource type="Texture2D" uid="uid://db135dfjansp2" path="res://Textures/EyeExpressions.png" id="5_f8m4q"]
 [ext_resource type="AudioStream" uid="uid://dvj6s5ikdhxdo" path="res://Audio/SFX/MUSIC_EFFECT_Solo_Harp_Negative_15_stereo.wav" id="6_w0qnk"]
 [ext_resource type="AudioStream" uid="uid://ewrqvisa4don" path="res://Audio/SFX/ZOMBIE_Male_06_mono.wav" id="7_11sul"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nddc2"]
-transparency = 1
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0, 1, 0.686275, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_04c2o"]
-material = SubResource("StandardMaterial3D_nddc2")
+material = ExtResource("3_3j0od")
 radius = 1.0
 height = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_q5mrn"]
-material = SubResource("StandardMaterial3D_nddc2")
+material = ExtResource("3_3j0od")
 radius = 1.0
 height = 2.0
 

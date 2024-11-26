@@ -147,7 +147,6 @@ pitch_scale = 1.5
 
 [node name="AttackSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_11sul")
-volume_db = -10.0
 
 [connection signal="body_entered" from="WarningRange" to="." method="_on_warning_range_body_entered"]
 [connection signal="body_exited" from="WarningRange" to="." method="_on_warning_range_body_exited"]

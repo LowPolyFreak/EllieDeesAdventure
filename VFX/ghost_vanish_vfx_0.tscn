@@ -7,4 +7,4 @@
 
 [node name="Shatter" parent="." index="0"]
 stream = ExtResource("2_ddmok")
-pitch_scale = 2.0
+pitch_scale = 4.0

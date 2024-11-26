@@ -16,7 +16,7 @@ var style
 
 func _ready():
 	var sphere: SphereShape3D = SphereShape3D.new()
-	sphere.radius = $LampLight.omni_range
+	sphere.radius = $LampLight.omni_range - 3
 	$GhostDetection/CollisionShape3D.shape = sphere
 
 func _on_body_entered(body):

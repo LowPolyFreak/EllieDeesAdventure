@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://csgj0877gbjpp"]
+[gd_scene load_steps=24 format=4 uid="uid://csgj0877gbjpp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_frd3r"]
 [ext_resource type="AudioStream" uid="uid://bs1jsf7tmp4ci" path="res://Audio/SFX/VOICE_Boy_6yo_Scream_05_mono.wav" id="2_8yxa2"]
@@ -6,7 +6,10 @@
 [ext_resource type="Material" uid="uid://cyk38prcwxmsl" path="res://Material/color_palette_emmisive.tres" id="3_pbjm5"]
 [ext_resource type="AudioStream" uid="uid://b2dxntlaa81nl" path="res://Audio/SFX/VOICE_Boy_6yo_Scream_07_mono.wav" id="3_rh3ol"]
 [ext_resource type="Material" uid="uid://byc3xoua2il2x" path="res://Material/bulb.tres" id="4_2p4uu"]
+[ext_resource type="AudioStream" uid="uid://bqktogog1f2wr" path="res://Audio/SFX/KETTLE_Switch_Click_01_mono.wav" id="4_vhcgb"]
+[ext_resource type="AudioStream" uid="uid://cj3t4u7eaqrpx" path="res://Audio/SFX/FORCE_FIELD_Scifi_01_loop_mono.wav" id="5_oac27"]
 [ext_resource type="Texture2D" uid="uid://db135dfjansp2" path="res://Textures/EyeExpressions.png" id="5_oxu16"]
+[ext_resource type="AudioStream" uid="uid://4nsgqu8v4htq" path="res://Audio/SFX/ELECTRICITY_Subtle_loop_mono.wav" id="6_fmm6b"]
 [ext_resource type="PackedScene" uid="uid://dcqfo2i68pyr" path="res://Scenes/battery_bar_3d.tscn" id="6_hhy37"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w0xbe"]
@@ -144,6 +147,19 @@ stream = ExtResource("3_rh3ol")
 volume_db = -10.0
 pitch_scale = 0.8
 
+[node name="SwitchSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_vhcgb")
+volume_db = -2.0
+
+[node name="GlowSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_oac27")
+volume_db = -5.0
+
+[node name="DisturbanceSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_fmm6b")
+volume_db = -12.0
+pitch_scale = 0.8
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_w0xbe")
@@ -151,17 +167,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.00691336, 0.49366, -0.0120032)
-bones/0/rotation = Quaternion(0.00446372, -0.000609929, -0.0006561, 0.99999)
-bones/1/rotation = Quaternion(0.0515878, -0.136316, 0.977137, 0.154791)
+bones/0/position = Vector3(0.00675206, 0.494248, -0.0114203)
+bones/0/rotation = Quaternion(0.00512302, -0.000518605, -0.000588435, 0.999987)
+bones/1/rotation = Quaternion(0.0514502, -0.135922, 0.977328, 0.153975)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.425498, -0.00391351, 0.198874, 0.882828)
-bones/3/rotation = Quaternion(-0.845321, -0.032583, -0.0378995, 0.531916)
+bones/2/rotation = Quaternion(0.423973, -0.00391748, 0.198161, 0.883721)
+bones/3/rotation = Quaternion(-0.844507, -0.0330264, -0.0381702, 0.53316)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0418872, -0.139163, 0.979771, -0.137582)
+bones/4/rotation = Quaternion(-0.0420521, -0.138661, 0.979891, -0.137182)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.430533, 0.0039003, -0.201227, 0.879849)
-bones/6/rotation = Quaternion(-0.849385, 0.0339806, 0.058839, 0.523381)
+bones/5/rotation = Quaternion(0.428899, 0.00390462, -0.200464, 0.880821)
+bones/6/rotation = Quaternion(-0.848497, 0.0343652, 0.0586733, 0.524814)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -174,7 +190,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999998, 0.00130674, -0.0012257, -0.00131763, 0.999959, -0.00892655, 0.00121399, 0.00892815, 0.999959, 0.00691336, 0.49366, -0.0120032)
+transform = Transform3D(0.999999, 0.00117154, -0.00104323, -0.00118217, 0.999947, -0.0102453, 0.00103117, 0.0102465, 0.999947, 0.00675206, 0.494248, -0.0114203)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25

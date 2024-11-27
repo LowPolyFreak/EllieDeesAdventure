@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dob5cm8rd66cr"]
+
+[ext_resource type="Material" uid="uid://igs7gluwfnn6" path="res://Material/Drawings/drawing_fuse.tres" id="1_ilucd"]
+[ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="2_naelv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rfhht"]
+
+[node name="DrawingFuse" type="Node3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_rfhht")
+surface_material_override/0 = ExtResource("1_ilucd")
+
+[node name="UVGlowCMPT" parent="Plane" node_paths=PackedStringArray("mesh_target") instance=ExtResource("2_naelv")]
+mesh_target = NodePath("..")
+fade_out_speed = 0.1

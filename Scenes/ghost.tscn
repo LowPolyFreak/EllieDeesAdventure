@@ -1,23 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdpxo5mey5nkd"]
+[gd_scene load_steps=20 format=3 uid="uid://bdpxo5mey5nkd"]
 
 [ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="1_abus7"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_xoyfn"]
-[ext_resource type="Material" uid="uid://bsk75yk8vkmgo" path="res://Material/uv_glow.tres" id="3_3j0od"]
 [ext_resource type="PackedScene" uid="uid://doqqud74nr01a" path="res://Scenes/patrol_component.tscn" id="3_xbbn4"]
 [ext_resource type="PackedScene" uid="uid://bixqbcx87c3cl" path="res://Scenes/chase_component.tscn" id="4_qcwxf"]
 [ext_resource type="Texture2D" uid="uid://db135dfjansp2" path="res://Textures/EyeExpressions.png" id="5_f8m4q"]
 [ext_resource type="AudioStream" uid="uid://dvj6s5ikdhxdo" path="res://Audio/SFX/MUSIC_EFFECT_Solo_Harp_Negative_15_stereo.wav" id="6_w0qnk"]
 [ext_resource type="AudioStream" uid="uid://ewrqvisa4don" path="res://Audio/SFX/ZOMBIE_Male_06_mono.wav" id="7_11sul"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_04c2o"]
-material = ExtResource("3_3j0od")
-radius = 1.0
-height = 2.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_q5mrn"]
-material = ExtResource("3_3j0od")
-radius = 1.0
-height = 2.0
+[ext_resource type="PackedScene" uid="uid://bnmqvhppe01hg" path="res://Models/Ghost.glb" id="9_gplii"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a8c50"]
 radius = 1.0
@@ -58,22 +48,79 @@ material = SubResource("StandardMaterial3D_1uiyr")
 flip_faces = true
 size = Vector2(1, 1)
 
+[sub_resource type="Animation" id="Animation_pnnqj"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ghost2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.268212, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ghost2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(-6.33724e-16, -1.5708, 0.0659385), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xdyuq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ghost2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ghost2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.33724e-16, -1.5708, 0.0659385)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpjdp"]
+_data = {
+"RESET": SubResource("Animation_xdyuq"),
+"idle": SubResource("Animation_pnnqj")
+}
+
 [node name="Ghost" type="Area3D"]
 script = ExtResource("1_xoyfn")
 
 [node name="UVGlowCMPT" parent="." node_paths=PackedStringArray("mesh_target") instance=ExtResource("1_abus7")]
-mesh_target = NodePath("../Placeholder")
+mesh_target = NodePath("../Ghost2/Ghost")
 
-[node name="Placeholder" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_04c2o")
+[node name="Ghost2" parent="." instance=ExtResource("9_gplii")]
+transform = Transform3D(-4.36164e-08, 2.88018e-09, -1, 0.0658908, 0.997827, 6.33724e-16, 0.997827, -0.0658908, -4.37114e-08, 0, 0, 0)
 
-[node name="UVGlowCMPT2" parent="." node_paths=PackedStringArray("mesh_target") instance=ExtResource("1_abus7")]
-mesh_target = NodePath("../Placeholder2")
-
-[node name="Placeholder2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.56856e-08, 0, -0.643422, 0, 0.37487, 0, 1.04517, 0, -2.81249e-08, 0.0545346, 0.984691, 0.671408)
-mesh = SubResource("SphereMesh_q5mrn")
+[node name="Ghost" parent="Ghost2" index="0"]
+transform = Transform3D(-0.495608, 0.0661282, -7.54979e-08, 0.0661282, 0.495608, 1.30008e-15, 7.48347e-08, -9.98508e-09, -0.5, 0, 1.20101, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -110,7 +157,7 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_31xhb")
 
 [node name="Eyes" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, -0.325156, 1.68233, -0.807048)
+transform = Transform3D(-0.795272, -4.85199e-09, -0.0888245, 0.0888245, -4.34413e-08, -0.795272, 3.05792e-15, -1, 3.49786e-08, -0.325156, 1.97439, -0.623094)
 visible = false
 mesh = SubResource("PlaneMesh_gair3")
 
@@ -126,7 +173,7 @@ light_energy = 10.0
 spot_range = 12.0
 
 [node name="Eyes2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, -0.325156, 1.68233, -0.783259)
+transform = Transform3D(-0.795272, -4.85199e-09, -0.0888245, 0.0888245, -4.34413e-08, -0.795272, 3.05792e-15, -1, 3.49786e-08, -0.325156, 1.97439, -0.599305)
 visible = false
 mesh = SubResource("PlaneMesh_1lkp8")
 
@@ -143,7 +190,15 @@ pitch_scale = 1.5
 [node name="AttackSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_11sul")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bpjdp")
+}
+autoplay = "idle"
+
 [connection signal="body_entered" from="WarningRange" to="." method="_on_warning_range_body_entered"]
 [connection signal="body_exited" from="WarningRange" to="." method="_on_warning_range_body_exited"]
 [connection signal="body_entered" from="ChaseRange" to="." method="_on_chase_range_body_entered"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+
+[editable path="Ghost2"]

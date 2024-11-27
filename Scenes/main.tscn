@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=36 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -12,8 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://b1ggird8nxsdx" path="res://Scenes/Drawings/drawing_face.tscn" id="6_okvvk"]
 [ext_resource type="PackedScene" uid="uid://bpq6npjirkduk" path="res://Scenes/solar_pannel_dee.tscn" id="6_wtyoi"]
 [ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="7_aqcey"]
+[ext_resource type="PackedScene" uid="uid://dob5cm8rd66cr" path="res://Scenes/Drawings/drawing_fuse.tscn" id="7_c5vi8"]
+[ext_resource type="PackedScene" uid="uid://dtlwxtmdv2jcv" path="res://Scenes/Drawings/drawing_danger.tscn" id="8_axv7d"]
 [ext_resource type="PackedScene" uid="uid://cm6g8i7fyfbro" path="res://Scenes/barrier_dee.tscn" id="8_ku7kt"]
 [ext_resource type="PackedScene" uid="uid://bdpxo5mey5nkd" path="res://Scenes/ghost.tscn" id="9_4mx7m"]
+[ext_resource type="PackedScene" uid="uid://codv6xsx08l07" path="res://Scenes/Drawings/drawing_safe.tscn" id="9_h2xd3"]
 [ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="10_p4jaq"]
 [ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="11_3lmyk"]
 [ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="12_y6hrj"]
@@ -181,6 +184,16 @@ transform = Transform3D(-0.390603, 0, 0.920559, 0, 1, 0, -0.920559, 0, -0.390603
 [node name="DrawingFace" parent="BG/Drawings" instance=ExtResource("6_okvvk")]
 transform = Transform3D(1.62793, 0, -0.0956905, 0, 1, 0, 0.0956905, 0, 1.62793, -2.12231, 9.53674e-07, 14.1361)
 
+[node name="DrawingFuse" parent="BG/Drawings" instance=ExtResource("7_c5vi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5454, 0, 7.66532)
+
+[node name="DrawingDanger" parent="BG/Drawings" instance=ExtResource("8_axv7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9477, 0, -8.98041)
+
+[node name="DrawingSafe" parent="BG/Drawings" instance=ExtResource("9_h2xd3")]
+transform = Transform3D(2.16372, 0, 2.06698, 0, 1, 0, -2.06698, 0, 2.16372, 1.97478, 0.980011, -9.51912)
+metadata/_edit_group_ = true
+
 [node name="Collectibles" type="Node3D" parent="." groups=["CollectibleCtn"]]
 
 [node name="Fuse" parent="Collectibles" instance=ExtResource("2_dthhh")]
@@ -246,7 +259,10 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, 9.14868)
 
-[node name="PatrolComponent" parent="Ghost" index="5" node_paths=PackedStringArray("patrol_points")]
+[node name="Ghost2" parent="Ghost" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="PatrolComponent" parent="Ghost" index="3" node_paths=PackedStringArray("patrol_points")]
 patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
 
 [node name="Patrol_Points" type="Node" parent="."]
@@ -341,3 +357,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
 
 [editable path="Ghost"]
+[editable path="Ghost/Ghost2"]

@@ -172,9 +172,9 @@ func _physics_process(delta):
 	
 	bulb.scale = lerp(bulb.scale, original_size, delta * 15)
 	
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+	## Handle jump.
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#get_tree().quit()
 		
 	flicker_modifier = lerpf(flicker_modifier, 1.0, delta * 2)
 

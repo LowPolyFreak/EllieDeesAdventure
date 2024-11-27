@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=37 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="14_534f6"]
 [ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="14_buplp"]
 [ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="19_ciopk"]
+[ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="23_3eyfb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -38,7 +39,7 @@ ambient_light_source = 2
 ambient_light_color = Color(0.58, 0.685, 1, 1)
 ambient_light_energy = 0.02
 glow_enabled = true
-glow_intensity = 0.56
+glow_intensity = 1.0
 glow_bloom = 0.9
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.1
@@ -115,6 +116,24 @@ stream = ExtResource("3_pqcxk")
 volume_db = -80.0
 autoplay = true
 
+[node name="Drawings" type="Node3D" parent="."]
+
+[node name="DrawingArrow" parent="Drawings" instance=ExtResource("19_ciopk")]
+transform = Transform3D(-0.99904, 0, -0.0437943, 0, 1, 0, 0.0437943, 0, -0.99904, -6.68046, 0, 5.03568)
+
+[node name="DrawingFace" parent="Drawings" instance=ExtResource("6_okvvk")]
+transform = Transform3D(0.659275, 0, 1.49153, 0, 1, 0, -1.49153, 0, 0.659275, -4.14068, 9.53674e-07, 2.64731)
+
+[node name="DrawingFuse" parent="Drawings" instance=ExtResource("7_c5vi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5454, 0, 7.66532)
+
+[node name="DrawingDanger" parent="Drawings" instance=ExtResource("8_axv7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9477, 0, -8.98041)
+
+[node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_h2xd3")]
+transform = Transform3D(2.16372, 0, 2.06698, 0, 1, 0, -2.06698, 0, 2.16372, 1.97478, 0.980011, -9.51912)
+metadata/_edit_group_ = true
+
 [node name="BG" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="BG"]
@@ -175,24 +194,6 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BG/Block2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ts4oa")
-
-[node name="Drawings" type="Node3D" parent="BG"]
-
-[node name="DrawingArrow" parent="BG/Drawings" instance=ExtResource("19_ciopk")]
-transform = Transform3D(-0.390603, 0, 0.920559, 0, 1, 0, -0.920559, 0, -0.390603, -5.24839, 0, 12.5926)
-
-[node name="DrawingFace" parent="BG/Drawings" instance=ExtResource("6_okvvk")]
-transform = Transform3D(1.62793, 0, -0.0956905, 0, 1, 0, 0.0956905, 0, 1.62793, -2.12231, 9.53674e-07, 14.1361)
-
-[node name="DrawingFuse" parent="BG/Drawings" instance=ExtResource("7_c5vi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5454, 0, 7.66532)
-
-[node name="DrawingDanger" parent="BG/Drawings" instance=ExtResource("8_axv7d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9477, 0, -8.98041)
-
-[node name="DrawingSafe" parent="BG/Drawings" instance=ExtResource("9_h2xd3")]
-transform = Transform3D(2.16372, 0, 2.06698, 0, 1, 0, -2.06698, 0, 2.16372, 1.97478, 0.980011, -9.51912)
-metadata/_edit_group_ = true
 
 [node name="Collectibles" type="Node3D" parent="." groups=["CollectibleCtn"]]
 
@@ -258,9 +259,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 
 [node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, 9.14868)
-
-[node name="Ghost2" parent="Ghost" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="PatrolComponent" parent="Ghost" index="3" node_paths=PackedStringArray("patrol_points")]
 patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
@@ -350,6 +348,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Pause" parent="UI" instance=ExtResource("23_3eyfb")]
+layout_mode = 1
 
 [node name="DeathZone" parent="." instance=ExtResource("14_buplp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)

@@ -1,17 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://codv6xsx08l07"]
+[gd_scene load_steps=4 format=3 uid="uid://mhy6salkggua"]
 
-[ext_resource type="Material" uid="uid://bwoeh8ojxas1k" path="res://Material/Drawings/drawing_safe.tres" id="1_840rk"]
-[ext_resource type="PackedScene" uid="uid://3ohppoh2dwi" path="res://Scenes/uv_glow_cmpt.tscn" id="2_pnxan"]
+[ext_resource type="Texture2D" uid="uid://40ycete53scq" path="res://Textures/Drawings/DrawingSafe.PNG" id="1_0qo48"]
+[ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="1_s077c"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_rfhht"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0tv3"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_0qo48")
+emission_enabled = true
+emission = Color(0, 1, 0.686275, 1)
 
-[node name="DrawingSafe" type="Node3D"]
+[node name="DrawingSafe" instance=ExtResource("1_s077c")]
 
-[node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-mesh = SubResource("PlaneMesh_rfhht")
-surface_material_override/0 = ExtResource("1_840rk")
-
-[node name="UVGlowCMPT" parent="Plane" node_paths=PackedStringArray("mesh_target") instance=ExtResource("2_pnxan")]
-mesh_target = NodePath("..")
-fade_out_speed = 0.1
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s0tv3")

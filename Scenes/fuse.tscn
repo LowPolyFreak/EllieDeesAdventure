@@ -81,7 +81,7 @@ light_energy = 0.2
 omni_range = 2.5
 
 [node name="Center" type="Node3D" parent="."]
-transform = Transform3D(-0.594176, -0.173721, -0.785351, -0.280625, 0.959817, 1.59991e-08, 0.753794, 0.220389, -0.619051, 0, 0.76047, 0)
+transform = Transform3D(-0.594176, -0.173721, -0.785351, -0.280625, 0.959817, 1.46658e-08, 0.753794, 0.220389, -0.619051, 0, 0.76047, 0)
 
 [node name="Fuse2" parent="Center" instance=ExtResource("1_h4op5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.413927, 0)

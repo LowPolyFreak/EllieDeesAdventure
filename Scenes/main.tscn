@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=38 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://b1ggird8nxsdx" path="res://Scenes/Drawings/drawing_face.tscn" id="6_okvvk"]
 [ext_resource type="PackedScene" uid="uid://bpq6npjirkduk" path="res://Scenes/solar_pannel_dee.tscn" id="6_wtyoi"]
 [ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="7_aqcey"]
-[ext_resource type="PackedScene" uid="uid://dob5cm8rd66cr" path="res://Scenes/Drawings/drawing_fuse.tscn" id="7_c5vi8"]
-[ext_resource type="PackedScene" uid="uid://dtlwxtmdv2jcv" path="res://Scenes/Drawings/drawing_danger.tscn" id="8_axv7d"]
+[ext_resource type="PackedScene" uid="uid://dtxo3il1jjask" path="res://Scenes/Drawings/drawing_fuse.tscn" id="7_c5vi8"]
+[ext_resource type="PackedScene" uid="uid://brw33pq6jgcxc" path="res://Scenes/Drawings/drawing_danger.tscn" id="8_axv7d"]
 [ext_resource type="PackedScene" uid="uid://cm6g8i7fyfbro" path="res://Scenes/barrier_dee.tscn" id="8_ku7kt"]
 [ext_resource type="PackedScene" uid="uid://bdpxo5mey5nkd" path="res://Scenes/ghost.tscn" id="9_4mx7m"]
-[ext_resource type="PackedScene" uid="uid://codv6xsx08l07" path="res://Scenes/Drawings/drawing_safe.tscn" id="9_h2xd3"]
+[ext_resource type="PackedScene" uid="uid://mhy6salkggua" path="res://Scenes/Drawings/drawing_safe.tscn" id="9_h2xd3"]
 [ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="10_p4jaq"]
 [ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="11_3lmyk"]
 [ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="12_y6hrj"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="14_buplp"]
 [ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="19_ciopk"]
 [ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="23_3eyfb"]
+[ext_resource type="PackedScene" uid="uid://rcc5cxqh367o" path="res://Scenes/UI/victory.tscn" id="24_1dve0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -124,15 +125,14 @@ transform = Transform3D(-0.99904, 0, -0.0437943, 0, 1, 0, 0.0437943, 0, -0.99904
 [node name="DrawingFace" parent="Drawings" instance=ExtResource("6_okvvk")]
 transform = Transform3D(0.659275, 0, 1.49153, 0, 1, 0, -1.49153, 0, 0.659275, -4.14068, 9.53674e-07, 2.64731)
 
-[node name="DrawingFuse" parent="Drawings" instance=ExtResource("7_c5vi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5454, 0, 7.66532)
-
 [node name="DrawingDanger" parent="Drawings" instance=ExtResource("8_axv7d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9477, 0, -8.98041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38908, 0, 1.47695)
+
+[node name="DrawingFuse" parent="Drawings" instance=ExtResource("7_c5vi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1339, 0, 6.51172)
 
 [node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_h2xd3")]
-transform = Transform3D(2.16372, 0, 2.06698, 0, 1, 0, -2.06698, 0, 2.16372, 1.97478, 0.980011, -9.51912)
-metadata/_edit_group_ = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495584, 0.980856, -9.13796)
 
 [node name="BG" type="Node3D" parent="."]
 
@@ -304,6 +304,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/FuseBar"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -350,6 +351,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Pause" parent="UI" instance=ExtResource("23_3eyfb")]
+layout_mode = 1
+
+[node name="Victory" parent="UI" instance=ExtResource("24_1dve0")]
+visible = false
 layout_mode = 1
 
 [node name="DeathZone" parent="." instance=ExtResource("14_buplp")]

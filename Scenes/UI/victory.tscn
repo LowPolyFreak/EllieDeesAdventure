@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://rcc5cxqh367o"]
+
+[ext_resource type="Script" path="res://Scripts/victory.gd" id="1_bwtmp"]
+[ext_resource type="Shader" path="res://Shaders/pause_blur.gdshader" id="2_n7s6n"]
+[ext_resource type="AudioStream" uid="uid://lvv5h47fd2ru" path="res://Audio/SFX/PUZZLE_Success_Bell_Voice_Three_Note_Climb_Wet_stereo.wav" id="3_yy0yq"]
+
+[sub_resource type="Theme" id="Theme_5lwup"]
+default_font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nj16r"]
+shader = ExtResource("2_n7s6n")
+shader_parameter/lod = 2.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wm0k3"]
+
+[node name="Victory" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5lwup")
+script = ExtResource("1_bwtmp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.192157)
+
+[node name="BGBlur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nj16r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_wm0k3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Level Complete!"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Next Level"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Quit
+"
+
+[node name="VictorySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yy0yq")
+volume_db = -10.0
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

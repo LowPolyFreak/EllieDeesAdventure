@@ -26,7 +26,7 @@ func _process(_delta):
 func pause():
 	get_tree().paused = true
 	visible = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	paused.emit(is_paused)
 
 
@@ -34,7 +34,7 @@ func _on_resume_button_pressed():
 	is_paused = false
 	get_tree().paused = false
 	visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	paused.emit(is_paused)
 
 func _on_quit_button_pressed():

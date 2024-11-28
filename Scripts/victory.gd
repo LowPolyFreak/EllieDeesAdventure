@@ -18,5 +18,6 @@ func _on_quit_button_pressed():
 
 
 func _on_next_button_pressed():
+	Globals.fuse_collected = 0
 	get_tree().paused = false
 	get_tree().call_deferred("reload_current_scene")

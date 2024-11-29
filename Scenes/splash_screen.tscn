@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bla7ws4q4tobu"]
+[gd_scene load_steps=20 format=4 uid="uid://bla7ws4q4tobu"]
 
 [ext_resource type="Script" path="res://Scripts/splash_screen.gd" id="1_e1ga0"]
 [ext_resource type="Texture2D" uid="uid://dmaqef10v7mpa" path="res://Textures/EllieDee_Splash.png" id="1_pq6o8"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://cyk38prcwxmsl" path="res://Material/color_palette_emmisive.tres" id="3_bql2h"]
 [ext_resource type="Material" uid="uid://cg6chtjeruuse" path="res://Material/bulb_uv.tres" id="4_r7181"]
 [ext_resource type="Material" uid="uid://2h3b33af6q2v" path="res://Material/eyes.tres" id="5_sij54"]
+[ext_resource type="FontFile" uid="uid://ckyyl24ai28x8" path="res://Textures/Bangers-Regular.ttf" id="7_f0yv8"]
+[ext_resource type="Texture2D" uid="uid://cxhjf3etji00d" path="res://Textures/Buttons/keyboard_f_outline.png" id="7_kbxm1"]
+[ext_resource type="Texture2D" uid="uid://20hk3p45jyn1" path="res://Textures/Buttons/xbox_button_back_outline.png" id="8_pc240"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5pa4r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -195,7 +198,6 @@ bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
 bones/8/rotation = Quaternion(0.09592, 0.695135, 0.700571, -0.129567)
 bones/9/position = Vector3(0.187498, 0.245262, -0.282433)
-bones/9/rotation = Quaternion(0.0665028, -0.703973, 0.703973, -0.0665028)
 bones/10/position = Vector3(0.170884, 0.0506439, 0.0332276)
 bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 
@@ -224,7 +226,6 @@ bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
 bones/8/rotation = Quaternion(0.09592, 0.695135, 0.700571, -0.129567)
 bones/9/position = Vector3(0.187498, 0.245262, -0.282433)
-bones/9/rotation = Quaternion(0.0665028, -0.703973, 0.703973, -0.0665028)
 bones/10/position = Vector3(0.170884, 0.0506439, 0.0332276)
 bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 
@@ -241,24 +242,15 @@ mesh = SubResource("ArrayMesh_ibxmx")
 [node name="AnimationPlayer" parent="EllieModel2" index="1"]
 autoplay = "idle"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-clip_contents = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="MarginContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 8.0
+offset_right = 99.0
+offset_bottom = 25.0
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 12
-text = "F: Fullscreen
-"
+theme_override_fonts/font = ExtResource("7_f0yv8")
+theme_override_font_sizes/font_size = 15
+text = "    Fullscreen"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 163.0
@@ -268,14 +260,26 @@ offset_bottom = 233.785
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f0yv8")
 theme_override_font_sizes/font_size = 15
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f0yv8")
 theme_override_font_sizes/font_size = 15
 text = "Quit
 "
+
+[node name="KeyboardFOutline" type="Sprite2D" parent="."]
+position = Vector2(17.5, 16)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("7_kbxm1")
+
+[node name="XboxButtonBackOutline" type="Sprite2D" parent="."]
+position = Vector2(17.5, 35)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("8_pc240")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

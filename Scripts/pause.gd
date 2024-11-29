@@ -5,6 +5,10 @@ var fullscreen = DisplayServer.window_get_mode()
 
 signal paused(value)
 
+func _ready():
+	if OS.get_name() == "Web":
+		$MarginContainer/CenterContainer/VBoxContainer/QuitButton.hide()
+
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		is_paused = !is_paused
@@ -26,6 +30,7 @@ func _process(_delta):
 func pause():
 	get_tree().paused = true
 	visible = true
+	$MarginContainer/CenterContainer/VBoxContainer/ResumeButton.grab_focus()
 	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	paused.emit(is_paused)
 

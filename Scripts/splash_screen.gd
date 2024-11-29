@@ -4,8 +4,14 @@ var fullscreen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$VBoxContainer/StartButton.grab_focus()
+	if OS.get_name() == "Web":
+		$VBoxContainer/QuitButton.hide()
 
+#func _input(ev):
+	#if ev is InputEvent :
+		#(print(ev))
+		#$MarginContainer/Debug.text = str(ev)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Fullscreen"):

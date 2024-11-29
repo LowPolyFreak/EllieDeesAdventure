@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://rcc5cxqh367o"]
+[gd_scene load_steps=8 format=3 uid="uid://rcc5cxqh367o"]
 
 [ext_resource type="Script" path="res://Scripts/victory.gd" id="1_bwtmp"]
 [ext_resource type="Shader" path="res://Shaders/pause_blur.gdshader" id="2_n7s6n"]
+[ext_resource type="FontFile" uid="uid://ckyyl24ai28x8" path="res://Textures/Bangers-Regular.ttf" id="3_eudcx"]
 [ext_resource type="AudioStream" uid="uid://lvv5h47fd2ru" path="res://Audio/SFX/PUZZLE_Success_Bell_Voice_Three_Note_Climb_Wet_stereo.wav" id="3_yy0yq"]
 
 [sub_resource type="Theme" id="Theme_5lwup"]
@@ -65,7 +66,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_eudcx")
+theme_override_font_sizes/font_size = 30
 text = "Level Complete!"
 horizontal_alignment = 1
 
@@ -75,11 +77,13 @@ horizontal_alignment = 1
 
 [node name="NextButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_eudcx")
 theme_override_font_sizes/font_size = 15
 text = "Next Level"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_eudcx")
 theme_override_font_sizes/font_size = 15
 text = "Quit
 "

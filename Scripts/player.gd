@@ -177,6 +177,7 @@ func _physics_process(delta):
 		#get_tree().quit()
 		
 	flicker_modifier = lerpf(flicker_modifier, 1.0, delta * 2)
+	
 
 
 func _unhandled_input(event: InputEvent):
@@ -195,11 +196,12 @@ func _unhandled_input(event: InputEvent):
 				glowing = false
 				glowing_ended.emit(player_1)
 		if !player_1:
-			
 			if event.is_action_pressed("interact"):
 				if global_position.distance_to(first_player.global_position) < 2.5:
 					is_following = true
-		
+					$JoinBtns.hide()
+
+
 func _on_battery_drain_timer_timeout() -> void:
 	battery -= 0.025
 	if battery <= 0:
@@ -273,3 +275,12 @@ func death():
 	#battery = 1.0
 	#Globals.player_dead = false
 	#ellie_model.show()
+
+
+func _on_join_detection_ui_radius_body_entered(_body):
+	if !is_following and !player_1:
+		$JoinBtns.show()
+
+
+func _on_join_detection_ui_radius_body_exited(_body):
+	$JoinBtns.hide()

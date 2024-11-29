@@ -24,7 +24,7 @@ var in_combat: int:
 	set(value):
 		in_combat = value
 		player_in_combat.emit(bool(in_combat > 1))
-	
+
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():

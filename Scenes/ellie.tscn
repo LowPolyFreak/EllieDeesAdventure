@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://csgj0877gbjpp"]
+[gd_scene load_steps=26 format=4 uid="uid://csgj0877gbjpp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_frd3r"]
 [ext_resource type="AudioStream" uid="uid://bs1jsf7tmp4ci" path="res://Audio/SFX/VOICE_Boy_6yo_Scream_05_mono.wav" id="2_8yxa2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://db135dfjansp2" path="res://Textures/EyeExpressions.png" id="5_oxu16"]
 [ext_resource type="AudioStream" uid="uid://4nsgqu8v4htq" path="res://Audio/SFX/ELECTRICITY_Subtle_loop_mono.wav" id="6_fmm6b"]
 [ext_resource type="PackedScene" uid="uid://dcqfo2i68pyr" path="res://Scenes/battery_bar_3d.tscn" id="6_hhy37"]
+[ext_resource type="Texture2D" uid="uid://c2t26jgqdrx00" path="res://Textures/JoinBtns.png" id="12_0sct7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w0xbe"]
 
@@ -127,6 +128,9 @@ border_color = Color(0.28485, 0.28485, 0.28485, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5hld"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_uyls0"]
+radius = 2.5
+
 [node name="Ellie" type="CharacterBody3D" groups=["Bulbs"]]
 collision_layer = 6
 collision_mask = 37
@@ -167,17 +171,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0104541, 0.480748, -0.0247981)
-bones/0/rotation = Quaternion(-0.0410745, -0.00375092, -0.00166246, 0.999148)
-bones/1/rotation = Quaternion(0.0639681, -0.185733, 0.965711, 0.169746)
+bones/0/position = Vector3(0.00727239, 0.492351, -0.0133006)
+bones/0/rotation = Quaternion(-0.00581426, -0.00127764, -0.000838249, 0.999982)
+bones/1/rotation = Quaternion(0.0540862, -0.147868, 0.975135, 0.155955)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.464258, -0.00380655, 0.21699, 0.8587)
-bones/3/rotation = Quaternion(-0.864271, -0.0208549, -0.0311157, 0.501629)
+bones/2/rotation = Quaternion(0.430177, -0.00390125, 0.201061, 0.880061)
+bones/3/rotation = Quaternion(-0.84733, -0.0313376, -0.0374391, 0.528818)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0417082, -0.19414, 0.969475, -0.143838)
+bones/4/rotation = Quaternion(-0.0422709, -0.151847, 0.977785, -0.138176)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.473056, 0.00378051, -0.221102, 0.852829)
-bones/6/rotation = Quaternion(-0.869804, 0.0242307, 0.0647694, 0.488527)
+bones/5/rotation = Quaternion(0.435978, 0.00388579, -0.203772, 0.876576)
+bones/6/rotation = Quaternion(-0.85153, 0.0328449, 0.0598154, 0.519846)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -190,7 +194,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999966, 0.00363022, -0.00735888, -0.00301395, 0.99662, 0.0820915, 0.00763202, -0.0820665, 0.996598, 0.0104541, 0.480748, -0.0247981)
+transform = Transform3D(0.999995, 0.00169132, -0.00254549, -0.00166161, 0.999931, 0.0116305, 0.00256498, -0.0116262, 0.999929, 0.00727239, 0.492351, -0.0133006)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25
@@ -245,10 +249,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22497, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_s5hld")
 
+[node name="JoinBtns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63813, 0)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="JoinBtns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397139, 0)
+billboard = 1
+texture = ExtResource("12_0sct7")
+
+[node name="JoinDetectionUIRadius" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JoinDetectionUIRadius"]
+shape = SubResource("SphereShape3D_uyls0")
+
 [connection signal="timeout" from="Timers/BatteryDrainTimer" to="." method="_on_battery_drain_timer_timeout"]
 [connection signal="timeout" from="Timers/BatteryChargeTimer" to="." method="_on_battery_charge_timer_timeout"]
 [connection signal="timeout" from="Timers/BurnoutTimer" to="." method="_on_burnout_timer_timeout"]
 [connection signal="timeout" from="Timers/FlickerTimer" to="." method="_on_flicker_timer_timeout"]
 [connection signal="timeout" from="SubViewport/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]
+[connection signal="body_entered" from="JoinDetectionUIRadius" to="." method="_on_join_detection_ui_radius_body_entered"]
+[connection signal="body_exited" from="JoinDetectionUIRadius" to="." method="_on_join_detection_ui_radius_body_exited"]
 
 [editable path="EllieModel"]

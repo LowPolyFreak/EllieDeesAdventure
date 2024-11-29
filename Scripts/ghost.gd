@@ -20,7 +20,7 @@ func _on_chase_range_body_entered(body: Node3D) -> void:
 	if body is Player and !chasing:
 		Globals.in_combat += 1
 		$Chords.play()
-		$AttackSFX.play()
+		#$AttackSFX.play()
 		eyes.show()
 		eyes_2.show()
 		chasing = true

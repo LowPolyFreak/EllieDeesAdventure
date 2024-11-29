@@ -253,10 +253,10 @@ func death():
 		dead_vfx.global_position = global_position
 		dead_vfx.emitting = true
 		Globals.player_dead = true
-		if player_1:
-			$Dead_Scream_Ellie.play()
-		else:
-			$Dead_Scream_Dee.play()
+		#if player_1:
+			#$Dead_Scream_Ellie.play()
+		#else:
+			#$Dead_Scream_Dee.play()
 	await get_tree().create_timer(1).timeout
 	
 	if !player_1:

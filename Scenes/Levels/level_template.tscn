@@ -31,6 +31,14 @@ script = ExtResource("1_ol1si")
 
 [node name="ImportantStuff" parent="." instance=ExtResource("2_8isee")]
 
+[node name="Collectibles" type="Node" parent="." groups=["CollectibleCtn"]]
+
+[node name="Fuse" parent="Collectibles" instance=ExtResource("13_v3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0094, 4.76837e-07, 1.58887)
+
+[node name="Fuse2" parent="Collectibles" instance=ExtResource("13_v3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1506, 4.76837e-07, 3.83516)
+
 [node name="Geometry" type="Node" parent="."]
 
 [node name="PlaceholderBlock" type="MeshInstance3D" parent="Geometry"]
@@ -83,14 +91,6 @@ transform = Transform3D(2, 0, 0, 0, 0.863, 0, 0, 0, 2, -3.91704, 0, -14.0011)
 
 [node name="DrawingQuestion" parent="Drawings" instance=ExtResource("10_dmnhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3925, -0.000606418, -13.9765)
-
-[node name="Collectibles" type="Node" parent="." groups=["CollectibleCtn"]]
-
-[node name="Fuse" parent="Collectibles" instance=ExtResource("13_v3wbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0094, 4.76837e-07, 1.58887)
-
-[node name="Fuse2" parent="Collectibles" instance=ExtResource("13_v3wbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1506, 4.76837e-07, 3.83516)
 
 [node name="GameplayIngredients" type="Node" parent="."]
 

@@ -3,7 +3,7 @@ extends HBoxContainer
 const FUSE_COLLECTED = preload("res://Scenes/UI/fuse_collected.tscn")
 const FUSE_NOT_COLLECTED = preload("res://Scenes/UI/fuse_not_collected.tscn")
 
-var collectible_ctn: Node3D 
+var collectible_ctn: Node
 var total_fuses: int
 
 @onready var fuse_bar = $".."

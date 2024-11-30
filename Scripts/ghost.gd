@@ -3,6 +3,11 @@ class_name Enemy
 
 const GHOST_VANISH_VFX_0 = preload("res://VFX/ghost_vanish_vfx_0.tscn")
 
+@export var chase_on_start = false
+@export var patrol_on_start = true
+@export var patrol_points: Array[Node3D]
+
+
 @onready var patrol_component: PatrolComponent = $PatrolComponent
 @onready var chase_component: ChaseComponent = $ChaseComponent
 @onready var eyes: MeshInstance3D = $Eyes
@@ -14,6 +19,9 @@ var starting_position: Vector3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	starting_position = global_position
+	patrol_component.enable_on_load = chase_on_start
+	patrol_component.patrol_points = patrol_points
+	chase_component.enable_on_load = chase_on_start
 
 
 func _on_chase_range_body_entered(body: Node3D) -> void:

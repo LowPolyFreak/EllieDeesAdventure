@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://wo5vxaghdcsj"]
+[gd_scene load_steps=36 format=3 uid="uid://wo5vxaghdcsj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ol1si"]
 [ext_resource type="Script" path="res://Scripts/bgm.gd" id="2_hn7yd"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bmvm5axb2vbpd" path="res://Scenes/fuse.tscn" id="13_v3wbg"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="14_rplaq"]
 [ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="15_kibyr"]
+[ext_resource type="Material" uid="uid://lvy1csdad4y6" path="res://Material/metal.tres" id="15_yw2fp"]
 [ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="16_6invq"]
 [ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="17_uuqb1"]
 [ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="18_xi3pd"]
@@ -27,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="25_52pje"]
 [ext_resource type="PackedScene" uid="uid://rcc5cxqh367o" path="res://Scenes/UI/victory.tscn" id="26_gfxdc"]
 [ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="27_ssahs"]
+[ext_resource type="PackedScene" uid="uid://bpq6npjirkduk" path="res://Scenes/solar_pannel_dee.tscn" id="28_cxth0"]
 [ext_resource type="PackedScene" uid="uid://fyu8li37swhp" path="res://Scenes/seeker.tscn" id="28_ehnnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
@@ -48,224 +50,47 @@ glow_bloom = 0.7
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxdew"]
-albedo_color = Color(0.567887, 0.479152, 0.351168, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_3xmyv"]
-material = SubResource("StandardMaterial3D_sxdew")
-size = Vector2(50, 50)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ea5o8"]
-data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
-
 [sub_resource type="BoxMesh" id="BoxMesh_ocupg"]
+material = ExtResource("15_yw2fp")
 size = Vector3(5, 2, 5)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ts4oa"]
 data = PackedVector3Array(-2.5, 1, 2.5, 2.5, 1, 2.5, -2.5, -1, 2.5, 2.5, 1, 2.5, 2.5, -1, 2.5, -2.5, -1, 2.5, 2.5, 1, -2.5, -2.5, 1, -2.5, 2.5, -1, -2.5, -2.5, 1, -2.5, -2.5, -1, -2.5, 2.5, -1, -2.5, 2.5, 1, 2.5, 2.5, 1, -2.5, 2.5, -1, 2.5, 2.5, 1, -2.5, 2.5, -1, -2.5, 2.5, -1, 2.5, -2.5, 1, -2.5, -2.5, 1, 2.5, -2.5, -1, -2.5, -2.5, 1, 2.5, -2.5, -1, 2.5, -2.5, -1, -2.5, 2.5, 1, 2.5, -2.5, 1, 2.5, 2.5, 1, -2.5, -2.5, 1, 2.5, -2.5, 1, -2.5, 2.5, 1, -2.5, -2.5, -1, 2.5, 2.5, -1, 2.5, -2.5, -1, -2.5, 2.5, -1, 2.5, 2.5, -1, -2.5, -2.5, -1, -2.5)
 
-[node name="Main" type="Node3D" groups=["Main"]]
+[node name="LevelTemplate" type="Node3D" groups=["Main"]]
 script = ExtResource("1_ol1si")
 
-[node name="BGM" type="Node" parent="." groups=["AUdio_Manager"]]
-script = ExtResource("2_hn7yd")
+[node name="ImportantStuff" type="Node" parent="."]
 
-[node name="BGM_Idle" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("3_u8p43")
-volume_db = -10.0
-autoplay = true
-
-[node name="BGM_Intense" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("4_wck6k")
-volume_db = -80.0
-autoplay = true
-
-[node name="Drawings" type="Node3D" parent="."]
-
-[node name="DrawingArrow" parent="Drawings" instance=ExtResource("5_q65vc")]
-transform = Transform3D(-0.99904, 0, -0.0437943, 0, 1, 0, 0.0437943, 0, -0.99904, -6.68046, 0, 5.03568)
-
-[node name="DrawingFace" parent="Drawings" instance=ExtResource("6_wkryk")]
-transform = Transform3D(0.659275, 0, 1.49153, 0, 1, 0, -1.49153, 0, 0.659275, -4.14068, 9.53674e-07, 2.64731)
-
-[node name="DrawingDanger" parent="Drawings" instance=ExtResource("7_mnpuv")]
-transform = Transform3D(1.7865, 0, 0.151681, 0, 1, 0, -0.151681, 0, 1.7865, 28.8531, -9.53674e-07, -0.710405)
-
-[node name="DrawingFuse" parent="Drawings" instance=ExtResource("8_6rs0h")]
-transform = Transform3D(1.54621, 0, -0.892704, 0, 1, 0, 0.892704, 0, 1.54621, 23.3911, 0, 3.68839)
-
-[node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_i8m51")]
-transform = Transform3D(2, 0, 0, 0, 0.863, 0, 0, 0, 2, 0.495584, 0.980856, -9.13796)
-
-[node name="DrawingQuestion" parent="Drawings" instance=ExtResource("10_dmnhr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60376, -0.000606418, -0.897355)
-
-[node name="BG" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="BG"]
-environment = SubResource("Environment_oxfxs")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="BG"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-light_energy = 0.0
-shadow_enabled = true
-
-[node name="Floor" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(1.13848, 0, 0, 0, 1, 0, 0, 0, 2.29232, 0, 0, 0)
-visible = false
-mesh = SubResource("PlaneMesh_3xmyv")
-skeleton = NodePath("../..")
-metadata/_edit_group_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="BG/Floor"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BG/Floor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ea5o8")
-
-[node name="Block" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(0.860466, 0, 0.509507, 0, 1, 0, -0.509507, 0, 0.860466, -8.04246, 1, -6.99077)
-mesh = SubResource("BoxMesh_ocupg")
-metadata/_edit_group_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="BG/Block"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BG/Block/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ts4oa")
-
-[node name="Block2" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(0.864617, 0, 0.502432, 0, 1, 0, -0.502432, 0, 0.864617, 1.16115, -0.0191437, -9.80696)
-mesh = SubResource("BoxMesh_ocupg")
-metadata/_edit_group_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="BG/Block2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BG/Block2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ts4oa")
-
-[node name="Wood_Plank_0_0" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.67923, 0, 12.23)
-
-[node name="Wood_Plank_0_1" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, 18.2594)
-
-[node name="Wood_Plank_1_0" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, 5.31203)
-
-[node name="Wood_Plank_1_1" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.72853, 0, -0.0353532)
-
-[node name="Wood_Plank_0_2" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.67923, 0, 49.2475)
-
-[node name="Wood_Plank_0_3" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, 55.277)
-
-[node name="Wood_Plank_1_2" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, 42.3296)
-
-[node name="Wood_Plank_1_3" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.72853, 0, 36.9822)
-
-[node name="Wood_Plank_0_4" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.67923, 0, -25.0644)
-
-[node name="Wood_Plank_0_5" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, -19.035)
-
-[node name="Wood_Plank_1_4" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, -31.9823)
-
-[node name="Wood_Plank_1_5" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.72853, 0, -37.3297)
-
-[node name="Wood_Plank_0_6" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, -25.6524, 0, -0.60763)
-
-[node name="Wood_Plank_0_7" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-1.30874e-07, 0, 3.28709, 0, 3.43978, 0, -2.99405, 0, -1.43683e-07, -24.9576, 0, 8.40383)
-
-[node name="Wood_Plank_1_6" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, -25.7544, 0, 4.0716)
-
-[node name="Wood_Plank_0_8" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 28.8682, 0, -0.591274)
-
-[node name="Wood_Plank_0_9" parent="BG" instance=ExtResource("11_d8clv")]
-transform = Transform3D(-1.30874e-07, 0, 3.28709, 0, 3.43978, 0, -2.99405, 0, -1.43683e-07, 29.6866, 0, 8.42018)
-
-[node name="Wood_Plank_1_8" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 29.6104, 0, 4.08796)
-
-[node name="Wood_Plank_1_9" parent="BG" instance=ExtResource("12_h3aqg")]
-transform = Transform3D(3.81044e-07, -0.829186, 3.19015, 9.46448e-08, 3.33834, 0.792379, -2.99405, 0, 4.3105e-07, 11.6979, 0, 12.8165)
-
-[node name="Collectibles" type="Node3D" parent="." groups=["CollectibleCtn"]]
-
-[node name="Fuse" parent="Collectibles" instance=ExtResource("13_v3wbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0094, 4.76837e-07, 1.58887)
-
-[node name="Fuse2" parent="Collectibles" instance=ExtResource("13_v3wbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.4673, 4.76837e-07, 3.5592)
-
-[node name="Ellie" parent="." instance=ExtResource("14_rplaq")]
+[node name="Ellie" parent="ImportantStuff" instance=ExtResource("14_rplaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142994, 0, -1.2378)
+metadata/_edit_lock_ = true
 
-[node name="Dee" parent="." instance=ExtResource("15_kibyr")]
+[node name="Dee" parent="ImportantStuff" instance=ExtResource("15_kibyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195843, 9.53674e-07, 0.0116072)
+metadata/_edit_lock_ = true
 
-[node name="CameraFollow" type="Node3D" parent="." groups=["CameraFollow"]]
+[node name="CameraFollow" type="Node3D" parent="ImportantStuff" groups=["CameraFollow"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("16_6invq")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="Camera3D" type="Camera3D" parent="CameraFollow"]
+[node name="Camera3D" type="Camera3D" parent="ImportantStuff/CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97469, 9.24263)
 current = true
 
-[node name="UpdateTimer" type="Timer" parent="CameraFollow"]
+[node name="UpdateTimer" type="Timer" parent="ImportantStuff/CameraFollow"]
 wait_time = 0.25
 autostart = true
 
-[node name="ZoomIn" type="Marker3D" parent="CameraFollow"]
+[node name="ZoomIn" type="Marker3D" parent="ImportantStuff/CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 0, 0.437645, 5.09445)
 
-[node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
+[node name="ZoomOut" type="Marker3D" parent="ImportantStuff/CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
-[node name="SolarPannelEllie" parent="." instance=ExtResource("17_uuqb1")]
-transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, -4.48914, -9.53674e-07, -11.7958)
-
-[node name="SolarPannelEllie2" parent="." instance=ExtResource("17_uuqb1")]
-transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, 8.99118, -9.53674e-07, 14.0989)
-already_powered = true
-
-[node name="BarrierEllie" parent="." instance=ExtResource("18_xi3pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
-
-[node name="BarrierDee" parent="." instance=ExtResource("19_y1ue5")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
-
-[node name="Ghost" parent="." instance=ExtResource("20_1wng4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, 9.14868)
-
-[node name="PatrolComponent" parent="Ghost" index="3" node_paths=PackedStringArray("patrol_points")]
-patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
-
-[node name="Patrol_Points" type="Node" parent="."]
-
-[node name="level_1_1" type="Node" parent="Patrol_Points"]
-
-[node name="Marker3D" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4153, 0, 9.99747)
-
-[node name="Marker3D2" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 9.99747)
-
-[node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41528, 0, 15.9975)
-
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="ImportantStuff"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("21_elesc")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="ImportantStuff/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -286,13 +111,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="FuseBar" type="Control" parent="UI/MarginContainer"]
+[node name="FuseBar" type="Control" parent="ImportantStuff/UI/MarginContainer"]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/FuseBar"]
+[node name="ColorRect" type="ColorRect" parent="ImportantStuff/UI/MarginContainer/FuseBar"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -306,7 +131,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.0392157)
 
-[node name="FuseContainer" type="HBoxContainer" parent="UI/MarginContainer/FuseBar"]
+[node name="FuseContainer" type="HBoxContainer" parent="ImportantStuff/UI/MarginContainer/FuseBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,19 +142,19 @@ theme_override_constants/separation = 5
 alignment = 1
 script = ExtResource("22_2u4di")
 
-[node name="FuseCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("23_746df")]
+[node name="FuseCollected" parent="ImportantStuff/UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("23_746df")]
 layout_mode = 2
 
-[node name="FuseCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("23_746df")]
+[node name="FuseCollected2" parent="ImportantStuff/UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("23_746df")]
 layout_mode = 2
 
-[node name="FuseNotCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("24_1i6vf")]
+[node name="FuseNotCollected" parent="ImportantStuff/UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("24_1i6vf")]
 layout_mode = 2
 
-[node name="FuseNotCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("24_1i6vf")]
+[node name="FuseNotCollected2" parent="ImportantStuff/UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("24_1i6vf")]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
+[node name="ColorRect" type="ColorRect" parent="ImportantStuff/UI"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -339,20 +164,134 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Pause" parent="UI" instance=ExtResource("25_52pje")]
+[node name="Pause" parent="ImportantStuff/UI" instance=ExtResource("25_52pje")]
 layout_mode = 1
 
-[node name="Victory" parent="UI" instance=ExtResource("26_gfxdc")]
+[node name="Victory" parent="ImportantStuff/UI" instance=ExtResource("26_gfxdc")]
 visible = false
 layout_mode = 1
+next_level = "res://Scenes/main.tscn"
 
-[node name="DeathZone" parent="." instance=ExtResource("27_ssahs")]
+[node name="BGM" type="Node" parent="ImportantStuff" groups=["AUdio_Manager"]]
+script = ExtResource("2_hn7yd")
+
+[node name="BGM_Idle" type="AudioStreamPlayer" parent="ImportantStuff/BGM"]
+stream = ExtResource("3_u8p43")
+volume_db = -10.0
+autoplay = true
+
+[node name="BGM_Intense" type="AudioStreamPlayer" parent="ImportantStuff/BGM"]
+stream = ExtResource("4_wck6k")
+volume_db = -80.0
+autoplay = true
+
+[node name="DeathZone" parent="ImportantStuff" instance=ExtResource("27_ssahs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)
+metadata/_edit_lock_ = true
 
-[node name="Seeker" parent="." instance=ExtResource("28_ehnnp")]
+[node name="BG" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="BG"]
+environment = SubResource("Environment_oxfxs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="BG"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="PlaceholderBlock" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75887, 0, -8.18952)
+mesh = SubResource("BoxMesh_ocupg")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BG/PlaceholderBlock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BG/PlaceholderBlock/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ts4oa")
+
+[node name="Wood_Plank_0_0" parent="BG" instance=ExtResource("11_d8clv")]
+transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.51439, 0, -7.11707)
+
+[node name="Wood_Plank_1_0" parent="BG" instance=ExtResource("12_h3aqg")]
+transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, -7.75118)
+
+[node name="Wood_Plank_1_1" parent="BG" instance=ExtResource("12_h3aqg")]
+transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.59103, 0, -8.31617)
+
+[node name="Wood_Plank_0_3" parent="BG" instance=ExtResource("11_d8clv")]
+transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, -8.2817)
+
+[node name="Wood_Plank_0_8" parent="BG" instance=ExtResource("11_d8clv")]
+transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 28.6852, 0, -0.591274)
+
+[node name="Wood_Plank_0_9" parent="BG" instance=ExtResource("11_d8clv")]
+transform = Transform3D(-1.30874e-07, 0, 3.28709, 0, 3.43978, 0, -2.99405, 0, -1.43683e-07, 29.2803, 0, 8.42018)
+
+[node name="Wood_Plank_1_8" parent="BG" instance=ExtResource("12_h3aqg")]
+transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 29.0199, 0, 4.08796)
+
+[node name="Drawings" type="Node" parent="."]
+
+[node name="DrawingArrow" parent="Drawings" instance=ExtResource("5_q65vc")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 4.03125, 0, -11.2285)
+
+[node name="DrawingFace" parent="Drawings" instance=ExtResource("6_wkryk")]
+transform = Transform3D(1.63074, 0, 0, 0, 1, 0, 0, 0, 1.63074, -0.43637, 9.53674e-07, -14.0178)
+
+[node name="DrawingDanger" parent="Drawings" instance=ExtResource("7_mnpuv")]
+transform = Transform3D(1.79293, 0, 0, 0, 1, 0, 0, 0, 1.79293, 9.12609, -9.53674e-07, -13.543)
+
+[node name="DrawingFuse" parent="Drawings" instance=ExtResource("8_6rs0h")]
+transform = Transform3D(1.78541, 0, 0, 0, 1, 0, 0, 0, 1.78541, 5.54409, 0, -13.9156)
+
+[node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_i8m51")]
+transform = Transform3D(2, 0, 0, 0, 0.863, 0, 0, 0, 2, -3.91704, 0, -14.0011)
+
+[node name="DrawingQuestion" parent="Drawings" instance=ExtResource("10_dmnhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3925, -0.000606418, -13.9765)
+
+[node name="Collectibles" type="Node" parent="." groups=["CollectibleCtn"]]
+
+[node name="Fuse" parent="Collectibles" instance=ExtResource("13_v3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0094, 4.76837e-07, 1.58887)
+
+[node name="Fuse2" parent="Collectibles" instance=ExtResource("13_v3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1506, 4.76837e-07, 3.83516)
+
+[node name="GameplayIngredients" type="Node" parent="."]
+
+[node name="SolarPannelEllie" parent="GameplayIngredients" instance=ExtResource("17_uuqb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76027, 9.53674e-07, -4.39836)
+
+[node name="BarrierEllie" parent="GameplayIngredients" instance=ExtResource("18_xi3pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42133, 1.462, -6.77556)
+
+[node name="BarrierDee" parent="GameplayIngredients" instance=ExtResource("19_y1ue5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.462, -7)
+
+[node name="SolarPannelDee" parent="GameplayIngredients" instance=ExtResource("28_cxth0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.82823, 0, -0.95696)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Ghost" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("20_1wng4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51873, 0, -21.1294)
+patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
+
+[node name="Seeker" parent="Enemies" instance=ExtResource("28_ehnnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2362, 1, 3.84198)
 
-[connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
+[node name="Patrol_Points" type="Node" parent="."]
 
-[editable path="Ghost"]
-[editable path="Ghost/Ghost2"]
+[node name="level_1_1" type="Node" parent="Patrol_Points"]
+
+[node name="Marker3D" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78983, 0, -23.3955)
+
+[node name="Marker3D2" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78985, 0, -23.3955)
+
+[node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78985, 0, -17.3955)
+
+[connection signal="timeout" from="ImportantStuff/CameraFollow/UpdateTimer" to="ImportantStuff/CameraFollow" method="_on_update_timer_timeout"]

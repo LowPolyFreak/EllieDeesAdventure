@@ -246,11 +246,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
 [node name="BarrierDee" parent="." instance=ExtResource("8_ku7kt")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
 
-[node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
+[node name="Ghost" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("9_4mx7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, 9.14868)
-
-[node name="Ghost2" parent="Ghost" index="1"]
-transform = Transform3D(-3.61212e-06, 2.38524e-07, -1, 0.0658907, 0.997827, 6.33724e-16, 0.997827, -0.0658907, -3.61999e-06, 0, 0, 0)
+patrol_points = [NodePath("../Patrol_Points/level_1_1/Marker3D"), NodePath("../Patrol_Points/level_1_1/Marker3D2"), NodePath("../Patrol_Points/level_1_1/Marker3D3")]
 
 [node name="PatrolComponent" parent="Ghost" index="3" node_paths=PackedStringArray("patrol_points")]
 patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]

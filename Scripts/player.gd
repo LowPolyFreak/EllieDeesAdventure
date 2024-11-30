@@ -249,7 +249,7 @@ func death():
 	if !Globals.player_dead:
 		ellie_model.hide()
 		var dead_vfx = DEATH_VFX_0.instantiate()
-		get_parent_node_3d().add_child(dead_vfx)
+		get_parent().add_child(dead_vfx)
 		dead_vfx.global_position = global_position
 		dead_vfx.emitting = true
 		Globals.player_dead = true

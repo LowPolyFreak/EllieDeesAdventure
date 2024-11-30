@@ -16,9 +16,9 @@ var reverse: bool
 func _ready():
 	if !enable_on_load:
 		leave_state()
-	current_point_pos = patrol_points[0].global_position
 
 func enter_state():
+	current_point_pos = patrol_points[0].global_position
 	set_process(true)
 
 func leave_state():

@@ -1,5 +1,7 @@
 extends Control
 
+@export_file("*.tscn") var next_level
+
 var collectible_ctn
 
 func _ready():
@@ -24,4 +26,6 @@ func _on_next_button_pressed():
 	get_tree().paused = false
 	Globals.fuse_collected = 0
 	Globals.in_combat = false
-	get_tree().get_first_node_in_group("Main").reset()
+	if next_level == null:
+		get_tree().get_first_node_in_group("Main").reset()
+	get_tree().change_scene_to_file(next_level)

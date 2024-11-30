@@ -11,7 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_body_entered(body):
@@ -35,7 +35,7 @@ func player_glowing(target):
 		print(target)
 		chase_component.enter_state(target)
 
-func player_not_glowing(target):
+func player_not_glowing(_target):
 	if occupied:
 		chase_component.leave_state()
 

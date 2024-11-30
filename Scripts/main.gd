@@ -6,5 +6,6 @@ func _ready():
 
 func reset():
 	Globals.player_dead = false
+	Globals.in_combat = false
 	Globals.fuse_collected = 0
 	get_tree().call_deferred("reload_current_scene")

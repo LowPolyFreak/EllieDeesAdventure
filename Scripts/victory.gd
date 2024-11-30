@@ -21,6 +21,7 @@ func _on_quit_button_pressed():
 
 
 func _on_next_button_pressed():
-	Globals.fuse_collected = 0
 	get_tree().paused = false
-	get_tree().call_deferred("reload_current_scene")
+	Globals.fuse_collected = 0
+	Globals.in_combat = false
+	get_tree().get_first_node_in_group("Main").reset()

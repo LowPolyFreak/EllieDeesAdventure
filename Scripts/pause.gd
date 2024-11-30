@@ -48,4 +48,4 @@ func _on_quit_button_pressed():
 
 func _on_restart_button_pressed():
 	get_tree().paused = false
-	get_tree().call_deferred("reload_current_scene")
+	get_tree().get_first_node_in_group("Main").reset()

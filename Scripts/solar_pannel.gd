@@ -3,6 +3,7 @@ extends Area3D
 @export var charge_speed := 0.03
 @export var drain_speed := 0.2
 @export var power_amount := 3
+@export var already_powered: bool = false
 
 @onready var charge_timer = $ChargeTimer
 @onready var drain_timer = $DrainTimer
@@ -15,6 +16,14 @@ var full: bool
 var style
 
 func _ready():
+	if already_powered:
+		power = 100
+		charge_timer.stop()
+		full = true
+		$LampLight.visible = true
+		$Hum.play()
+		monitoring = false
+	
 	var sphere: SphereShape3D = SphereShape3D.new()
 	sphere.radius = $LampLight.omni_range - 3
 	$GhostDetection/CollisionShape3D.shape = sphere

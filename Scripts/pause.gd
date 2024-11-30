@@ -7,7 +7,11 @@ signal paused(value)
 
 func _ready():
 	if OS.get_name() == "Web":
+		$MarginContainer/CenterContainer/VBoxContainer/ResumeButton.hide()
+		$MarginContainer/CenterContainer/VBoxContainer/RestartButton.hide()
 		$MarginContainer/CenterContainer/VBoxContainer/QuitButton.hide()
+		$MarginContainer/Fullscreen.hide()
+		#$ColorRect.modulate.a = 100.0
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -17,8 +21,7 @@ func _process(_delta):
 		else:
 			_on_resume_button_pressed()
 
-	if Input.is_action_just_pressed("Fullscreen"):
-		print(DisplayServer.window_get_mode())
+	if Input.is_action_just_pressed("Fullscreen") and !OS.get_name() == "Web":
 		if !fullscreen:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			fullscreen = true
@@ -26,6 +29,10 @@ func _process(_delta):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			fullscreen = false
 
+#func _input(ev):
+	#if ev is InputEvent :
+		#(print(ev))
+		#$Debug.text = str(ev)
 
 func pause():
 	get_tree().paused = true

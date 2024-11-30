@@ -28,13 +28,14 @@ theme = SubResource("Theme_5lwup")
 script = ExtResource("2_pys3f")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.592157)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.192157)
+color = Color(0, 0, 0, 1)
 
 [node name="BGBlur" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_nj16r")
@@ -98,23 +99,35 @@ theme_override_font_sizes/font_size = 15
 text = "Quit
 "
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Fullscreen" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_82kna")
 theme_override_font_sizes/font_size = 15
-text = "    Fullscreen
+text = "     Fullscreen
 "
 
-[node name="KeyboardFOutline" type="Sprite2D" parent="."]
-position = Vector2(20, 28)
+[node name="KeyboardFOutline" type="Sprite2D" parent="MarginContainer/Fullscreen"]
+position = Vector2(-1.5, -2)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("3_ogmur")
 
-[node name="XboxButtonBackOutline" type="Sprite2D" parent="."]
-position = Vector2(20, 47)
-scale = Vector2(0.421875, 0.421875)
+[node name="XboxButtonBackOutline" type="Sprite2D" parent="MarginContainer/Fullscreen"]
+position = Vector2(-1.5, 20)
+scale = Vector2(0.546875, 0.546875)
 texture = ExtResource("4_ea3mg")
+
+[node name="Debug" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 135.0
+offset_right = 99.0
+offset_bottom = 152.0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_82kna")
+theme_override_font_sizes/font_size = 15
+text = "    Fullscreen"
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

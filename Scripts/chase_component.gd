@@ -30,7 +30,7 @@ func _process(delta):
 		return
 	
 	#Look at
-	user.look_at(Vector3(target.global_position.x, user.global_position.y, target.global_position.z))
+	user.look_at(Vector3(target.global_position.x, target.global_position.y, target.global_position.z))
 	
 	#Movement
 	var move_vec = -user.global_basis.z * chase_speed

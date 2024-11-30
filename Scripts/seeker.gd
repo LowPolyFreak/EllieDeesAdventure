@@ -32,7 +32,6 @@ func _on_body_exited(body):
 
 func player_glowing(target):
 	if occupied:
-		print(target)
 		chase_component.enter_state(target)
 
 func player_not_glowing(_target):

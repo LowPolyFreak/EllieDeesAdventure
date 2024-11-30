@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=37 format=3 uid="uid://d77j3ls5t155"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
 [ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="23_3eyfb"]
 [ext_resource type="PackedScene" uid="uid://rcc5cxqh367o" path="res://Scenes/UI/victory.tscn" id="24_1dve0"]
 [ext_resource type="PackedScene" uid="uid://fyu8li37swhp" path="res://Scenes/seeker.tscn" id="27_ou5xb"]
+[ext_resource type="PackedScene" uid="uid://b5hye2ckdbe5c" path="res://Scenes/Drawings/drawing_question.tscn" id="28_ap1s6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,6 +44,7 @@ ambient_light_color = Color(0.58, 0.685, 1, 1)
 ambient_light_energy = 0.01
 glow_enabled = true
 glow_intensity = 1.0
+glow_bloom = 0.7
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.1
 
@@ -90,7 +92,7 @@ transform = Transform3D(0.659275, 0, 1.49153, 0, 1, 0, -1.49153, 0, 0.659275, -4
 transform = Transform3D(1.7865, 0, 0.151681, 0, 1, 0, -0.151681, 0, 1.7865, 28.8531, -9.53674e-07, -0.710405)
 
 [node name="DrawingFuse" parent="Drawings" instance=ExtResource("7_c5vi8")]
-transform = Transform3D(1.54621, 0, -0.892704, 0, 1, 0, 0.892704, 0, 1.54621, 14.1339, 0, 6.51172)
+transform = Transform3D(1.54621, 0, -0.892704, 0, 1, 0, 0.892704, 0, 1.54621, 23.3911, 0, 3.68839)
 
 [node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_h2xd3")]
 transform = Transform3D(2, 0, 0, 0, 0.863, 0, 0, 0, 2, 0.495584, 0.980856, -9.13796)
@@ -229,7 +231,11 @@ transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
 [node name="SolarPannelEllie" parent="." instance=ExtResource("5_deuj4")]
-transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, -4.51981, 0, -11.7946)
+transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, -4.48914, -9.53674e-07, -11.7958)
+
+[node name="SolarPannelEllie2" parent="." instance=ExtResource("5_deuj4")]
+transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, 8.99118, -9.53674e-07, 14.0989)
+already_powered = true
 
 [node name="BarrierEllie" parent="." instance=ExtResource("7_aqcey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
@@ -345,6 +351,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)
 
 [node name="Seeker" parent="." instance=ExtResource("27_ou5xb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2362, 1, 3.84198)
+
+[node name="DrawingQuestion" parent="." instance=ExtResource("28_ap1s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60376, -0.000606418, -0.897355)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5hye2ckdbe5c"]
+
+[ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="1_k38jc"]
+[ext_resource type="Texture2D" uid="uid://dtim8uop4fn5d" path="res://Textures/Drawings/DrawingQuestionAlt.PNG" id="2_ahjv0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p4s81"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vvaj"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("2_ahjv0")
+emission_enabled = true
+emission = Color(0, 1, 0.686275, 1)
+
+[node name="DrawingQuestion" instance=ExtResource("1_k38jc")]
+
+[node name="Plane" parent="." index="0"]
+mesh = SubResource("PlaneMesh_p4s81")
+surface_material_override/0 = SubResource("StandardMaterial3D_4vvaj")

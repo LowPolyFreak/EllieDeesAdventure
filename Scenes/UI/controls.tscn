@@ -1,0 +1,150 @@
+[gd_scene load_steps=20 format=3 uid="uid://b58ff88mm5u8f"]
+
+[ext_resource type="Texture2D" uid="uid://ckjohix7uqcnw" path="res://Textures/Buttons/keyboard_w_outline.png" id="1_l0lge"]
+[ext_resource type="Texture2D" uid="uid://cnb3i8pyuv3km" path="res://Textures/Buttons/keyboard_s_outline.png" id="2_f4lgw"]
+[ext_resource type="Texture2D" uid="uid://dm5nptpl7vo0m" path="res://Textures/Buttons/keyboard_a_outline.png" id="3_b2ghy"]
+[ext_resource type="Texture2D" uid="uid://brmmeo62iebkb" path="res://Textures/Buttons/keyboard_d_outline.png" id="4_mn7i5"]
+[ext_resource type="Texture2D" uid="uid://bup6kmxh2yvkq" path="res://Textures/Buttons/keyboard_space_outline.png" id="5_k214q"]
+[ext_resource type="Texture2D" uid="uid://dvkt2csw1d8my" path="res://Textures/Buttons/keyboard_arrow_up_outline.png" id="7_t0di2"]
+[ext_resource type="Texture2D" uid="uid://dc6dwuogjkpg3" path="res://Textures/Buttons/keyboard_arrow_down_outline.png" id="8_7s1gu"]
+[ext_resource type="Texture2D" uid="uid://b41tyy3wcp855" path="res://Textures/Buttons/keyboard_arrow_left_outline.png" id="9_x1y6m"]
+[ext_resource type="Texture2D" uid="uid://b77cytvcl1m67" path="res://Textures/Buttons/keyboard_arrow_right_outline.png" id="10_wd1q7"]
+[ext_resource type="Texture2D" uid="uid://dtw5oqs657rqn" path="res://Textures/Buttons/keyboard_ctrl_outline.png" id="11_yy0j5"]
+[ext_resource type="Texture2D" uid="uid://ctah6ffqgh3qh" path="res://Textures/Buttons/keyboard_8_outline.png" id="12_vtqoc"]
+[ext_resource type="Texture2D" uid="uid://bv80g287l73o" path="res://Textures/Buttons/keyboard_5_outline.png" id="13_x6qvc"]
+[ext_resource type="Texture2D" uid="uid://dih5n33d3os3h" path="res://Textures/Buttons/keyboard_4_outline.png" id="14_h0hfk"]
+[ext_resource type="Texture2D" uid="uid://d3qxec5645dci" path="res://Textures/Buttons/keyboard_6_outline.png" id="15_v1hgc"]
+[ext_resource type="Texture2D" uid="uid://c5ro1rogcv64e" path="res://Textures/Buttons/xbox_ls_outline.png" id="16_ca3ep"]
+[ext_resource type="Texture2D" uid="uid://cs1dlqpytl784" path="res://Textures/Buttons/keyboard_0_outline.png" id="16_wi0pb"]
+[ext_resource type="Texture2D" uid="uid://ddlg2vhlnh0dv" path="res://Textures/Buttons/xbox_rs_outline.png" id="17_knqkc"]
+[ext_resource type="Texture2D" uid="uid://bd0w5y14ryeny" path="res://Textures/Buttons/xbox_lb_outline.png" id="18_88f77"]
+[ext_resource type="Texture2D" uid="uid://bwyprjs4emuuf" path="res://Textures/Buttons/xbox_rb_outline.png" id="19_s0nxs"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Ellie" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -10.0
+offset_right = 30.0
+offset_bottom = 40.0
+
+[node name="Up" type="Sprite2D" parent="Ellie"]
+position = Vector2(69.5, 61)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("1_l0lge")
+
+[node name="Down" type="Sprite2D" parent="Ellie"]
+position = Vector2(69.5, 81)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_f4lgw")
+
+[node name="Left" type="Sprite2D" parent="Ellie"]
+position = Vector2(49, 81)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("3_b2ghy")
+
+[node name="Right" type="Sprite2D" parent="Ellie"]
+position = Vector2(90, 81)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("4_mn7i5")
+
+[node name="Glow" type="Sprite2D" parent="Ellie"]
+position = Vector2(53.2079, 149)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_k214q")
+
+[node name="Dee" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 227.0
+offset_right = 267.0
+offset_bottom = 40.0
+
+[node name="Up" type="Sprite2D" parent="Dee"]
+position = Vector2(79.5, 68.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("7_t0di2")
+
+[node name="Down" type="Sprite2D" parent="Dee"]
+position = Vector2(79.5, 90)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("8_7s1gu")
+
+[node name="Left" type="Sprite2D" parent="Dee"]
+position = Vector2(57.8, 90)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("9_x1y6m")
+
+[node name="Right" type="Sprite2D" parent="Dee"]
+position = Vector2(100.8, 90)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("10_wd1q7")
+
+[node name="Glow" type="Sprite2D" parent="Dee"]
+position = Vector2(78.8, 151)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("11_yy0j5")
+
+[node name="Up2" type="Sprite2D" parent="Dee"]
+position = Vector2(145.5, 68.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("12_vtqoc")
+
+[node name="Down2" type="Sprite2D" parent="Dee"]
+position = Vector2(145.5, 90)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("13_x6qvc")
+
+[node name="Left2" type="Sprite2D" parent="Dee"]
+position = Vector2(123.8, 90)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("14_h0hfk")
+
+[node name="Right2" type="Sprite2D" parent="Dee"]
+position = Vector2(166.8, 90)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("15_v1hgc")
+
+[node name="Glow2" type="Sprite2D" parent="Dee"]
+position = Vector2(109.8, 150.646)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("16_wi0pb")
+
+[node name="XboxLsOutline" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(89, 50)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_ca3ep")
+
+[node name="XboxLsOutline2" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(340, 54)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_knqkc")
+
+[node name="XboxLbOutline" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(89, 148)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_88f77")
+
+[node name="XboxLbOutline2" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(381, 151)
+scale = Vector2(0.687499, 0.687499)
+texture = ExtResource("19_s0nxs")

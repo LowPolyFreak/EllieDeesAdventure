@@ -197,7 +197,7 @@ func _unhandled_input(event: InputEvent):
 				glowing_ended.emit(self)
 		if !player_1:
 			if event.is_action_pressed("interact"):
-				if global_position.distance_to(first_player.global_position) < 2.5:
+				if global_position.distance_to(first_player.global_position) < 4.0:
 					is_following = true
 					$JoinBtns.hide()
 
@@ -260,10 +260,10 @@ func death():
 	await get_tree().create_timer(1).timeout
 	
 	if !player_1:
+		Globals.players_reset.emit()
 		await get_tree().create_timer(0.05).timeout
 		follow_position = starting_position
 		is_following = true
-		Globals.players_reset.emit()
 	
 	##Fucking cleanup
 	#glowing = false

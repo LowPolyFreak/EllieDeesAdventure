@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://bcx1uypc0le66" path="res://Audio/SFX/APPLIANCE_Fridge_Hum_03_Exterior_Top_loop_mono.wav" id="2_j28kw"]
 [ext_resource type="AudioStream" uid="uid://7plydookut8i" path="res://Audio/SFX/MUSIC_EFFECT_Solo_Harp_Positive_04_stereo.wav" id="3_1ql6f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x0ykg"]
-size = Vector3(3, 2, 3)
+[sub_resource type="SphereShape3D" id="SphereShape3D_aubuj"]
+radius = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlj4t"]
 bg_color = Color(0.189328, 0.189328, 0.189328, 1)
@@ -48,7 +48,7 @@ script = ExtResource("1_i1cjx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_x0ykg")
+shape = SubResource("SphereShape3D_aubuj")
 
 [node name="ChargeTimer" type="Timer" parent="."]
 wait_time = 0.05

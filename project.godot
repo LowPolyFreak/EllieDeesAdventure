@@ -36,6 +36,7 @@ Player_1=""
 Player_2=""
 CollectibleCtn=""
 Main=""
+VictoryScreen=""
 
 [input]
 

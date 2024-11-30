@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=3 uid="uid://bp73ohqn047qb"]
+
+[ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_ckdph"]
+[ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="2_0q7aa"]
+[ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="3_x0gt1"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="4_qpv12"]
+[ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="5_pslrk"]
+[ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="6_8uti5"]
+[ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="7_m0qbj"]
+[ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="8_la8w7"]
+[ext_resource type="PackedScene" uid="uid://rcc5cxqh367o" path="res://Scenes/UI/victory.tscn" id="9_gjoqh"]
+[ext_resource type="Script" path="res://Scripts/bgm.gd" id="10_fljeh"]
+[ext_resource type="AudioStream" uid="uid://byxh2dkga07a2" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Idle Loop.ogg" id="11_0jkyp"]
+[ext_resource type="AudioStream" uid="uid://btcd7trsvq8ld" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Intense Loop.ogg" id="12_8ll7u"]
+[ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="13_8hsa3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_38j1c"]
+sky_material = SubResource("ProceduralSkyMaterial_75w87")
+
+[sub_resource type="Environment" id="Environment_oxfxs"]
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_38j1c")
+ambient_light_source = 2
+ambient_light_color = Color(0.58, 0.685, 1, 1)
+ambient_light_energy = 0.01
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.7
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.1
+
+[node name="ImportantStuff" type="Node"]
+
+[node name="Ellie" parent="." instance=ExtResource("1_ckdph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142994, 0, -1.2378)
+metadata/_edit_lock_ = true
+
+[node name="Dee" parent="." instance=ExtResource("2_0q7aa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195843, 9.53674e-07, 0.0116072)
+metadata/_edit_lock_ = true
+
+[node name="CameraFollow" type="Node3D" parent="." groups=["CameraFollow"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("3_x0gt1")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97469, 9.24263)
+current = true
+
+[node name="UpdateTimer" type="Timer" parent="CameraFollow"]
+wait_time = 0.25
+autostart = true
+
+[node name="ZoomIn" type="Marker3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 0, 0.437645, 5.09445)
+
+[node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_qpv12")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="FuseBar" type="Control" parent="UI/MarginContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/FuseBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -3.0
+offset_right = -31.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0392157)
+
+[node name="FuseContainer" type="HBoxContainer" parent="UI/MarginContainer/FuseBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+script = ExtResource("5_pslrk")
+
+[node name="FuseCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("6_8uti5")]
+layout_mode = 2
+
+[node name="FuseCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("6_8uti5")]
+layout_mode = 2
+
+[node name="FuseNotCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("7_m0qbj")]
+layout_mode = 2
+
+[node name="FuseNotCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("7_m0qbj")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Pause" parent="UI" instance=ExtResource("8_la8w7")]
+layout_mode = 1
+
+[node name="Victory" parent="UI" groups=["VictoryScreen"] instance=ExtResource("9_gjoqh")]
+visible = false
+layout_mode = 1
+
+[node name="BGM" type="Node" parent="." groups=["AUdio_Manager"]]
+script = ExtResource("10_fljeh")
+
+[node name="BGM_Idle" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("11_0jkyp")
+volume_db = -10.0
+autoplay = true
+
+[node name="BGM_Intense" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("12_8ll7u")
+volume_db = -80.0
+autoplay = true
+
+[node name="DeathZone" parent="." instance=ExtResource("13_8hsa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oxfxs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

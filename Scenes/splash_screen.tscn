@@ -278,6 +278,7 @@ offset_left = 163.0
 offset_top = 169.0
 offset_right = 263.0
 offset_bottom = 233.785
+alignment = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

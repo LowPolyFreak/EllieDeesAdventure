@@ -1,10 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxhfwedmivgcj"]
+[gd_scene load_steps=30 format=3 uid="uid://bxhfwedmivgcj"]
 
 [ext_resource type="Script" path="res://Scripts/pause.gd" id="2_pys3f"]
 [ext_resource type="FontFile" uid="uid://ckyyl24ai28x8" path="res://Textures/Bangers-Regular.ttf" id="3_82kna"]
 [ext_resource type="Shader" path="res://Shaders/pause_blur.gdshader" id="3_m4kbk"]
 [ext_resource type="Texture2D" uid="uid://cxhjf3etji00d" path="res://Textures/Buttons/keyboard_f_outline.png" id="3_ogmur"]
 [ext_resource type="Texture2D" uid="uid://20hk3p45jyn1" path="res://Textures/Buttons/xbox_button_back_outline.png" id="4_ea3mg"]
+[ext_resource type="Texture2D" uid="uid://dvkt2csw1d8my" path="res://Textures/Buttons/keyboard_arrow_up_outline.png" id="7_bxo3j"]
+[ext_resource type="Texture2D" uid="uid://bou7wqdyhahrg" path="res://Textures/Dee.png" id="7_jcgcs"]
+[ext_resource type="Texture2D" uid="uid://bkdfeqbmavkku" path="res://Textures/Ellie.png" id="8_3rur6"]
+[ext_resource type="Texture2D" uid="uid://dc6dwuogjkpg3" path="res://Textures/Buttons/keyboard_arrow_down_outline.png" id="8_4xynv"]
+[ext_resource type="Texture2D" uid="uid://ckjohix7uqcnw" path="res://Textures/Buttons/keyboard_w_outline.png" id="8_tncug"]
+[ext_resource type="Texture2D" uid="uid://b41tyy3wcp855" path="res://Textures/Buttons/keyboard_arrow_left_outline.png" id="9_mvgx4"]
+[ext_resource type="Texture2D" uid="uid://cnb3i8pyuv3km" path="res://Textures/Buttons/keyboard_s_outline.png" id="9_mvvs1"]
+[ext_resource type="Texture2D" uid="uid://b77cytvcl1m67" path="res://Textures/Buttons/keyboard_arrow_right_outline.png" id="10_e47ja"]
+[ext_resource type="Texture2D" uid="uid://dm5nptpl7vo0m" path="res://Textures/Buttons/keyboard_a_outline.png" id="10_p6cbj"]
+[ext_resource type="Texture2D" uid="uid://brmmeo62iebkb" path="res://Textures/Buttons/keyboard_d_outline.png" id="11_5njl0"]
+[ext_resource type="Texture2D" uid="uid://dtw5oqs657rqn" path="res://Textures/Buttons/keyboard_ctrl_outline.png" id="11_vvu4a"]
+[ext_resource type="Texture2D" uid="uid://ctah6ffqgh3qh" path="res://Textures/Buttons/keyboard_8_outline.png" id="12_3d7ex"]
+[ext_resource type="Texture2D" uid="uid://bup6kmxh2yvkq" path="res://Textures/Buttons/keyboard_space_outline.png" id="12_mesgd"]
+[ext_resource type="Texture2D" uid="uid://bv80g287l73o" path="res://Textures/Buttons/keyboard_5_outline.png" id="13_yqxgt"]
+[ext_resource type="Texture2D" uid="uid://dih5n33d3os3h" path="res://Textures/Buttons/keyboard_4_outline.png" id="14_i0aom"]
+[ext_resource type="Texture2D" uid="uid://d3qxec5645dci" path="res://Textures/Buttons/keyboard_6_outline.png" id="15_urpb0"]
+[ext_resource type="Texture2D" uid="uid://cs1dlqpytl784" path="res://Textures/Buttons/keyboard_0_outline.png" id="16_vc3t6"]
+[ext_resource type="Texture2D" uid="uid://ddlg2vhlnh0dv" path="res://Textures/Buttons/xbox_rs_outline.png" id="17_2b0pm"]
+[ext_resource type="Texture2D" uid="uid://bwyprjs4emuuf" path="res://Textures/Buttons/xbox_rb_outline.png" id="18_rxq66"]
+[ext_resource type="Texture2D" uid="uid://c5ro1rogcv64e" path="res://Textures/Buttons/xbox_ls_outline.png" id="23_3421g"]
+[ext_resource type="Texture2D" uid="uid://bd0w5y14ryeny" path="res://Textures/Buttons/xbox_lb_outline.png" id="25_8fyu8"]
 
 [sub_resource type="Theme" id="Theme_5lwup"]
 default_font_size = 32
@@ -66,11 +87,12 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+alignment = 2
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_82kna")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 34
 text = "Paused"
 horizontal_alignment = 1
 
@@ -128,6 +150,199 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_82kna")
 theme_override_font_sizes/font_size = 15
 text = "    Fullscreen"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 55.0
+offset_right = 117.0
+offset_bottom = 223.0
+color = Color(1, 1, 1, 0.0823529)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 56.0
+offset_right = 377.0
+offset_bottom = 224.0
+scale = Vector2(1.36, 1)
+color = Color(1, 1, 1, 0.0823529)
+
+[node name="Labels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 60.0
+offset_right = 94.0
+offset_bottom = 87.0
+scale = Vector2(0.615, 0.615)
+theme_override_fonts/font = ExtResource("3_82kna")
+theme_override_font_sizes/font_size = 24
+text = "Move"
+
+[node name="Label2" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 158.0
+offset_right = 97.0
+offset_bottom = 185.0
+scale = Vector2(0.615, 0.615)
+theme_override_fonts/font = ExtResource("3_82kna")
+theme_override_font_sizes/font_size = 24
+text = "Glow"
+
+[node name="Label3" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 62.0
+offset_right = 382.0
+offset_bottom = 89.0
+scale = Vector2(0.615, 0.615)
+theme_override_fonts/font = ExtResource("3_82kna")
+theme_override_font_sizes/font_size = 24
+text = "Move"
+
+[node name="Label4" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 168.0
+offset_right = 382.0
+offset_bottom = 195.0
+scale = Vector2(0.615, 0.615)
+theme_override_fonts/font = ExtResource("3_82kna")
+theme_override_font_sizes/font_size = 24
+text = "Glow"
+
+[node name="Dee2" type="Sprite2D" parent="Labels"]
+position = Vector2(273, 68)
+scale = Vector2(0.114778, 0.114778)
+texture = ExtResource("7_jcgcs")
+
+[node name="Ellie2" type="Sprite2D" parent="Labels"]
+position = Vector2(152, 68)
+scale = Vector2(0.120001, 0.120001)
+texture = ExtResource("8_3rur6")
+
+[node name="Ellie" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0
+offset_top = 45.0
+offset_right = 30.0
+offset_bottom = 85.0
+
+[node name="Up" type="Sprite2D" parent="Ellie"]
+position = Vector2(69.5, 61)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("8_tncug")
+
+[node name="Down" type="Sprite2D" parent="Ellie"]
+position = Vector2(69.5, 81)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("9_mvvs1")
+
+[node name="Left" type="Sprite2D" parent="Ellie"]
+position = Vector2(49, 81)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("10_p6cbj")
+
+[node name="Right" type="Sprite2D" parent="Ellie"]
+position = Vector2(90, 81)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("11_5njl0")
+
+[node name="Glow" type="Sprite2D" parent="Ellie"]
+position = Vector2(53.2079, 149)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_mesgd")
+
+[node name="Dee" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 242.0
+offset_top = 52.0
+offset_right = 282.0
+offset_bottom = 92.0
+
+[node name="Up" type="Sprite2D" parent="Dee"]
+position = Vector2(87, 47.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("7_bxo3j")
+
+[node name="Down" type="Sprite2D" parent="Dee"]
+position = Vector2(87.5, 68.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("8_4xynv")
+
+[node name="Left" type="Sprite2D" parent="Dee"]
+position = Vector2(65.8, 68.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("9_mvgx4")
+
+[node name="Right" type="Sprite2D" parent="Dee"]
+position = Vector2(108.8, 68.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("10_e47ja")
+
+[node name="Glow" type="Sprite2D" parent="Dee"]
+position = Vector2(78.8, 151)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("11_vvu4a")
+
+[node name="Up2" type="Sprite2D" parent="Dee"]
+position = Vector2(131, 77.928)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("12_3d7ex")
+
+[node name="Down2" type="Sprite2D" parent="Dee"]
+position = Vector2(130.5, 99)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("13_yqxgt")
+
+[node name="Left2" type="Sprite2D" parent="Dee"]
+position = Vector2(108.8, 99)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("14_i0aom")
+
+[node name="Right2" type="Sprite2D" parent="Dee"]
+position = Vector2(151.8, 99)
+scale = Vector2(0.4, 0.404)
+texture = ExtResource("15_urpb0")
+
+[node name="Glow2" type="Sprite2D" parent="Dee"]
+position = Vector2(109.8, 150.646)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("16_vc3t6")
+
+[node name="XboxLsOutline" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(92, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_3421g")
+
+[node name="XboxLsOutline2" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(380, 98)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_2b0pm")
+
+[node name="XboxLbOutline" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(84, 194)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("25_8fyu8")
+
+[node name="XboxLbOutline2" type="Sprite2D" parent="."]
+modulate = Color(0.574675, 0.574675, 0.574675, 1)
+position = Vector2(384, 203)
+scale = Vector2(0.687499, 0.687499)
+texture = ExtResource("18_rxq66")
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

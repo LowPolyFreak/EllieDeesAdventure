@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	global_position.x = lerp(bulbs[0].global_position.x, bulbs[-1].global_position.x, 0.5)
 	global_position.z = lerp(bulbs[0].global_position.z, bulbs[-1].global_position.z, 0.5)
-	global_position.y = clampf(lerp(bulbs[0].global_position.y, bulbs[-1].global_position.y, 0.5), 0.0, 200.0) + 2.0
+	global_position.y = clampf(lerp(bulbs[0].global_position.y, bulbs[-1].global_position.y, 0.5), 0.0, 200.0) + 3.0
 	
 	
 	var distance = bulbs[0].global_position.distance_to(bulbs[-1].global_position)

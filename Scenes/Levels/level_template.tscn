@@ -1,33 +1,33 @@
-[gd_scene load_steps=37 format=3 uid="uid://d77j3ls5t155"]
+[gd_scene load_steps=37 format=3 uid="uid://wo5vxaghdcsj"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_oa6h7"]
-[ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="1_tsqy0"]
-[ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="2_2yub6"]
-[ext_resource type="PackedScene" uid="uid://bmvm5axb2vbpd" path="res://Scenes/fuse.tscn" id="2_dthhh"]
-[ext_resource type="Script" path="res://Scripts/bgm.gd" id="2_jslss"]
-[ext_resource type="AudioStream" uid="uid://byxh2dkga07a2" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Idle Loop.ogg" id="2_tefwx"]
-[ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="3_8lji5"]
-[ext_resource type="AudioStream" uid="uid://btcd7trsvq8ld" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Intense Loop.ogg" id="3_pqcxk"]
-[ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="5_deuj4"]
-[ext_resource type="PackedScene" uid="uid://b1ggird8nxsdx" path="res://Scenes/Drawings/drawing_face.tscn" id="6_okvvk"]
-[ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="7_aqcey"]
-[ext_resource type="PackedScene" uid="uid://dtxo3il1jjask" path="res://Scenes/Drawings/drawing_fuse.tscn" id="7_c5vi8"]
-[ext_resource type="PackedScene" uid="uid://brw33pq6jgcxc" path="res://Scenes/Drawings/drawing_danger.tscn" id="8_axv7d"]
-[ext_resource type="PackedScene" uid="uid://cm6g8i7fyfbro" path="res://Scenes/barrier_dee.tscn" id="8_ku7kt"]
-[ext_resource type="PackedScene" uid="uid://bdpxo5mey5nkd" path="res://Scenes/ghost.tscn" id="9_4mx7m"]
-[ext_resource type="PackedScene" uid="uid://mhy6salkggua" path="res://Scenes/Drawings/drawing_safe.tscn" id="9_h2xd3"]
-[ext_resource type="PackedScene" uid="uid://u5th6krgcnr7" path="res://Assets/BG/wood_plank_0_0.tscn" id="10_5uvqp"]
-[ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="10_p4jaq"]
-[ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="11_3lmyk"]
-[ext_resource type="PackedScene" uid="uid://7tggr13dosag" path="res://Assets/BG/wood_plank_1_0.tscn" id="11_8ih38"]
-[ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="12_y6hrj"]
-[ext_resource type="Script" path="res://Scripts/ui.gd" id="14_534f6"]
-[ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="14_buplp"]
-[ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="19_ciopk"]
-[ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="23_3eyfb"]
-[ext_resource type="PackedScene" uid="uid://rcc5cxqh367o" path="res://Scenes/UI/victory.tscn" id="24_1dve0"]
-[ext_resource type="PackedScene" uid="uid://fyu8li37swhp" path="res://Scenes/seeker.tscn" id="27_ou5xb"]
-[ext_resource type="PackedScene" uid="uid://b5hye2ckdbe5c" path="res://Scenes/Drawings/drawing_question.tscn" id="28_ap1s6"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_ol1si"]
+[ext_resource type="Script" path="res://Scripts/bgm.gd" id="2_hn7yd"]
+[ext_resource type="AudioStream" uid="uid://byxh2dkga07a2" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Idle Loop.ogg" id="3_u8p43"]
+[ext_resource type="AudioStream" uid="uid://btcd7trsvq8ld" path="res://Audio/BGM/Imphenzia Soundtrack_Haunted_Intense Loop.ogg" id="4_wck6k"]
+[ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="5_q65vc"]
+[ext_resource type="PackedScene" uid="uid://b1ggird8nxsdx" path="res://Scenes/Drawings/drawing_face.tscn" id="6_wkryk"]
+[ext_resource type="PackedScene" uid="uid://brw33pq6jgcxc" path="res://Scenes/Drawings/drawing_danger.tscn" id="7_mnpuv"]
+[ext_resource type="PackedScene" uid="uid://dtxo3il1jjask" path="res://Scenes/Drawings/drawing_fuse.tscn" id="8_6rs0h"]
+[ext_resource type="PackedScene" uid="uid://mhy6salkggua" path="res://Scenes/Drawings/drawing_safe.tscn" id="9_i8m51"]
+[ext_resource type="PackedScene" uid="uid://b5hye2ckdbe5c" path="res://Scenes/Drawings/drawing_question.tscn" id="10_dmnhr"]
+[ext_resource type="PackedScene" uid="uid://u5th6krgcnr7" path="res://Assets/BG/wood_plank_0_0.tscn" id="11_d8clv"]
+[ext_resource type="PackedScene" uid="uid://7tggr13dosag" path="res://Assets/BG/wood_plank_1_0.tscn" id="12_h3aqg"]
+[ext_resource type="PackedScene" uid="uid://bmvm5axb2vbpd" path="res://Scenes/fuse.tscn" id="13_v3wbg"]
+[ext_resource type="PackedScene" uid="uid://csgj0877gbjpp" path="res://Scenes/ellie.tscn" id="14_rplaq"]
+[ext_resource type="PackedScene" uid="uid://b004s5usrh0un" path="res://Scenes/dee.tscn" id="15_kibyr"]
+[ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="16_6invq"]
+[ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="17_uuqb1"]
+[ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="18_xi3pd"]
+[ext_resource type="PackedScene" uid="uid://cm6g8i7fyfbro" path="res://Scenes/barrier_dee.tscn" id="19_y1ue5"]
+[ext_resource type="PackedScene" uid="uid://bdpxo5mey5nkd" path="res://Scenes/ghost.tscn" id="20_1wng4"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="21_elesc"]
+[ext_resource type="Script" path="res://Scripts/fuse_container.gd" id="22_2u4di"]
+[ext_resource type="PackedScene" uid="uid://bhilcw3j6k575" path="res://Scenes/UI/fuse_collected.tscn" id="23_746df"]
+[ext_resource type="PackedScene" uid="uid://dtbv247qb2gsh" path="res://Scenes/UI/fuse_not_collected.tscn" id="24_1i6vf"]
+[ext_resource type="PackedScene" uid="uid://bxhfwedmivgcj" path="res://Scenes/UI/pause.tscn" id="25_52pje"]
+[ext_resource type="PackedScene" uid="uid://rcc5cxqh367o" path="res://Scenes/UI/victory.tscn" id="26_gfxdc"]
+[ext_resource type="PackedScene" uid="uid://b5r0uk8ejwar1" path="res://Scenes/death_zone.tscn" id="27_ssahs"]
+[ext_resource type="PackedScene" uid="uid://fyu8li37swhp" path="res://Scenes/seeker.tscn" id="28_ehnnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75w87"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -65,39 +65,39 @@ size = Vector3(5, 2, 5)
 data = PackedVector3Array(-2.5, 1, 2.5, 2.5, 1, 2.5, -2.5, -1, 2.5, 2.5, 1, 2.5, 2.5, -1, 2.5, -2.5, -1, 2.5, 2.5, 1, -2.5, -2.5, 1, -2.5, 2.5, -1, -2.5, -2.5, 1, -2.5, -2.5, -1, -2.5, 2.5, -1, -2.5, 2.5, 1, 2.5, 2.5, 1, -2.5, 2.5, -1, 2.5, 2.5, 1, -2.5, 2.5, -1, -2.5, 2.5, -1, 2.5, -2.5, 1, -2.5, -2.5, 1, 2.5, -2.5, -1, -2.5, -2.5, 1, 2.5, -2.5, -1, 2.5, -2.5, -1, -2.5, 2.5, 1, 2.5, -2.5, 1, 2.5, 2.5, 1, -2.5, -2.5, 1, 2.5, -2.5, 1, -2.5, 2.5, 1, -2.5, -2.5, -1, 2.5, 2.5, -1, 2.5, -2.5, -1, -2.5, 2.5, -1, 2.5, 2.5, -1, -2.5, -2.5, -1, -2.5)
 
 [node name="Main" type="Node3D" groups=["Main"]]
-script = ExtResource("1_oa6h7")
+script = ExtResource("1_ol1si")
 
 [node name="BGM" type="Node" parent="." groups=["AUdio_Manager"]]
-script = ExtResource("2_jslss")
+script = ExtResource("2_hn7yd")
 
 [node name="BGM_Idle" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("2_tefwx")
+stream = ExtResource("3_u8p43")
 volume_db = -10.0
 autoplay = true
 
 [node name="BGM_Intense" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("3_pqcxk")
+stream = ExtResource("4_wck6k")
 volume_db = -80.0
 autoplay = true
 
 [node name="Drawings" type="Node3D" parent="."]
 
-[node name="DrawingArrow" parent="Drawings" instance=ExtResource("19_ciopk")]
+[node name="DrawingArrow" parent="Drawings" instance=ExtResource("5_q65vc")]
 transform = Transform3D(-0.99904, 0, -0.0437943, 0, 1, 0, 0.0437943, 0, -0.99904, -6.68046, 0, 5.03568)
 
-[node name="DrawingFace" parent="Drawings" instance=ExtResource("6_okvvk")]
+[node name="DrawingFace" parent="Drawings" instance=ExtResource("6_wkryk")]
 transform = Transform3D(0.659275, 0, 1.49153, 0, 1, 0, -1.49153, 0, 0.659275, -4.14068, 9.53674e-07, 2.64731)
 
-[node name="DrawingDanger" parent="Drawings" instance=ExtResource("8_axv7d")]
+[node name="DrawingDanger" parent="Drawings" instance=ExtResource("7_mnpuv")]
 transform = Transform3D(1.7865, 0, 0.151681, 0, 1, 0, -0.151681, 0, 1.7865, 28.8531, -9.53674e-07, -0.710405)
 
-[node name="DrawingFuse" parent="Drawings" instance=ExtResource("7_c5vi8")]
+[node name="DrawingFuse" parent="Drawings" instance=ExtResource("8_6rs0h")]
 transform = Transform3D(1.54621, 0, -0.892704, 0, 1, 0, 0.892704, 0, 1.54621, 23.3911, 0, 3.68839)
 
-[node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_h2xd3")]
+[node name="DrawingSafe" parent="Drawings" instance=ExtResource("9_i8m51")]
 transform = Transform3D(2, 0, 0, 0, 0.863, 0, 0, 0, 2, 0.495584, 0.980856, -9.13796)
 
-[node name="DrawingQuestion" parent="Drawings" instance=ExtResource("28_ap1s6")]
+[node name="DrawingQuestion" parent="Drawings" instance=ExtResource("10_dmnhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60376, -0.000606418, -0.897355)
 
 [node name="BG" type="Node3D" parent="."]
@@ -144,80 +144,80 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BG/Block2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ts4oa")
 
-[node name="Wood_Plank_0_0" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_0" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.67923, 0, 12.23)
 
-[node name="Wood_Plank_0_1" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_1" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, 18.2594)
 
-[node name="Wood_Plank_1_0" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_0" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, 5.31203)
 
-[node name="Wood_Plank_1_1" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_1" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.72853, 0, -0.0353532)
 
-[node name="Wood_Plank_0_2" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_2" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.67923, 0, 49.2475)
 
-[node name="Wood_Plank_0_3" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_3" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, 55.277)
 
-[node name="Wood_Plank_1_2" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_2" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, 42.3296)
 
-[node name="Wood_Plank_1_3" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_3" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.72853, 0, 36.9822)
 
-[node name="Wood_Plank_0_4" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_4" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, -4.67923, 0, -25.0644)
 
-[node name="Wood_Plank_0_5" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_5" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-2.99405, 0, -2.87366e-07, 0, 3.43978, 0, 2.61748e-07, 0, -3.28709, 4.33223, 0, -19.035)
 
-[node name="Wood_Plank_1_4" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_4" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 3.28709, 0, 0, -31.9823)
 
-[node name="Wood_Plank_1_5" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_5" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(-2.99405, 0, 2.87366e-07, 0, 3.43978, 0, -2.61748e-07, 0, -3.28709, 8.72853, 0, -37.3297)
 
-[node name="Wood_Plank_0_6" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_6" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, -25.6524, 0, -0.60763)
 
-[node name="Wood_Plank_0_7" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_7" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-1.30874e-07, 0, 3.28709, 0, 3.43978, 0, -2.99405, 0, -1.43683e-07, -24.9576, 0, 8.40383)
 
-[node name="Wood_Plank_1_6" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_6" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, -25.7544, 0, 4.0716)
 
-[node name="Wood_Plank_0_8" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_8" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 28.8682, 0, -0.591274)
 
-[node name="Wood_Plank_0_9" parent="BG" instance=ExtResource("10_5uvqp")]
+[node name="Wood_Plank_0_9" parent="BG" instance=ExtResource("11_d8clv")]
 transform = Transform3D(-1.30874e-07, 0, 3.28709, 0, 3.43978, 0, -2.99405, 0, -1.43683e-07, 29.6866, 0, 8.42018)
 
-[node name="Wood_Plank_1_8" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_8" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 29.6104, 0, 4.08796)
 
-[node name="Wood_Plank_1_9" parent="BG" instance=ExtResource("11_8ih38")]
+[node name="Wood_Plank_1_9" parent="BG" instance=ExtResource("12_h3aqg")]
 transform = Transform3D(3.81044e-07, -0.829186, 3.19015, 9.46448e-08, 3.33834, 0.792379, -2.99405, 0, 4.3105e-07, 11.6979, 0, 12.8165)
 
 [node name="Collectibles" type="Node3D" parent="." groups=["CollectibleCtn"]]
 
-[node name="Fuse" parent="Collectibles" instance=ExtResource("2_dthhh")]
+[node name="Fuse" parent="Collectibles" instance=ExtResource("13_v3wbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0094, 4.76837e-07, 1.58887)
 
-[node name="Fuse2" parent="Collectibles" instance=ExtResource("2_dthhh")]
+[node name="Fuse2" parent="Collectibles" instance=ExtResource("13_v3wbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.4673, 4.76837e-07, 3.5592)
 
-[node name="Ellie" parent="." instance=ExtResource("1_tsqy0")]
+[node name="Ellie" parent="." instance=ExtResource("14_rplaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142994, 0, -1.2378)
 
-[node name="Dee" parent="." instance=ExtResource("2_2yub6")]
+[node name="Dee" parent="." instance=ExtResource("15_kibyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195843, 9.53674e-07, 0.0116072)
 
 [node name="CameraFollow" type="Node3D" parent="." groups=["CameraFollow"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-script = ExtResource("3_8lji5")
+script = ExtResource("16_6invq")
 
 [node name="Camera3D" type="Camera3D" parent="CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97469, 9.24263)
@@ -233,24 +233,21 @@ transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 
 [node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
 
-[node name="SolarPannelEllie" parent="." instance=ExtResource("5_deuj4")]
+[node name="SolarPannelEllie" parent="." instance=ExtResource("17_uuqb1")]
 transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, -4.48914, -9.53674e-07, -11.7958)
 
-[node name="SolarPannelEllie2" parent="." instance=ExtResource("5_deuj4")]
+[node name="SolarPannelEllie2" parent="." instance=ExtResource("17_uuqb1")]
 transform = Transform3D(0.986569, 0, -0.163343, 0, 1, 0, 0.163343, 0, 0.986569, 8.99118, -9.53674e-07, 14.0989)
 already_powered = true
 
-[node name="BarrierEllie" parent="." instance=ExtResource("7_aqcey")]
+[node name="BarrierEllie" parent="." instance=ExtResource("18_xi3pd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57867, 1.462, -6.77556)
 
-[node name="BarrierDee" parent="." instance=ExtResource("8_ku7kt")]
+[node name="BarrierDee" parent="." instance=ExtResource("19_y1ue5")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.92048, 1.46176, -6.0331)
 
-[node name="Ghost" parent="." instance=ExtResource("9_4mx7m")]
+[node name="Ghost" parent="." instance=ExtResource("20_1wng4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0549, 0, 9.14868)
-
-[node name="Ghost2" parent="Ghost" index="1"]
-transform = Transform3D(-3.61212e-06, 2.38524e-07, -1, 0.0658907, 0.997827, 6.33724e-16, 0.997827, -0.0658907, -3.61999e-06, 0, 0, 0)
 
 [node name="PatrolComponent" parent="Ghost" index="3" node_paths=PackedStringArray("patrol_points")]
 patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath("../../Patrol_Points/level_1_1/Marker3D2"), NodePath("../../Patrol_Points/level_1_1/Marker3D3")]
@@ -275,7 +272,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("14_534f6")
+script = ExtResource("21_elesc")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 layout_mode = 1
@@ -318,18 +315,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 alignment = 1
-script = ExtResource("10_p4jaq")
+script = ExtResource("22_2u4di")
 
-[node name="FuseCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("11_3lmyk")]
+[node name="FuseCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("23_746df")]
 layout_mode = 2
 
-[node name="FuseCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("11_3lmyk")]
+[node name="FuseCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("23_746df")]
 layout_mode = 2
 
-[node name="FuseNotCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("12_y6hrj")]
+[node name="FuseNotCollected" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("24_1i6vf")]
 layout_mode = 2
 
-[node name="FuseNotCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("12_y6hrj")]
+[node name="FuseNotCollected2" parent="UI/MarginContainer/FuseBar/FuseContainer" instance=ExtResource("24_1i6vf")]
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
@@ -342,17 +339,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Pause" parent="UI" instance=ExtResource("23_3eyfb")]
+[node name="Pause" parent="UI" instance=ExtResource("25_52pje")]
 layout_mode = 1
 
-[node name="Victory" parent="UI" instance=ExtResource("24_1dve0")]
+[node name="Victory" parent="UI" instance=ExtResource("26_gfxdc")]
 visible = false
 layout_mode = 1
 
-[node name="DeathZone" parent="." instance=ExtResource("14_buplp")]
+[node name="DeathZone" parent="." instance=ExtResource("27_ssahs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6628, -4, 2.40186)
 
-[node name="Seeker" parent="." instance=ExtResource("27_ou5xb")]
+[node name="Seeker" parent="." instance=ExtResource("28_ehnnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2362, 1, 3.84198)
 
 [connection signal="timeout" from="CameraFollow/UpdateTimer" to="CameraFollow" method="_on_update_timer_timeout"]

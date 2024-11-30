@@ -185,7 +185,7 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_pressed(glow) and burnout_timer.is_stopped():
 			if !trigger_pressed:
 				trigger_pressed = true
-				glowing_started.emit(player_1)
+				glowing_started.emit(self)
 				battery -= 0.2
 			
 		elif event.is_action_released(glow) and burnout_timer.is_stopped():
@@ -194,7 +194,7 @@ func _unhandled_input(event: InputEvent):
 				battery_charge_timer.start()
 				battery_drain_timer.stop()
 				glowing = false
-				glowing_ended.emit(player_1)
+				glowing_ended.emit(self)
 		if !player_1:
 			if event.is_action_pressed("interact"):
 				if global_position.distance_to(first_player.global_position) < 2.5:
@@ -209,7 +209,7 @@ func _on_battery_drain_timer_timeout() -> void:
 		battery_drain_timer.stop()
 		burnout_timer.start()
 		glowing = false
-		glowing_ended.emit(player_1)
+		glowing_ended.emit(self)
 	
 
 func _on_battery_charge_timer_timeout() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bla7ws4q4tobu"]
+[gd_scene load_steps=22 format=4 uid="uid://bla7ws4q4tobu"]
 
 [ext_resource type="Script" path="res://Scripts/splash_screen.gd" id="1_e1ga0"]
 [ext_resource type="Texture2D" uid="uid://dmaqef10v7mpa" path="res://Textures/EllieDee_Splash.png" id="1_pq6o8"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://ckyyl24ai28x8" path="res://Textures/Bangers-Regular.ttf" id="7_f0yv8"]
 [ext_resource type="Texture2D" uid="uid://cxhjf3etji00d" path="res://Textures/Buttons/keyboard_f_outline.png" id="7_kbxm1"]
 [ext_resource type="Texture2D" uid="uid://20hk3p45jyn1" path="res://Textures/Buttons/xbox_button_back_outline.png" id="8_pc240"]
+[ext_resource type="PackedScene" uid="uid://7tggr13dosag" path="res://Assets/BG/wood_plank_1_0.tscn" id="10_d24l6"]
+[ext_resource type="PackedScene" uid="uid://u5th6krgcnr7" path="res://Assets/BG/wood_plank_0_0.tscn" id="11_e0lfc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5pa4r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -110,7 +112,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Floor" type="MeshInstance3D" parent="BG"]
-transform = Transform3D(1.13848, 0, 0, 0, 1, 0, 0, 0, 2.29232, 0, 0, 0)
+transform = Transform3D(4.44484, 0, 0, 0, 1, 0, 0, 0, 16.4778, 0, -8.16741, 0)
 mesh = SubResource("PlaneMesh_gam11")
 skeleton = NodePath("../../TextureRect")
 metadata/_edit_group_ = true
@@ -171,7 +173,7 @@ metadata/_edit_group_ = true
 shape = SubResource("ConcavePolygonShape3D_nd5hv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.856195, 0.516653, 0, -0.516653, 0.856195, -0.471027, 8.62612, 8.54436)
+transform = Transform3D(1, 0, 0, 0, 0.979184, 0.202975, 0, -0.202975, 0.979184, -0.471027, 1.79093, -2.52975)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -183,7 +185,7 @@ texture = ExtResource("1_pq6o8")
 expand_mode = 3
 
 [node name="EllieModel" parent="." instance=ExtResource("2_t2cb3")]
-transform = Transform3D(-0.991799, 0, 0.127809, 0, 1, 0, -0.127809, 0, -0.991799, -5.95375, -0.391687, -5.93559)
+transform = Transform3D(0.889369, 0, -0.457191, 0, 1, 0, 0.457191, 0, 0.889369, -2.92359, 0.0482715, -7.01541)
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
 bones/0/position = Vector3(0.00674168, 0.494286, -0.0113828)
@@ -211,7 +213,7 @@ omni_range = 5.0
 autoplay = "idle"
 
 [node name="EllieModel2" parent="." instance=ExtResource("2_t2cb3")]
-transform = Transform3D(-0.685653, 0, -0.727928, 0, 1, 0, 0.727928, 0, -0.685653, 2.8296, -0.186872, -6.55221)
+transform = Transform3D(-0.979399, 0, -0.201932, 0, 1, 0, 0.201932, 0, -0.979399, 0.278759, -0.128721, -5.9885)
 
 [node name="Skeleton3D" parent="EllieModel2/Armature" index="0"]
 bones/0/position = Vector3(0.00674168, 0.494286, -0.0113828)
@@ -292,6 +294,12 @@ theme_override_fonts/font = ExtResource("7_f0yv8")
 theme_override_font_sizes/font_size = 15
 text = "Quit
 "
+
+[node name="Wood_Plank_1_0" parent="." instance=ExtResource("10_d24l6")]
+transform = Transform3D(1.49996, 0, 0, 0, 1, 0, 0, 0, 1, 0.636862, -0.0943576, -8.6021)
+
+[node name="Wood_Plank_0_0" parent="." instance=ExtResource("11_e0lfc")]
+transform = Transform3D(-0.252803, 0.0554805, 0.965926, 0.21436, 0.976755, -3.72529e-09, -0.943473, 0.207056, -0.258819, -7.61549, 0.095507, -5.97859)
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

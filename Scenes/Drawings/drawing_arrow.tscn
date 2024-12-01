@@ -21,4 +21,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5ebgs")
 
 [node name="UVGlowCMPT" parent="Plane" node_paths=PackedStringArray("mesh_target") instance=ExtResource("2_t2qe7")]
 mesh_target = NodePath("..")
+glow_amount = 1.0
 fade_out_speed = 0.3

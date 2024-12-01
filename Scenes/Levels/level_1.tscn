@@ -17,6 +17,9 @@ script = ExtResource("1_as01e")
 
 [node name="ImportantStuff" parent="." instance=ExtResource("2_m2d20")]
 
+[node name="Victory" parent="ImportantStuff/UI" index="3"]
+next_level = "res://Scenes/Levels/level_2.tscn"
+
 [node name="Collectibles" type="Node" parent="." groups=["CollectibleCtn"]]
 
 [node name="Fuse" parent="Collectibles" instance=ExtResource("3_2n77a")]
@@ -46,7 +49,7 @@ transform = Transform3D(-1.30874e-07, 0, 3.28709, 0, 3.43978, 0, -2.99405, 0, -1
 transform = Transform3D(0.967849, 0, -5.30845e-14, 0, 3.43978, 0, 2.75626e-14, 0, 0.646257, 35.8589, 0, 14.0454)
 
 [node name="Wood_Plank_1_8" parent="Geometry" instance=ExtResource("6_fepjq")]
-transform = Transform3D(-1.30874e-07, 0, -3.28709, 0, 3.43978, 0, 2.99405, 0, -1.43683e-07, 24.3061, 0, 4.08796)
+transform = Transform3D(-1.30874e-07, 0, -2.21167, 0, 3.43978, 0, 2.99405, 0, -9.66749e-08, 29.9944, 0, 4.08796)
 
 [node name="Wood_Plank_0_10" parent="Geometry" instance=ExtResource("5_dbtxf")]
 transform = Transform3D(2.99405, 0, 1.53067e-13, 2.20682e-14, 3.32257, -0.482298, -8.23598e-14, 0.890281, 1.79996, 29.7178, 2.55766, -7.65287)
@@ -81,6 +84,9 @@ transform = Transform3D(3.92622e-07, -5.96046e-08, -1.86346, -2.99405, -1.50358e
 [node name="Wood_Plank_1_13" parent="Geometry" instance=ExtResource("6_fepjq")]
 transform = Transform3D(-1.30874e-07, -5.96046e-08, 1.86346, 2.99405, -1.50358e-07, 8.14545e-08, 1.30874e-07, 3.43978, -2.98023e-08, -0.11991, -0.833189, -26.364)
 
+[node name="Wood_Plank_1_17" parent="Geometry" instance=ExtResource("6_fepjq")]
+transform = Transform3D(-1.30874e-07, -5.96046e-08, 1.86346, 2.99405, -1.50358e-07, 8.14545e-08, 1.30874e-07, 3.43978, -2.98023e-08, -0.11991, 7.80294, -26.364)
+
 [node name="Wood_Plank_0_19" parent="Geometry" instance=ExtResource("5_dbtxf")]
 transform = Transform3D(-1.30874e-07, 9.07713, 1.11257e-07, -2.99405, -3.96774e-07, -2.44363e-07, -3.92622e-07, -2.39485e-07, 1.86346, -5.93289, 3.2485, -20.5529)
 
@@ -107,6 +113,12 @@ transform = Transform3D(-7.80428e-08, -1, 7.80427e-08, 0, -4.37114e-08, -1.78541
 [node name="DrawingArrow2" parent="Drawings" instance=ExtResource("7_q7bjc")]
 transform = Transform3D(-5.96335e-08, -1, 5.82167e-08, 1.34527, -5.03696e-08, -0.221399, 0.226787, 3.58368e-08, 1.31331, 6.15767, 3.42544, -19.9993)
 
+[node name="DrawingFuse2" parent="Drawings" instance=ExtResource("10_n8cyx")]
+transform = Transform3D(1.57062, 2.07862e-08, 0.84902, 0.84902, -3.84528e-08, -1.57062, 7.10543e-15, 1, -7.80428e-08, 1.91569, 3.07625, -26.3619)
+
+[node name="DrawingArrow8" parent="Drawings" instance=ExtResource("7_q7bjc")]
+transform = Transform3D(1.32035, -5.71188e-08, -0.335154, -0.343311, -7.48495e-08, -1.28898, 4.97203e-08, 1, -1.15623e-07, 4.43168, 3.91211, -26.3619)
+
 [node name="DrawingQuestion" parent="Drawings" instance=ExtResource("12_3gs57")]
 transform = Transform3D(0.730653, 0, -1.36215, 0, 1, 0, 1.36215, 0, 0.730653, 4.67334, -0.000606418, 4.35084)
 
@@ -116,11 +128,23 @@ transform = Transform3D(1.51511, 0, 0.306187, 0, 1, 0, -0.306187, 0, 1.51511, 3.
 [node name="DrawingQuestion2" parent="Drawings" instance=ExtResource("12_3gs57")]
 transform = Transform3D(1.2399, 0, -1.40644, 0, 0.999999, 0, 1.45081, 0, 1.20198, 35.282, -0.000608325, 8.5207)
 
+[node name="DrawingQuestion4" parent="Drawings" instance=ExtResource("12_3gs57")]
+transform = Transform3D(0.694836, 0, 0.269314, 0, 0.999999, 0, -0.303797, 0, 0.615966, 35.7965, -0.000608325, 11.8519)
+
 [node name="DrawingArrow3" parent="Drawings" instance=ExtResource("7_q7bjc")]
-transform = Transform3D(1.19938, 0, 1.28431, 0, 1, 0, -0.976238, 0, 1.57787, 0.26271, 0, -5.76422)
+transform = Transform3D(0.794404, 0, 1.74554, 0, 1, 0, -1.32683, 0, 1.0451, 4.09884, 0, -6.57415)
 
 [node name="DrawingArrow5" parent="Drawings" instance=ExtResource("7_q7bjc")]
-transform = Transform3D(0.506413, 0, -1.92231, 0, 1, 0, 1.4612, 0, 0.666224, 26.4841, 1.90735e-06, 8.08333)
+transform = Transform3D(0.788769, 0, -1.74996, 0, 1, 0, 1.33018, 0, 1.03769, 16.0167, 1.90735e-06, 8.81114)
+
+[node name="DrawingArrow9" parent="Drawings" instance=ExtResource("7_q7bjc")]
+transform = Transform3D(0.74736, 0, -0.467152, 0, 1, 0, 0.478674, 0, 0.729371, 28.3543, -0.306361, 9.16854)
+
+[node name="DrawingArrow10" parent="Drawings" instance=ExtResource("7_q7bjc")]
+transform = Transform3D(0.425143, 0, -0.760305, 0, 1, 0, 0.779057, 0, 0.41491, 28.0376, -0.306361, 7.35325)
+
+[node name="DrawingArrow11" parent="Drawings" instance=ExtResource("7_q7bjc")]
+transform = Transform3D(-0.34866, 0, -0.796512, 0, 1, 0, 0.816157, 0, -0.340267, 30.5182, -0.0148973, 5.237)
 
 [node name="DrawingArrow6" parent="Drawings" instance=ExtResource("7_q7bjc")]
 transform = Transform3D(-0.48145, 0, 1.93338, 0, 1, 0, -1.46961, 0, -0.633384, 25.1896, 5.18998, -20.3595)
@@ -145,9 +169,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4925, 9.53674e-07, 8.45476
 [node name="Seeker" parent="Enemies" instance=ExtResource("18_v32wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3473, 6.43383, -27.3988)
 
-[node name="Seeker2" parent="Enemies" instance=ExtResource("18_v32wc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.34535, 0.999395, -10.555)
-
 [node name="Patrol_Points" type="Node" parent="."]
 
 [node name="level_1_1" type="Node" parent="Patrol_Points"]
@@ -160,3 +181,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78985, 0, -23.3955)
 
 [node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78985, 0, -17.3955)
+
+[editable path="ImportantStuff"]

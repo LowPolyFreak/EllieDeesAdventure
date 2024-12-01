@@ -170,17 +170,17 @@ shape = SubResource("CapsuleShape3D_w0xbe")
 [node name="EllieModel" parent="." instance=ExtResource("2_mu1gt")]
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0121, 0.474746, -0.0307462)
-bones/0/rotation = Quaternion(-0.0107839, -0.00228546, -0.00158078, 0.999938)
-bones/1/rotation = Quaternion(0.0582074, -0.152166, 0.970084, 0.179982)
+bones/0/position = Vector3(0.00676585, 0.494198, -0.0114701)
+bones/0/rotation = Quaternion(0.00506663, -0.000526416, -0.000594222, 0.999987)
+bones/1/rotation = Quaternion(0.051462, -0.135955, 0.977312, 0.154045)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.479344, -0.00376151, 0.224041, 0.848541)
-bones/3/rotation = Quaternion(-0.874099, -0.0147609, -0.0253011, 0.484863)
+bones/2/rotation = Quaternion(0.424041, -0.0039173, 0.198193, 0.883682)
+bones/3/rotation = Quaternion(-0.844544, -0.0330066, -0.0381582, 0.533104)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0369193, -0.159082, 0.975391, -0.148132)
+bones/4/rotation = Quaternion(-0.042038, -0.138704, 0.97988, -0.137216)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.488388, 0.00373356, -0.228268, 0.842233)
-bones/6/rotation = Quaternion(-0.880991, 0.0196865, 0.0646863, 0.468276)
+bones/5/rotation = Quaternion(0.428972, 0.00390443, -0.200498, 0.880777)
+bones/6/rotation = Quaternion(-0.848536, 0.034348, 0.0586808, 0.52475)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-0.187498, 0.245262, -0.282433)
 bones/8/position = Vector3(-0.170884, 0.0506439, 0.0332276)
@@ -193,7 +193,7 @@ bones/10/rotation = Quaternion(-0.09592, 0.695135, 0.700571, 0.129567)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999985, 0.00321067, -0.00453655, -0.00311208, 0.999762, 0.0215736, 0.00460474, -0.0215591, 0.999757, 0.0121, 0.474746, -0.0307462)
+transform = Transform3D(0.999999, 0.00118309, -0.00105884, -0.00119376, 0.999948, -0.0101325, 0.0010468, 0.0101338, 0.999948, 0.00676585, 0.494198, -0.0114701)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_energy = 0.25
@@ -216,7 +216,7 @@ parameters/Movement/current_index = 0
 [node name="Timers" type="Node" parent="."]
 
 [node name="BatteryDrainTimer" type="Timer" parent="Timers"]
-wait_time = 0.25
+wait_time = 0.45
 
 [node name="BatteryChargeTimer" type="Timer" parent="Timers"]
 wait_time = 0.5

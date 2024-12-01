@@ -66,7 +66,7 @@ func entered_safe_zone():
 	chase_component.leave_state()
 	
 	var dead_vfx = GHOST_VANISH_VFX_0.instantiate()
-	get_parent_node_3d().add_child(dead_vfx)
+	get_parent().add_child(dead_vfx)
 	dead_vfx.global_position = global_position
 	dead_vfx.scale = Vector3(2,2,2)
 	dead_vfx.emitting = true

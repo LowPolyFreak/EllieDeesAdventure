@@ -41,7 +41,7 @@ func _on_body_exited(body):
 func player_glowing(target):
 	if occupied:
 		chase_component.enter_state(target)
-		if target.player_1:
+		if !target.player_1:
 			material.set_shader_parameter("fresnel_color", Color.PURPLE) 
 		else:
 			material.set_shader_parameter("fresnel_color", Color.ORANGE) 

@@ -75,7 +75,7 @@ transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 1.718, -9.53674
 transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, -2.18535, 9.53674e-07, -22.5902)
 
 [node name="DrawingDanger" parent="Drawings" instance=ExtResource("9_3p0bh")]
-transform = Transform3D(1.3025, -2.34925e-08, 0.594709, 0.699508, -7.79977e-08, -1.10736, 4.56969e-08, 1.86356, -3.88507e-08, -0.443332, 2.29603, -25.9513)
+transform = Transform3D(1.3025, -2.34925e-08, 0.594709, 0.699508, -7.79977e-08, -1.10736, 4.56969e-08, 1.86356, -3.88507e-08, -1.50238, 2.34972, -25.9513)
 
 [node name="GameplayIngredients" type="Node" parent="."]
 
@@ -83,7 +83,7 @@ transform = Transform3D(1.3025, -2.34925e-08, 0.594709, 0.699508, -7.79977e-08, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43482, 9.53674e-07, -7.19188)
 
 [node name="BarrierEllie" parent="GameplayIngredients" instance=ExtResource("14_m7yq5")]
-transform = Transform3D(0.489169, 0, 0.872189, 0, 1, 0, -0.872189, 0, 0.489169, -4.37292, 1.462, -24.709)
+transform = Transform3D(0.641343, 0, 0.767255, 0, 1, 0, -0.767255, 0, 0.641343, -5.9915, 1.08183, -24.9288)
 
 [node name="BarrierDee" parent="GameplayIngredients" instance=ExtResource("15_yd8ul")]
 transform = Transform3D(0.982515, 0, -0.186181, 0, 1, 0, 0.186181, 0, 0.982515, 2.58579, 1.04786, -26.3937)

@@ -128,6 +128,9 @@ transform = Transform3D(1.51511, 0, 0.306187, 0, 1, 0, -0.306187, 0, 1.51511, 3.
 [node name="DrawingQuestion2" parent="Drawings" instance=ExtResource("12_3gs57")]
 transform = Transform3D(1.2399, 0, -1.40644, 0, 0.999999, 0, 1.45081, 0, 1.20198, 35.282, -0.000608325, 8.5207)
 
+[node name="DrawingQuestion5" parent="Drawings" instance=ExtResource("12_3gs57")]
+transform = Transform3D(1.26668, 0, -0.0913053, 0, 0.999999, 0, 0.128932, 0, 0.897015, 36.5378, -0.000608325, 9.48522)
+
 [node name="DrawingQuestion4" parent="Drawings" instance=ExtResource("12_3gs57")]
 transform = Transform3D(0.694836, 0, 0.269314, 0, 0.999999, 0, -0.303797, 0, 0.615966, 35.7965, -0.000608325, 11.8519)
 
@@ -142,9 +145,6 @@ transform = Transform3D(0.74736, 0, -0.467152, 0, 1, 0, 0.478674, 0, 0.729371, 2
 
 [node name="DrawingArrow10" parent="Drawings" instance=ExtResource("7_q7bjc")]
 transform = Transform3D(0.425143, 0, -0.760305, 0, 1, 0, 0.779057, 0, 0.41491, 28.0376, -0.306361, 7.35325)
-
-[node name="DrawingArrow11" parent="Drawings" instance=ExtResource("7_q7bjc")]
-transform = Transform3D(-0.34866, 0, -0.796512, 0, 1, 0, 0.816157, 0, -0.340267, 30.5182, -0.0148973, 5.237)
 
 [node name="DrawingArrow6" parent="Drawings" instance=ExtResource("7_q7bjc")]
 transform = Transform3D(-0.48145, 0, 1.93338, 0, 1, 0, -1.46961, 0, -0.633384, 25.1896, 5.18998, -20.3595)

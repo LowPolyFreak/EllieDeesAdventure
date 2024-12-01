@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://31n35aecm6f7"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_ipqvr"]
+[ext_resource type="PackedScene" uid="uid://bp73ohqn047qb" path="res://Scenes/Levels/important_stuff.tscn" id="2_83yup"]
+[ext_resource type="PackedScene" uid="uid://bmvm5axb2vbpd" path="res://Scenes/fuse.tscn" id="3_vkd7l"]
+[ext_resource type="PackedScene" uid="uid://u5th6krgcnr7" path="res://Assets/BG/wood_plank_0_0.tscn" id="5_44oq1"]
+[ext_resource type="PackedScene" uid="uid://7tggr13dosag" path="res://Assets/BG/wood_plank_1_0.tscn" id="6_xya7m"]
+[ext_resource type="PackedScene" uid="uid://ceqsooad6yryp" path="res://Scenes/Drawings/drawing_arrow.tscn" id="7_74m7d"]
+[ext_resource type="PackedScene" uid="uid://brw33pq6jgcxc" path="res://Scenes/Drawings/drawing_danger.tscn" id="9_3p0bh"]
+[ext_resource type="PackedScene" uid="uid://cttyrmjn3obow" path="res://Scenes/solar_pannel_ellie.tscn" id="13_bhsii"]
+[ext_resource type="PackedScene" uid="uid://c8g6p70g0qwmw" path="res://Scenes/barrier_ellie.tscn" id="14_m7yq5"]
+[ext_resource type="PackedScene" uid="uid://cm6g8i7fyfbro" path="res://Scenes/barrier_dee.tscn" id="15_yd8ul"]
+[ext_resource type="PackedScene" uid="uid://fyu8li37swhp" path="res://Scenes/seeker.tscn" id="18_k8w77"]
+
+[node name="LevelTemplate" type="Node3D" groups=["Main"]]
+script = ExtResource("1_ipqvr")
+
+[node name="ImportantStuff" parent="." instance=ExtResource("2_83yup")]
+
+[node name="Collectibles" type="Node" parent="." groups=["CollectibleCtn"]]
+
+[node name="Fuse" parent="Collectibles" instance=ExtResource("3_vkd7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3245, 4.76837e-07, -52.9104)
+
+[node name="Fuse3" parent="Collectibles" instance=ExtResource("3_vkd7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0671, 4.76837e-07, -73.9485)
+
+[node name="Fuse2" parent="Collectibles" instance=ExtResource("3_vkd7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5387, 4.76837e-07, -51.6102)
+
+[node name="Geometry" type="Node" parent="."]
+
+[node name="Wood_Plank_0_0" parent="Geometry" instance=ExtResource("5_44oq1")]
+transform = Transform3D(2.41, 0, 0, 0, 3.43978, 0, 0, 0, 1.76141, 2.74407, 1.90735e-06, -36.0096)
+
+[node name="Wood_Plank_0_1" parent="Geometry" instance=ExtResource("5_44oq1")]
+transform = Transform3D(-1.05344e-07, 0, 1.49412, 0, 3.43978, 0, -2.41, 0, -6.531e-08, 12.9911, 1.90735e-06, -44.2125)
+
+[node name="Wood_Plank_0_4" parent="Geometry" instance=ExtResource("5_44oq1")]
+transform = Transform3D(-1.05344e-07, 0, 0.605885, 0, 3.43978, 0, -2.41, 0, -2.64841e-08, 28.0862, 1.90735e-06, -51.4446)
+
+[node name="Wood_Plank_0_2" parent="Geometry" instance=ExtResource("5_44oq1")]
+transform = Transform3D(-2.41, 0, -2.16471e-07, 0, 3.43978, 0, 2.10689e-07, 0, -2.47614, 22.9095, 1.90735e-06, -56.7868)
+
+[node name="Wood_Plank_1_0" parent="Geometry" instance=ExtResource("6_xya7m")]
+transform = Transform3D(2.99405, 0, 0, 0, 3.43978, 0, 0, 0, 2.96169, -6.49037, 1.90735e-06, -39.6578)
+
+[node name="Wood_Plank_1_3" parent="Geometry" instance=ExtResource("6_xya7m")]
+transform = Transform3D(-1.30874e-07, 0, -1.67434, 0, 3.43978, 0, 2.99405, 0, -7.31876e-08, 5.00513, 3.8147e-06, -54.1201)
+
+[node name="Wood_Plank_1_4" parent="Geometry" instance=ExtResource("6_xya7m")]
+transform = Transform3D(2.99405, 0, 7.10543e-15, 0, 3.43978, 0, -1.42109e-14, 0, 1.67434, 12.564, 3.8147e-06, -65.8441)
+
+[node name="Wood_Plank_1_1" parent="Geometry" instance=ExtResource("6_xya7m")]
+transform = Transform3D(-2.99405, 0, 2.30186e-07, 0, 3.43978, 0, -2.61748e-07, 0, -2.63303, 2.08877, 0, -11.7912)
+
+[node name="Wood_Plank_1_2" parent="Geometry" instance=ExtResource("6_xya7m")]
+transform = Transform3D(-1.30874e-07, 0, -0.499962, -2.99405, -1.50358e-07, 2.1854e-08, -1.30874e-07, 3.43978, 9.55267e-16, -1.67777, 1.66388, -25.9507)
+
+[node name="Wood_Plank_0_3" parent="Geometry" instance=ExtResource("5_44oq1")]
+transform = Transform3D(-2.99405, 0, -2.30186e-07, 0, 3.43978, 0, 2.61748e-07, 0, -2.63303, -2.17003, 0, -11.7636)
+
+[node name="Wood_Plank_0_8" parent="Geometry" instance=ExtResource("5_44oq1")]
+transform = Transform3D(-1.30874e-07, 0, -1.75783, 0, 3.43978, 0, 2.99405, 0, -7.6837e-08, 24.4249, 0, -76.3207)
+
+[node name="Wood_Plank_1_8" parent="Geometry" instance=ExtResource("6_xya7m")]
+transform = Transform3D(-1.30874e-07, 0, -1.75783, 0, 3.43978, 0, 2.99405, 0, -7.6837e-08, 24.5919, 0, -71.6788)
+
+[node name="Drawings" type="Node" parent="."]
+
+[node name="DrawingArrow" parent="Drawings" instance=ExtResource("7_74m7d")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 1.718, -9.53674e-07, -22.7178)
+
+[node name="DrawingArrow2" parent="Drawings" instance=ExtResource("7_74m7d")]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, -2.18535, 9.53674e-07, -22.5902)
+
+[node name="DrawingDanger" parent="Drawings" instance=ExtResource("9_3p0bh")]
+transform = Transform3D(1.3025, -2.34925e-08, 0.594709, 0.699508, -7.79977e-08, -1.10736, 4.56969e-08, 1.86356, -3.88507e-08, -0.443332, 2.29603, -25.9513)
+
+[node name="GameplayIngredients" type="Node" parent="."]
+
+[node name="SolarPannelEllie" parent="GameplayIngredients" instance=ExtResource("13_bhsii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43482, 9.53674e-07, -7.19188)
+
+[node name="BarrierEllie" parent="GameplayIngredients" instance=ExtResource("14_m7yq5")]
+transform = Transform3D(0.489169, 0, 0.872189, 0, 1, 0, -0.872189, 0, 0.489169, -4.37292, 1.462, -24.709)
+
+[node name="BarrierDee" parent="GameplayIngredients" instance=ExtResource("15_yd8ul")]
+transform = Transform3D(0.982515, 0, -0.186181, 0, 1, 0, 0.186181, 0, 0.982515, 2.58579, 1.04786, -26.3937)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Seeker" parent="Enemies" instance=ExtResource("18_k8w77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.578865, 1, -39.7264)
+
+[node name="Seeker2" parent="Enemies" instance=ExtResource("18_k8w77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6554, 1, -61.7879)
+
+[node name="Seeker3" parent="Enemies" instance=ExtResource("18_k8w77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2657, 1, -31.8416)
+
+[node name="Patrol_Points" type="Node" parent="."]
+
+[node name="level_1_1" type="Node" parent="Patrol_Points"]
+
+[node name="Marker3D" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71243, 0, -23.3955)
+
+[node name="Marker3D2" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28759, 0, -23.3955)
+
+[node name="Marker3D3" type="Marker3D" parent="Patrol_Points/level_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28759, 0, -17.3955)
+
+[editable path="ImportantStuff"]

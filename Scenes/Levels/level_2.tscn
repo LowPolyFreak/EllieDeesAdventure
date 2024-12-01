@@ -20,10 +20,13 @@ script = ExtResource("1_ai11g")
 
 [node name="ImportantStuff" parent="." instance=ExtResource("2_gnl4i")]
 
+[node name="Victory" parent="ImportantStuff/UI" index="3"]
+next_level = "res://Scenes/Levels/level_3.tscn"
+
 [node name="Collectibles" type="Node" parent="." groups=["CollectibleCtn"]]
 
 [node name="Fuse" parent="Collectibles" instance=ExtResource("3_jc0a8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2255, 4.76837e-07, -44.6435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1345, 4.76837e-07, -44.6435)
 
 [node name="Fuse4" parent="Collectibles" instance=ExtResource("3_jc0a8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1687, 1.43051e-06, -68.5417)
@@ -120,7 +123,7 @@ transform = Transform3D(0.694381, 0, 0.719606, 0, 1, 0, -0.719606, 0, 0.694381, 
 transform = Transform3D(1.23628, 0, 0.815983, 0, 1, 0, -0.806533, 0, 1.25076, 0.176637, 2.86102e-06, -11.985)
 
 [node name="DrawingArrow3" parent="Drawings" instance=ExtResource("7_dty68")]
-transform = Transform3D(0.695172, 0, -0.718842, 0, 1, 0, 0.718842, 0, 0.695172, 18.8827, 0.0262384, -44.2378)
+transform = Transform3D(0.695172, 0, -0.718842, 0, 1, 0, 0.718842, 0, 0.695172, 16.6938, 0.0262384, -44.2378)
 
 [node name="DrawingFace" parent="Drawings" instance=ExtResource("8_fth8i")]
 transform = Transform3D(1.63074, 0, 0, 0, 1, 0, 0, 0, 1.63074, 0.496026, 9.53674e-07, -30.3853)
@@ -141,7 +144,7 @@ transform = Transform3D(-0.0933973, 0, 1.7905, 0, 1, 0, -1.7905, 0, -0.0933973, 
 transform = Transform3D(-0.997035, 0, 1.49014, 0, 1, 0, -1.49014, 0, -0.997035, -4.55283, -0.183739, -39.9677)
 
 [node name="DrawingFuse2" parent="Drawings" instance=ExtResource("10_jdbtc")]
-transform = Transform3D(1.7853, 0, -0.019974, 0, 1, 0, 0.019974, 0, 1.7853, 16.9246, 0, -44.265)
+transform = Transform3D(1.7853, 0, -0.019974, 0, 1, 0, 0.019974, 0, 1.7853, 14.7356, 0, -44.265)
 
 [node name="DrawingFuse3" parent="Drawings" instance=ExtResource("10_jdbtc")]
 transform = Transform3D(1.7503, 0, -0.35235, 0, 1, 0, 0.35235, 0, 1.7503, 15.0251, 0.201184, -72.0662)
@@ -150,10 +153,10 @@ transform = Transform3D(1.7503, 0, -0.35235, 0, 1, 0, 0.35235, 0, 1.7503, 15.025
 transform = Transform3D(1.96624, 0, 0.365912, 0, 0.863, 0, -0.365912, 0, 1.96624, 0.106092, 0, -20.8591)
 
 [node name="DrawingArrow4" parent="Drawings" instance=ExtResource("7_dty68")]
-transform = Transform3D(1.41031, 0, 1.16255, 0, 1, 0, -1.23437, 0, 1.32825, 15.3411, -0.024369, -52.5256)
+transform = Transform3D(1.41031, 0, 1.16255, 0, 1, 0, -1.23437, 0, 1.32825, 15.3411, -0.024369, -51.971)
 
 [node name="DrawingSafe2" parent="Drawings" instance=ExtResource("11_3sg3g")]
-transform = Transform3D(1.50497, 0, 1.31722, 0, 0.863, 0, -1.31722, 0, 1.50497, 15.3142, -0.024369, -49.0664)
+transform = Transform3D(1.50497, 0, 1.31722, 0, 0.863, 0, -1.31722, 0, 1.50497, 15.3142, -0.024369, -48.3537)
 
 [node name="DrawingQuestion" parent="Drawings" instance=ExtResource("12_1kf1y")]
 transform = Transform3D(0.863976, 0, 0.503533, 0, 1, 0, -0.503533, 0, 0.863976, 13.5835, -0.000606418, -72.8796)
@@ -184,13 +187,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69755, 2.86102e-06, -64.404
 [node name="SolarPannelEllie3" parent="GameplayIngredients" instance=ExtResource("13_nqot4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75036, 5.20264, -90.4332)
 
-[node name="Ghost" parent="GameplayIngredients" node_paths=PackedStringArray("patrol_points") instance=ExtResource("17_pff5r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2354, 5.25035, -97.6355)
-patrol_points = [NodePath("../../Patrol_Points/level_1_2/Marker3D"), NodePath("../../Patrol_Points/level_1_2/Marker3D2"), NodePath("../../Patrol_Points/level_1_2/Marker3D3"), NodePath("../../Patrol_Points/level_1_2/Marker3D4")]
-
-[node name="PatrolComponent" parent="GameplayIngredients/Ghost" index="3"]
-loop = true
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Ghost" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("17_pff5r")]
@@ -199,6 +195,31 @@ patrol_points = [NodePath("../../Patrol_Points/level_1_1/Marker3D"), NodePath(".
 
 [node name="Seeker" parent="Enemies" instance=ExtResource("18_lm84b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.2102, 1, -80.8896)
+
+[node name="Seeker2" parent="Enemies" instance=ExtResource("18_lm84b")]
+transform = Transform3D(1, -4.35204e-15, 0, 2.7788e-14, 1, -2.23517e-08, -6.82121e-13, 2.23517e-08, 1, -16.8667, 6.26043, -108.108)
+
+[node name="Ghost2" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("17_pff5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2354, 5.25035, -97.6355)
+patrol_points = [NodePath("../../Patrol_Points/level_1_2/Marker3D"), NodePath("../../Patrol_Points/level_1_2/Marker3D2"), NodePath("../../Patrol_Points/level_1_2/Marker3D3"), NodePath("../../Patrol_Points/level_1_2/Marker3D4")]
+
+[node name="PatrolComponent" parent="Enemies/Ghost2" index="3"]
+loop = true
+
+[node name="Eyes" parent="Enemies/Ghost2" index="8"]
+skeleton = NodePath("../../Ghost2")
+
+[node name="MeshInstance3D2" parent="Enemies/Ghost2/Eyes" index="0"]
+skeleton = NodePath("../../../Ghost2")
+
+[node name="Eyes2" parent="Enemies/Ghost2" index="9"]
+skeleton = NodePath("../../Ghost2")
+
+[node name="MeshInstance3D2" parent="Enemies/Ghost2/Eyes2" index="0"]
+skeleton = NodePath("../../../Ghost2")
+
+[node name="AnimationPlayer" parent="Enemies/Ghost2" index="12"]
+root_node = NodePath("../../Ghost2")
 
 [node name="Patrol_Points" type="Node" parent="."]
 
@@ -227,5 +248,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24992, 5.6778, -98.0423)
 [node name="DrawingSafe" parent="." instance=ExtResource("11_3sg3g")]
 transform = Transform3D(2.2134, 0, -0.163379, 0, 1, 0, 0.168641, 0, 2.14434, -5.43333, 5.25434, -88.5772)
 
-[editable path="GameplayIngredients/Ghost"]
-[editable path="GameplayIngredients/Ghost/Ghost2"]
+[editable path="ImportantStuff"]
+[editable path="Enemies/Ghost2"]
+[editable path="Enemies/Ghost2/Ghost2"]

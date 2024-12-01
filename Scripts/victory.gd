@@ -3,10 +3,15 @@ extends Control
 @export_file("*.tscn") var next_level
 
 var collectible_ctn
+var last_level
 
 func _ready():
 	collectible_ctn = get_tree().get_first_node_in_group("CollectibleCtn").get_child_count()
 	Globals.fuse_just_collected.connect(on_success)
+	last_level = bool(next_level == null)
+	if last_level:
+		$MarginContainer/CenterContainer/VBoxContainer/Label.text = "Thanks for playing!"
+		$MarginContainer/CenterContainer/VBoxContainer/NextButton.text = "Main Menu"
 	if OS.get_name() == "Web":
 		$MarginContainer/CenterContainer/VBoxContainer/QuitButton.hide()
 

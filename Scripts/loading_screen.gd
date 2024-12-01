@@ -16,4 +16,4 @@ func _process(_delta):
 		$Loading/ProgressBar.hide()
 		if Input.is_action_just_pressed("ui_accept"):
 			AudioServer.set_bus_mute(0, false)
-			get_tree().change_scene_to_file("res://Scenes/main.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")

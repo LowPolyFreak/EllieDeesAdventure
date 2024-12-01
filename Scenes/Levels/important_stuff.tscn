@@ -58,10 +58,10 @@ wait_time = 0.25
 autostart = true
 
 [node name="ZoomIn" type="Marker3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 0, 0.437645, 5.09445)
+transform = Transform3D(1, 0, 0, 0, 0.943223, 0.332161, 0, -0.332161, 0.943223, 0, 0.903838, 6.41828)
 
 [node name="ZoomOut" type="Marker3D" parent="CameraFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 6.76524, 9.03319)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 7.98072, 9.73495)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -91,15 +91,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="UI/MarginContainer/FuseBar"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = -3.0
-offset_right = -31.0
-offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.0392157)

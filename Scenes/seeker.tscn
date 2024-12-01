@@ -1,28 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://fyu8li37swhp"]
+[gd_scene load_steps=9 format=3 uid="uid://fyu8li37swhp"]
 
 [ext_resource type="Script" path="res://Scripts/seeker.gd" id="1_07xad"]
 [ext_resource type="Shader" path="res://Shaders/player.gdshader" id="2_6o4m0"]
 [ext_resource type="PackedScene" uid="uid://bixqbcx87c3cl" path="res://Scenes/chase_component.tscn" id="3_2528r"]
+[ext_resource type="AudioStream" uid="uid://j73xbygacn0l" path="res://Audio/SFX/RADIO_Static_Noise_01_loop_mono.wav" id="4_hq2tp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oqdsk"]
-radius = 15.0
+radius = 12.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvm4j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbdlh"]
 render_priority = 0
 shader = ExtResource("2_6o4m0")
 shader_parameter/albedo = Color(0, 0, 0, 1)
-shader_parameter/fresnel_color = Color(0.540732, 0.540732, 0.540732, 1)
-shader_parameter/intensity = 0.5
+shader_parameter/fresnel_color = Color(0.303129, 0.303129, 0.303129, 1)
+shader_parameter/intensity = 1.0
 shader_parameter/amount = 1.0
 shader_parameter/emmission_multiplier = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_nt50s"]
-material = SubResource("ShaderMaterial_gvm4j")
+material = SubResource("ShaderMaterial_fbdlh")
 radius = 1.0
 height = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hla53"]
-radius = 1.5
+radius = 1.0
 
 [node name="Seeker" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -47,6 +48,17 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
 shape = SubResource("SphereShape3D_hla53")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_hq2tp")
+volume_db = -10.0
+autoplay = true
+max_distance = 30.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

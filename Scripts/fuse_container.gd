@@ -13,6 +13,7 @@ func _ready():
 	collectible_ctn = get_tree().get_first_node_in_group("CollectibleCtn")
 	Globals.fuse_just_collected.connect(update_fuse_bar)
 	Globals.players_reset.connect(update_fuse_bar)
+	total_fuses = collectible_ctn.get_child_count()
 	update_fuse_bar()
 
 
@@ -20,7 +21,6 @@ func update_fuse_bar():
 	fuse_bar.modulate.a = 1.0
 	for i in get_children():
 		i.queue_free()
-	total_fuses = collectible_ctn.get_child_count()
 	for i in Globals.fuse_collected:
 		var collected_ui = FUSE_COLLECTED.instantiate()
 		add_child(collected_ui)

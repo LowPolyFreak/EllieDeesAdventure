@@ -12,25 +12,24 @@ viewport_path = NodePath("SubViewport")
 collision_layer = 10
 collision_mask = 25
 player_1 = false
-glow_energy = 1.0
 default_light_range = 3
-glow_light_range = 8
+glow_light_range = 10
 
 [node name="FollowBehind" parent="." index="6" instance=ExtResource("4_n0p10")]
 start_active = false
 
 [node name="Skeleton3D" parent="EllieModel/Armature" index="0"]
-bones/0/position = Vector3(0.0122733, 0.474114, -0.0313723)
-bones/0/rotation = Quaternion(-0.0132666, -0.00247866, -0.00162006, 0.999908)
-bones/1/rotation = Quaternion(0.0589493, -0.154616, 0.969497, 0.180813)
-bones/2/rotation = Quaternion(0.48141, -0.00375519, 0.225007, 0.847114)
-bones/3/rotation = Quaternion(-0.875133, -0.0140035, -0.0247483, 0.483047)
-bones/4/rotation = Quaternion(-0.0368466, -0.16183, 0.974897, -0.14842)
-bones/5/rotation = Quaternion(0.490638, 0.00372649, -0.22932, 0.840639)
-bones/6/rotation = Quaternion(-0.88211, 0.0191315, 0.0649873, 0.466147)
+bones/0/position = Vector3(0.00677527, 0.494163, -0.0115042)
+bones/0/rotation = Quaternion(0.00484989, -0.000534714, -0.000591388, 0.999988)
+bones/1/rotation = Quaternion(0.0515162, -0.136241, 0.97728, 0.153976)
+bones/2/rotation = Quaternion(0.424092, -0.00391717, 0.198217, 0.883652)
+bones/3/rotation = Quaternion(-0.84461, -0.0329636, -0.0381471, 0.533002)
+bones/4/rotation = Quaternion(-0.0420693, -0.13901, 0.97984, -0.137184)
+bones/5/rotation = Quaternion(0.42904, 0.00390425, -0.20053, 0.880737)
+bones/6/rotation = Quaternion(-0.848607, 0.0343075, 0.0587218, 0.524634)
 
 [node name="BoneAttachment3D" parent="EllieModel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999982, 0.00330558, -0.00491388, -0.00317405, 0.999643, 0.0265387, 0.00499985, -0.0265227, 0.999636, 0.0122733, 0.474114, -0.0313723)
+transform = Transform3D(0.999999, 0.00117758, -0.00107515, -0.00118795, 0.999952, -0.00969904, 0.00106368, 0.0097003, 0.999952, 0.00677527, 0.494163, -0.0115042)
 
 [node name="OmniLight3D" parent="EllieModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 light_color = Color(0.566929, 0.256669, 1, 1)
